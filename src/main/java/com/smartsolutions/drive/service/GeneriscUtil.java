@@ -13,15 +13,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.samrtsolutions.drive.service;
+package com.smartsolutions.drive.service;
+
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+
+
+
 
 /**
  *
  * @author leonl
  */
-public interface BaseDao<T> {
-    public void edit(Object obj);        
-    public void delete(int id);          
-    public T load(int id);             
-    public T get(int id);
+public class GeneriscUtil {
+       @SuppressWarnings("rawtypes")
+    public static Class getGenericType(Class clazz){
+        Type genType = clazz.getGenericSuperclass();
+        Type[] types = ((ParameterizedType) genType).getActualTypeArguments();
+        if (!(types[0] instanceof Class)) {
+            return Object.class;   
+        } 
+        return (Class) types[0];
+    
+        }
 }

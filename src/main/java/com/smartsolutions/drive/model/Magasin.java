@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 leonl.
+ * Copyright 2021 33667.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,27 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.samrtsolutions.drive.service;
-
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
-
-
-
+package com.smartsolutions.drive.model;
 
 /**
  *
- * @author leonl
+ * @author Helmy
  */
-public class GeneriscUtil {
-       @SuppressWarnings("rawtypes")
-    public static Class getGenericType(Class clazz){
-        Type genType = clazz.getGenericSuperclass();
-        Type[] types = ((ParameterizedType) genType).getActualTypeArguments();
-        if (!(types[0] instanceof Class)) {
-            return Object.class;   
-        } 
-        return (Class) types[0];
+public class Magasin {
     
-        }
 }
