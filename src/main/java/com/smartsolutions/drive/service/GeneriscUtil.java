@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.samrtsolutions.drive.service;
+package com.smartsolutions.drive.service;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
