@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package metier;
+package com.samrtsolutions.drive.service;
 
 /**
  *
- * @author Nicol
+ * @author leonl
  */
-public class Produit {
+public class ProductDao {
     
 }
