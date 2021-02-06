@@ -29,7 +29,7 @@ public class HibernateUtil {
              * Entité.
              */
           
-//            configuration.addAnnotatedClass(miage.metier.Technicien.class);
+            configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Product.class);
 
             ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
             System.out.println("Hibernate serviceRegistry created");
