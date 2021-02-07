@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.samrtsolutions.drive.service;
+package com.samrtsolutions.drive.repository;
+
+import com.samrtsolutions.drive.model.Product;
 
 /**
  *
  * @author leonl
  */
-public class ProductDao {
+public interface ProductDao  extends BaseDao<Product>  {
     
 }

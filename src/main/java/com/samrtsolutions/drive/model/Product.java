@@ -24,8 +24,16 @@ public class Product {
     private int productCode; 
     private String productName; 
 
+    public Product() {
+    }
+
     public Product(int productCode, String productName) {
         this.productCode = productCode;
+        this.productName = productName;
+    }
+
+    
+    public Product(String productName) {
         this.productName = productName;
     }
 
@@ -51,6 +59,12 @@ public class Product {
     public void setProductName(String productName) {
         this.productName = productName;
     }
+
+    @Override
+    public String toString() {
+        return "Product{" + "productCode=" + productCode + ", productName=" + productName + '}';
+    }
+    
     
     
 }
