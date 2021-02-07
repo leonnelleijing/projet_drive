@@ -19,11 +19,13 @@ import javax.persistence.Table;
  * poue tester, il faut juste dans bd. HibernateUtils, ajoute ma class et puis aller dans test package,
  * run la méthode init(), après voir dans la bd si ma table est bien crée
  */
+
 @Entity
-//utiliser @table pour spécifier le nom de notre table dans la BD
-@Table(name="drive_produit")
-public class Product {
+public class Product implements Serializable{
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int productCode;
     private String productName;
     private double productKiloPrice;
