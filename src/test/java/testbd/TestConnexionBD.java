@@ -19,7 +19,7 @@ import org.junit.Before;
 /**
 /**
  *
- * @author leonl
+ * @author leonl    
  */
 public class TestConnexionBD {
     
