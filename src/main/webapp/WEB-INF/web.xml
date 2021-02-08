@@ -182,6 +182,12 @@
     <servlet-mapping>
         <servlet-name>a</servlet-name>
         <url-pattern>/a</url-pattern>
+        <servlet-name>Choix_Lieu_Horaire</servlet-name>
+        <url-pattern>/choix_Lieu_Horaire</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletAfficherMagasin</servlet-name>
+        <url-pattern>/servletAfficherMagasin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -6,22 +6,16 @@
 package com.samrtsolutions.drive.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -30,30 +24,25 @@ import javax.persistence.Table;
  */
 @Entity
 @SuppressWarnings("PersistenceUnitPresent")
-@Table(name = "drive_magasin")
+@Table(name = "Magasin")
 public class Magasin implements Serializable{
     
     //Propriétés
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column (name = "CodeMagasin")
+    
     private int code;
     private String nom;
     private String rue;
     private String codePostal;
     private String ville;
     
-    @OneToMany(mappedBy="magasin")
-    private Set<Commande> commands= new HashSet<>(0);
-    
-    // Relations
-    //Permet de relier la table Magasin avec Creneau pour ajouter une liste de créneaux à un magasin
-    @ManyToMany
-	@JoinTable(name = "drive_appartenir_creneauMagasin",
-			   joinColumns = @JoinColumn(name = "CodeMagasin"),
-		inverseJoinColumns = @JoinColumn(name = "CodeCreneau"))
-	private Set<Creneau> listeCreneau = new HashSet(0);
-
+    /*@ManyToMany
+            @JoinTable(name = "Produit",
+                    joinColumns = @JoinColumn (name = "CodeMagasin"),
+                    inverseJoinColumns = @JoinColumn(name = "CodeProduit"))
+    Set<Produit> produits = new HashSet<>(0);*/
     
     //Constructor
     public Magasin(){}
@@ -65,25 +54,8 @@ public class Magasin implements Serializable{
         this.ville = ville;
     }
     
-    public Set<Commande> getCommands() {
-        return commands;
-    }
-
     //Getters & Setters
-    public void setCommands(Set<Commande> commands) {
-        this.commands = commands;
-    }
 
-
-    public Set<Creneau> getListeCreneau() {
-        return listeCreneau;
-    }
-
-    public void setListeCreneau(Set<Creneau> listeCreneau) {
-        this.listeCreneau = listeCreneau;
-    }
-    
-    
     public int getCode() {
         return code;
     }
@@ -103,6 +75,10 @@ public class Magasin implements Serializable{
     public String getVille() {
         return ville;
     }
+
+    /*public Set<Produit> getProduits() {
+        return produits;
+    }*/
 
     public void setCode(int code) {
         this.code = code;
@@ -124,32 +100,14 @@ public class Magasin implements Serializable{
         this.ville = ville;
     }
 
-    //HasCode & Equals
-
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 23 * hash + this.code;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Magasin other = (Magasin) obj;
-        if (this.code != other.code) {
-            return false;
-        }
-        return true;
-    }
+    /*public void setProduits(Set<Produit> produits) {
+        this.produits = produits;
+    }*/
     
+    
+    
+    
+    
+
 
 }

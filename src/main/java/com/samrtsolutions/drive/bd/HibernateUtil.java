@@ -43,6 +43,7 @@ public class HibernateUtil {
              configuration.addAnnotatedClass(com.samrtsolutions.drive.model.ClProdBasket.class);
             configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Affluence.class);
             configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Date_Affluence.class);
+            configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Magasin.class);
 
             ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
             System.out.println("Hibernate serviceRegistry created");
