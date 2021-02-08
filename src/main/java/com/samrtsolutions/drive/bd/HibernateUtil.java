@@ -30,6 +30,8 @@ public class HibernateUtil {
              */
           
             configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Product.class);
+            configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Family.class);
+            configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Rayon.class);
 
             ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
             System.out.println("Hibernate serviceRegistry created");
