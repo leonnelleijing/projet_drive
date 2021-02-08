@@ -20,17 +20,22 @@ import org.hibernate.query.Query;
 public class ProductDaoImpl extends BaseDaoImpl<Product> implements ProductDao {
     
         public  List<Product> getAllProduct(){
-             Query q = getSession().createQuery("from Product");
-             return (List<Product>)q.getResultList();
+            Session s  =factory.getCurrentSession();
+            Transaction t=s.beginTransaction();
+            Query q =s.createQuery("from Product");
+            t.commit();
+            return (List<Product>)q.getResultList();
         }
     
         //Récupérer une liste de produit
         public List<Product> getListProduct(String word)
         {
-             
-                Query q = getSession().createQuery("from Product where productName like :test");
-                q.setParameter("test", word +'%');
-                return (List<Product>)q.list();
+            Session s  =factory.getCurrentSession();
+            Transaction t=s.beginTransaction();
+            Query q = s.createQuery("from Product where productName like :test");
+            q.setParameter("test", word +'%');
+            t.commit();
+            return (List<Product>)q.list();
         }
         
 

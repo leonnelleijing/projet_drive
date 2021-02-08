@@ -52,7 +52,7 @@ public class Family implements Serializable{
         return nomFamily;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name="NumRayon")
     public Rayon getRayon() {
         return rayon;
@@ -64,7 +64,7 @@ public class Family implements Serializable{
         return childFamilies;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name="ParentCategoryId")
     public Family getParentFamily() {
         return parentFamily;

@@ -20,8 +20,11 @@ public class RayonDaoImpl extends BaseDaoImpl<Rayon> implements RayonDao {
 
     @Override
     public ArrayList<Rayon> getAllRayons() {
-       Query query =getSession().createQuery("from Rayon");
-       List<Rayon> list = query.getResultList();       
+       Session s  =factory.getCurrentSession();
+       Transaction t=s.beginTransaction();
+       Query query =s.createQuery("from Rayon");
+       List<Rayon> list = query.getResultList(); 
+       t.commit();
        return (ArrayList<Rayon>) list;
     }
     

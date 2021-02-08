@@ -37,7 +37,6 @@ public class TestLabel {
     public void addLabelToProduct(){
         Label l =labelImpl.get(2);
         pi.get(1).addLabel(l);
-        pi.getTransaction().commit();
     }
     
     @Test 

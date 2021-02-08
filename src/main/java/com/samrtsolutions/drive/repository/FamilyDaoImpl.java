@@ -19,9 +19,12 @@ import org.hibernate.Transaction;
 public class FamilyDaoImpl extends BaseDaoImpl<Family> implements FamilyDao{
 
     @Override
-    public ArrayList<Family> getAllParentFamilies() {;
-       Query query =getSession().createQuery("from Family where ParentCategoryId IS NULL");
+    public ArrayList<Family> getAllParentFamilies() {
+       Session s  =factory.getCurrentSession();
+       Transaction t=s.beginTransaction();
+       Query query =s.createQuery("from Family where ParentCategoryId IS NULL");
        List<Family> list = query.getResultList();
+       t.commit();
        return (ArrayList<Family>) list; 
     }
     
