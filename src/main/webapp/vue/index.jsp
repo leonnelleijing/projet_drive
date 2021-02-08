@@ -4,6 +4,8 @@
     Author     : leonl
 --%>
 
+
+<%@page import="java.util.List"%>
 <%@page import="com.samrtsolutions.drive.model.Product"%>
 <%@page import="com.samrtsolutions.drive.repository.ProductDaoImpl"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -17,8 +19,14 @@
         <h1>Hello World!</h1>
         <%
             ProductDaoImpl product=new ProductDaoImpl();
-            Product p= product.get(1);
-            out.println(p.toString());
+            //Product p= product.g et(1);
+            List<Product> lp = product.getListProduct("pomme");
+            
+            for(Product var : lp){
+                out.println("<p> Nom du produit : "+var.getProductName()+"</p>");
+            }
         %>
+      
+
     </body>
 </html>

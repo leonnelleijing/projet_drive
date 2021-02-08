@@ -8,7 +8,6 @@ package testbd;
 import com.samrtsolutions.drive.model.Product;
 import com.samrtsolutions.drive.repository.ProductDaoImpl;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
@@ -21,9 +20,14 @@ public class TestProductImplement {
     
     @Test
     public void testAddProduct(){
-        Product p = new Product("test");
+        Product p1 = new Product("Pomme",3,2,200,"Pomme du sud","Gramme","31AAA","","Maroc","Carrefour","Carrefour");
+        Product p2 = new Product("Pomme française",3,2,200,"Pomme du sud","Gramme","31AAA","","Maroc","Carrefour","Carrefour");
+        Product p3 = new Product("Pomme espagnole",3,2,200,"Pomme du sud","Gramme","31AAA","","Maroc","Carrefour","Carrefour");
         ProductDaoImpl pi= new ProductDaoImpl();
-        pi.edit(p);
+        pi.edit(p1);
+        pi.edit(p2);
+        pi.edit(p3);
+        pi.getTransaction().commit();
     }
     
     @Test

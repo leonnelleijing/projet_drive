@@ -6,6 +6,7 @@
 package com.samrtsolutions.drive.model;
 
 import com.samrtsolutions.drive.model.Family;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
@@ -22,7 +23,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="drive_rayon")
-public class Rayon {
+public class Rayon implements Serializable{
     private int numRayon; 
     private String libelleRayon; 
     private Set<Family> families= new HashSet(); 
