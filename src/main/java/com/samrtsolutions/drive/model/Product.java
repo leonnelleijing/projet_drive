@@ -34,8 +34,13 @@ public class Product {
     @GeneratedValue
     //utiliser @column pour spécifier le nom de column 
     @Column(name="ProductCode")
+    
     public int getProductCode() {
         return productCode;
+    }
+
+    public Product(String productName) {
+        this.productName = productName;
     }
     
     @Column(name="ProductName")

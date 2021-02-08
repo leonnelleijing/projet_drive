@@ -12,6 +12,14 @@
         <servlet-name>Article</servlet-name>
         <jsp-file>/vue/Article.jsp</jsp-file>
     </servlet>
+    <servlet>
+        <servlet-name>Choix_Lieu_Horaire</servlet-name>
+        <jsp-file>/vue/Choix_Lieu_Horaire.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletAfficherMagasin</servlet-name>
+        <servlet-class>com.samrtsolutions.drive.controler.ServletAfficherMagasin.java</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Home</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -19,6 +27,14 @@
     <servlet-mapping>
         <servlet-name>Article</servlet-name>
         <url-pattern>/article</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Choix_Lieu_Horaire</servlet-name>
+        <url-pattern>/choix_Lieu_Horaire</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletAfficherMagasin</servlet-name>
+        <url-pattern>/servletAfficherMagasin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

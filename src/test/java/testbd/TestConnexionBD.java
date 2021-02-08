@@ -16,6 +16,8 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.junit.After;
 import org.junit.Before;
+import com.samrtsolutions.drive.model.Magasin;
+
 /**
 /**
  *
@@ -45,4 +47,5 @@ public class TestConnexionBD {
     public void inition(){
         
     }
+    
 }

@@ -5,9 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<jsp:includepage="/vue/Header.jsp">
-    <jsp:param name="title" value="Home"/>
-</jsp:include>
+<%@ include file ="/vue/Header.jsp"%>
 
 
 
