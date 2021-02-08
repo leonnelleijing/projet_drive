@@ -54,6 +54,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
         Session s  =factory.getCurrentSession();
         Transaction t=s.beginTransaction();
         T o= (T) s.get(clazz, id);
+        t.commit();
         return o;
     }
 

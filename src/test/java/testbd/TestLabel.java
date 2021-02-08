@@ -29,14 +29,12 @@ public class TestLabel {
     public void addLabel(){
         Label l= new Label("Ecocert","../images/label/ecocert.png");
         labelImpl.edit(l);
-        //labelImpl.getTransaction().commit();
     }
     
-    @Test 
-    @Ignore   
+    @Test   
     public void addLabelToProduct(){
-        Label l =labelImpl.get(2);
-        pi.get(1).addLabel(l);
+        Label l =labelImpl.get(3);
+        pi.get(2).addLabel(l);
     }
     
     @Test 
