@@ -126,8 +126,8 @@
         <url-pattern>/choix_Lieu_Horaire</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ServletAfficherMagasin</servlet-name>
-        <url-pattern>/servletAfficherMagasin</url-pattern>
+        <servlet-name>ServletAfficherCreneautest</servlet-name>
+        <url-pattern>/ServletAfficherCreneau</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

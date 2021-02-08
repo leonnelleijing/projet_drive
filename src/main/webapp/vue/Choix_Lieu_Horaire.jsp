@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Finalisation commande</title>
     </head>
     <body>
         <h1>Choix de retrait</h1>
@@ -19,6 +19,6 @@
         <input id="saisieMagasin" type="text" placeholder="Saisissez votre code postal !" />
         <select id="lmagasins"><option>-----</option></select>
         
-        <script type="text/JavaScript" src="js/ChoixLieuHoraire.js"></script>
+        <script type="text/JavaScript" src="/../js/ChoixLieuHoraire.js"></script>
     </body>
 </html>
