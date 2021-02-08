@@ -42,29 +42,13 @@
         }
         
         .part1{
-            height: 500px;
+            height: auto;
             width: auto;            
             /*border: 1px #000 solid;*/
             background-image: url('Img\\accueil.jfif');
             background-repeat: no-repeat;
             background-size:100% 100%;
-            float: left;
-        }
-        .jumbotron h1{
-            /*text-align: center;*/
-            font-size: 80px;
-            font-style: italic;
-            color: #fff;
-            margin-top: 120px;
-            
-        }
-        .jumbotron{
-           background-color:transparent; 
-           margin-top: 0px;
-           float: left;
-        }
-        .jumbotron p {
-            color: #ffdab9;
+
         }
         
         .part3{
@@ -75,9 +59,10 @@
         }
         
         .title{
-            margin-top: 30px;
-            text-align: center;
-
+            margin-top: 3%;
+            text-align: left;
+            margin-left: 5%;
+            margin-bottom: 3%;
         }
         
         .produit1{
@@ -239,6 +224,110 @@
             background-color: #f5f5f5;
             margin-top: 2%;
         }
+        
+        .titlePrix{
+            margin-top: 3%;
+            float: right;
+            width: 100%;
+        }
+        .titlePrix>span{
+            float: right;              
+        }
+        .titlePrix>span>p{
+            float: right;
+            margin: 1%;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .titlePrix>button{
+            float: right;
+            margin: 2%;     
+        }
+        
+        .prixLabel{
+            font-family: cursive;
+            font-size: 25px;
+            color: red;
+            font-weight: bold;         
+        }
+        
+        .inter{
+            margin-top: 3%;
+            padding: 2%;
+        }
+        .inter div{
+            text-align: center;
+        }
+        
+        .oneProduit{
+            margin: 3%;
+        }
+        
+        .dessusPro{
+            margin-left: 2%;
+        }
+        
+        
+        
+        .produit{
+            height: auto;
+            border: 2px #777 solid;
+            padding: 3%;
+        }
+        
+        .check{
+            float: left;
+            margin-top: 3%;
+        }
+        
+        .photoProduit{
+            float: left;
+            margin-top: 1%;
+        }
+        
+        .InfoProduit{
+            float: left;
+            margin-top: 1%;
+        }
+        
+        
+        .InfoProduit2{
+            float: left;
+            margin-top: 1%;
+        }
+        
+        .prixUniProduit{
+            float: left;
+            margin-top: 1%;
+        }
+        
+        .prixUniProduit p{
+            font-size: 14px;
+            font-weight: bold;
+            color: red;
+        }
+        
+        .qteProduit{
+            float: left;
+            margin-top: 1%;
+        }
+        
+        .prixTtProduit{
+            float: left;
+            margin-top: 1%;
+        }
+        
+        .prixTtProduit p{
+            font-size: 14px;
+            font-weight: bold;
+            color: red;
+        }
+        
+        .suppression{
+            float: left;
+            margin-top: 1%;
+        }
+        
     </style>
     <body>
         <!-- <h1>Bienvenue!</h1> -->
@@ -248,7 +337,7 @@
             <div class="row">
                 <div class="col-md-2">
                     <div class="logo">
-                        <image id="photoLogo" src="Img\logo.png">
+                        <image id="photoLogo" src="..\Img\logo.png">
                     </div>
                     <div class="menu">
                         <ul class="nav nav-pills nav-stacked">
@@ -423,13 +512,13 @@
                                       <span class="icon-bar"></span>
                                       <span class="icon-bar"></span>
                                     </button>
-                                    <a class="navbar-brand" href="#">Brand</a>
+                                    <a class="navbar-brand" href="#">My Drive</a>
                                   </div>
 
                                   <!-- Collect the nav links, forms, and other content for toggling -->
                                   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                     <ul class="nav navbar-nav">
-                                      <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+                                      <li class="active"><a href="http://localhost:8080/Accueil.jsp">Home Page <span class="sr-only">(current)</span></a></li>
                                       <li><a href="#">Link</a></li>
                                       <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -448,7 +537,7 @@
                                       <div class="form-group">
                                         <input type="text" class="form-control" placeholder="Search">
                                         <button type="submit" class="btn btn-default">Rechercher</button>
-                                        <button class="btn" onclick="window.location.href='http://localhost:8080/vue/PagePanier.jsp'"><span class="glyphicon glyphicon-shopping-cart">Panier</span></button>
+                                        <button class="btn"><span class="glyphicon glyphicon-shopping-cart">Panier</span></button>
                                       </div>                                    
                                     </form>
                                     <ul class="nav navbar-nav navbar-right">   
@@ -458,234 +547,381 @@
                                 <!-- /.container-fluid -->
                               </nav>                             
                         </div>
-                        <div class="jumbotron">
-                            <h1>Bienvenue!</h1>
-                            <p>Nous sommes l’entreprise Smart Solutions, créée le 22 Octobre 2001.Nous sommes une entreprise toulousaine composée de 100 personnes.</p>
-                            <p><a class="btn btn-primary btn-lg" href="#" role="button">Liste Course</a></p>
-                        </div>
+                        
                         
                     </div> 
+                    <div class="part2">
+                        <div class="title">
+                            <h2>Mon Panier</h2>
+                        </div>
+                        <div class="nav">
+                            <ul class="nav nav-tabs">
+                                <li role="presentation" class="active"><a href="#">Tous mes articles</a></li>
+                                <li role="presentation"><a href="#">Articles en promo</a></li>
+                                <li role="presentation"><a href="#">Articles en rupture de stock</a></li>
+                            </ul>
+                            <div class="titlePrix">
+                                <button type="submit" class="btn btn-info">Régler</button>
+                                <span><p>Articles sélectionnés: </p><p class="prixLabel">175.68 $</p></span>
+                                
+                            </div>
+                        </div>
+   
+                    </div>
+                    
+                    <div class="inter">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                          Sélectionne tous
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">Informations de l'article</div>
+                                <div class="col-md-2">Prix unitaire</div>
+                                <div class="col-md-1">Quantité</div>
+                                <div class="col-md-2">Prix total</div>
+                                <div class="col-md-1">Opération</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     <div class="part3">
                         
-                        <div class="title">
-                            <h2>Liste Produits</h2>
-                        </div>
+                        
                         <div class="lstPro">
                             
-                            <div class="produit1">
-                                <div class="articleSpan">
-                                    <div class="niveau1"><span>En Promotion</span></div>
-                                    <div class="niveau2">
-                                        <div class="namePro"><a>Lait</a></div>
-                                        <div class="poids"><p>500g</p></div>
-                                        <div class="prixPoid"><p>1$/500Ml</p></div>
-                                    </div>
-                                    <div class="niveau3">
-                                        <img class="imagePro" src="Img\lait.jfif" style="background-image:url(Img\\lait.jfif);">
-                                    </div>
-                                </div>
-                                <div class="infos">
-                                    <div class="infoPromo"><p>1 acheté = 1 graduit</p></div>
-                                    <div class="infoPrix">
-                                        <div class="prix"><p>2.00 $</p></div>
-                                        <div class="iconPanier">
-                                            <img src="Img\panier.png" style="height:30px; width: 30px">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>  
                             
-                            <div class="produit1">
-                                <div class="articleSpan">
-                                    <div class="niveau1"><span>En Promotion</span></div>
-                                    <div class="niveau2">
-                                        <div class="namePro"><a>Air conditionnel</a></div>
-                                        <div class="poids"><p>1 unité</p></div>
-                                        <div class="prixPoid"><p>599$/Unité</p></div>
-                                    </div>
-                                    <div class="niveau3">
-                                        <img class="imagePro" src="Img\airCondi.jfif" style="background-image:url(Img\\airCondi.jfif);">
+                            
+                            <div class="oneProduit">
+                               <div class="dessusPro">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                          Magasin : 
+                                        </label>
+                                        <span>Carrefour</span>
                                     </div>
                                 </div>
-                                <div class="infos">
-                                    <div class="infoPromo"><p>25% en promo</p></div>
-                                    <div class="infoPrix">
-                                        <div class="prix"><p>599.00 $</p></div>
-                                        <div class="iconPanier">
-                                            <img src="Img\panier.png" style="height:30px; width: 30px">
+                                <div class="produit">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-1">
+                                                <div class="check">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="photoProduit">
+                                                    <img class="imagePro" src="..\Img\lait.jfif" style="background-image:url(..\\Img\\lait.jfif);">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="InfoProduit">
+                                                    <p>Boîte de lait japonaise</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="InfoProduit2">
+                                                    <p>En promo : 1 achat = 1 graduit</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <div class="prixUniProduit">
+                                                    <p>2.00 $</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="qteProduit">
+                                                    <input type="number" value="50" min="0" max="100" step="1"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <div class="prixTtProduit">
+                                                    <p>9.00 $</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <div class="suppression">
+                                                    <button type="submit" class="glyphicon glyphicon-trash"></button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> 
                             </div>
                             
                             
-                            <div class="produit1">
-                                <div class="articleSpan">
-                                    <div class="niveau1"><span>En Promotion</span></div>
-                                    <div class="niveau2">
-                                        <div class="namePro"><a>Air conditionnel</a></div>
-                                        <div class="poids"><p>1 unité</p></div>
-                                        <div class="prixPoid"><p>599$/Unité</p></div>
-                                    </div>
-                                    <div class="niveau3">
-                                        <img class="imagePro" src="Img\airCondi.jfif" style="background-image:url(Img\\airCondi.jfif);">
+                                    
+                             <div class="oneProduit">
+                               <div class="dessusPro">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                          Magasin : 
+                                        </label>
+                                        <span>Carrefour</span>
                                     </div>
                                 </div>
-                                <div class="infos">
-                                    <div class="infoPromo"><p>25% en promo</p></div>
-                                    <div class="infoPrix">
-                                        <div class="prix"><p>599.00 $</p></div>
-                                        <div class="iconPanier">
-                                            <img src="Img\panier.png" style="height:30px; width: 30px">
+                                <div class="produit">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-1">
+                                                <div class="check">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="photoProduit">
+                                                    <img class="imagePro" src="..\Img\airCondi.jfif" style="background-image:url(..\\Img\\airCondi.jfif);">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="InfoProduit">
+                                                    <p>Conditionneur d'air</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="InfoProduit2">
+                                                    <p>En promo : soldes jusqu'à 75%</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <div class="prixUniProduit">
+                                                    <p>399.00 $</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="qteProduit">
+                                                    <input type="number" value="50" min="0" max="100" step="1"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <div class="prixTtProduit">
+                                                    <p>399.00 $</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <div class="suppression">
+                                                    <button type="submit" class="glyphicon glyphicon-trash"></button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            
-                            <div class="produit1">
-                                <div class="articleSpan">
-                                    <div class="niveau1"><span>En Promotion</span></div>
-                                    <div class="niveau2">
-                                        <div class="namePro"><a>Coca Cola (Original)</a></div>
-                                        <div class="poids"><p>300ml</p></div>
-                                        <div class="prixPoid"><p>0.25$/100ml</p></div>
+                                </div> 
+                            </div>       
+                                    
+                                    
+                            <div class="oneProduit">
+                               <div class="dessusPro">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                          Magasin : 
+                                        </label>
+                                        <span>Carrefour</span>
                                     </div>
-                                    <div class="niveau3">
-                                        <img class="imagePro" src="Img\coca.jfif" style="background-image:url(Img\\coca.jfif);">
-                                    </div>
                                 </div>
-                                <div class="infos">
-                                    <div class="infoPromo"><p>1 acheté = 1 graduit</p></div>
-                                    <div class="infoPrix">
-                                        <div class="prix"><p>0.75 $</p></div>
-                                        <div class="iconPanier">
-                                            <img src="Img\panier.png" style="height:30px; width: 30px">
+                                <div class="produit">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-1">
+                                                <div class="check">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="photoProduit">
+                                                    <img class="imagePro" src="..\Img\coca.jfif" style="background-image:url(..\\Img\\coca.jfif);">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="InfoProduit">
+                                                    <p>Coca cola (Original)</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="InfoProduit2">
+                                                    <p>En promo : 1 achat = 1 graduit</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <div class="prixUniProduit">
+                                                    <p>1.00 $</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="qteProduit">
+                                                    <input type="number" value="50" min="0" max="100" step="1"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <div class="prixTtProduit">
+                                                    <p>5.00 $</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <div class="suppression">
+                                                    <button type="submit" class="glyphicon glyphicon-trash"></button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                </div> 
+                            </div>         
+                                    
+                                    
                             
-                            <div class="produit1">
-                                <div class="articleSpan">
-                                    <div class="niveau1"><span>En Promotion</span></div>
-                                    <div class="niveau2">
-                                        <div class="namePro"><a>Macaron</a></div>
-                                        <div class="poids"><p>500g</p></div>
-                                        <div class="prixPoid"><p>4$/100g</p></div>
-                                    </div>
-                                    <div class="niveau3">
-                                        <img class="imagePro" src="Img\macaron.jfif" style="background-image:url(Img\\macaron.jfif);">
+                            <div class="oneProduit">
+                               <div class="dessusPro">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                          Magasin : 
+                                        </label>
+                                        <span>Carrefour</span>
                                     </div>
                                 </div>
-                                <div class="infos">
-                                    <div class="infoPromo"><p>1 acheté = 25% de promo deuxième</p></div>
-                                    <div class="infoPrix">
-                                        <div class="prix"><p>20.00 $</p></div>
-                                        <div class="iconPanier">
-                                            <img src="Img\panier.png" style="height:30px; width: 30px">
+                                <div class="produit">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-1">
+                                                <div class="check">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="photoProduit">
+                                                    <img class="imagePro" src="..\Img\macaron.jfif" style="background-image:url(..\\Img\\macaron.jfif);">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="InfoProduit">
+                                                    <p>Boîte de macaron</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="InfoProduit2">
+                                                    <p>En promo : 1 achat = 1 achat 50% solde</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <div class="prixUniProduit">
+                                                    <p>12.00 $</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="qteProduit">
+                                                    <input type="number" value="50" min="0" max="100" step="1"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <div class="prixTtProduit">
+                                                    <p>24.00 $</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <div class="suppression">
+                                                    <button type="submit" class="glyphicon glyphicon-trash"></button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> 
                             </div>
                             
-                            <div class="produit1">
-                                <div class="articleSpan">
-                                    <div class="niveau1"><span>En Promotion</span></div>
-                                    <div class="niveau2">
-                                        <div class="namePro"><a>Lait</a></div>
-                                        <div class="poids"><p>500ml</p></div>
-                                        <div class="prixPoid"><p>1$/250ml</p></div>
-                                    </div>
-                                    <div class="niveau3">
-                                        <img class="imagePro" src="Img\lait.jfif" style="background-image:url(Img\\lait.jfif);">
+                            
+                            <div class="oneProduit">
+                               <div class="dessusPro">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                          Magasin : 
+                                        </label>
+                                        <span>Carrefour</span>
                                     </div>
                                 </div>
-                                <div class="infos">
-                                    <div class="infoPromo"><p>1 acheté = 1 graduit</p></div>
-                                    <div class="infoPrix">
-                                        <div class="prix"><p>2.00 $</p></div>
-                                        <div class="iconPanier">
-                                            <img src="Img\panier.png" style="height:30px; width: 30px">
+                                <div class="produit">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-1">
+                                                <div class="check">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="photoProduit">
+                                                    <img class="imagePro" src="..\Img\phone.jfif" style="background-image:url(..\\Img\\phone.jfif);">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="InfoProduit">
+                                                    <p>HUAWEI Mate 30</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="InfoProduit2">
+                                                    <p>En promo : 1 achat = solde jusqu'à 80%</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <div class="prixUniProduit">
+                                                    <p>599.00 $</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="qteProduit">
+                                                    <input type="number" value="50" min="0" max="100" step="1"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <div class="prixTtProduit">
+                                                    <p>599.00 $</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <div class="suppression">
+                                                    <button type="submit" class="glyphicon glyphicon-trash"></button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            
-                            <div class="produit1">
-                                <div class="articleSpan">
-                                    <div class="niveau1"><span>En Promotion</span></div>
-                                    <div class="niveau2">
-                                        <div class="namePro"><a>Lait</a></div>
-                                        <div class="poids"><p>500ml</p></div>
-                                        <div class="prixPoid"><p>1$/250Ml</p></div>
-                                    </div>
-                                    <div class="niveau3">
-                                        <img class="imagePro" src="Img\lait.jfif" style="background-image:url(Img\\lait.jfif);">
-                                    </div>
-                                </div>
-                                <div class="infos">
-                                    <div class="infoPromo"><p>1 acheté = 1 graduit</p></div>
-                                    <div class="infoPrix">
-                                        <div class="prix"><p>2.00 $</p></div>
-                                        <div class="iconPanier">
-                                            <img src="Img\panier.png" style="height:30px; width: 30px">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="produit1">
-                                <div class="articleSpan">
-                                    <div class="niveau1"><span>En Promotion</span></div>
-                                    <div class="niveau2">
-                                        <div class="namePro"><a>Coca Cola (Original)</a></div>
-                                        <div class="poids"><p>300ml</p></div>
-                                        <div class="prixPoid"><p>0.25$/100ml</p></div>
-                                    </div>
-                                    <div class="niveau3">
-                                        <img class="imagePro" src="Img\coca.jfif" style="background-image:url(Img\\coca.jfif);">
-                                    </div>
-                                </div>
-                                <div class="infos">
-                                    <div class="infoPromo"><p>1 acheté = 1 graduit</p></div>
-                                    <div class="infoPrix">
-                                        <div class="prix"><p>0.75 $</p></div>
-                                        <div class="iconPanier">
-                                            <img src="Img\panier.png" style="height:30px; width: 30px">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="produit1">
-                                <div class="articleSpan">
-                                    <div class="niveau1"><span>En Promotion</span></div>
-                                    <div class="niveau2">
-                                        <div class="namePro"><a>Macaron</a></div>
-                                        <div class="poids"><p>500g</p></div>
-                                        <div class="prixPoid"><p>4$/100g</p></div>
-                                    </div>
-                                    <div class="niveau3">
-                                        <img class="imagePro" src="Img\macaron.jfif" style="background-image:url(Img\\macaron.jfif);">
-                                    </div>
-                                </div>
-                                <div class="infos">
-                                    <div class="infoPromo"><p>1 acheté = 25% de promo deuxième</p></div>
-                                    <div class="infoPrix">
-                                        <div class="prix"><p>20.00 $</p></div>
-                                        <div class="iconPanier">
-                                            <img src="Img\panier.png" style="height:30px; width: 30px">
-                                        </div>
-                                    </div>
-                                </div>
+                                </div> 
                             </div>
                             
                             
-                    
-                            
+         
                     </div>      
                         
                 </div>
+                    
+                <div class="titlePrix">
+                    <button type="submit" class="btn btn-info">Régler</button>
+                    <span><p>Articles sélectionnés en prix total : </p><p class="prixLabel">975.68 $</p></span>
+
+                </div>     
+                    
+                    
             </div>
         </div>
             
@@ -850,6 +1086,6 @@
             })
         })
         
-        $(".btn").window.location.href = "http://localhost:8080/vue/PagePanier.jsp";
+        $("input[type='number']").inputSpinner();
     </script>
 </html>
