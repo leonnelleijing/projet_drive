@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <welcome-file-list>
-        <welcome-file>home</welcome-file>
-        <welcome-file>vue/Home.jsp</welcome-file>
+        <welcome-file>/accueil</welcome-file>
     </welcome-file-list>
     <servlet>
         <servlet-name>Home</servlet-name>
@@ -20,6 +19,14 @@
         <servlet-name>category</servlet-name>
         <servlet-class>com.samrtsolutions.drive.controler.category</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Accueil</servlet-name>
+        <servlet-class>com.samrtsolutions.drive.controler.Accueil</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Family</servlet-name>
+        <jsp-file>/vue/Family.jsp</jsp-file>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Home</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -36,12 +43,17 @@
         <servlet-name>category</servlet-name>
         <url-pattern>/category</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Accueil</servlet-name>
+        <url-pattern>/accueil</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Family</servlet-name>
+        <url-pattern>/family</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
-    <welcome-file-list>
-        <welcome-file>vue/Accueil.jsp</welcome-file>
-    </welcome-file-list>
 </web-app>

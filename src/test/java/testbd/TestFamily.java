@@ -6,6 +6,7 @@
 package testbd;
 
 import com.samrtsolutions.drive.model.Family;
+import com.samrtsolutions.drive.model.Product;
 import com.samrtsolutions.drive.model.Rayon;
 import com.samrtsolutions.drive.repository.FamilyDaoImpl;
 import com.samrtsolutions.drive.repository.RayonDaoImpl;
@@ -53,6 +54,16 @@ public class TestFamily {
         Set<Family> fs= family.getChildFamilies();
         for(Family f: fs){
              System.out.println(f.getNomFamily());
+        }
+    }
+    
+        
+    @Test
+    public void testGetChildProductsByFamily(){
+        Family family=familyImpl.get(29);
+        Set<Product> products= familyImpl.getChildProductsByFamily(family);
+        for(Product p:products){
+             System.out.println(p.getProductName());
         }
     }
 }

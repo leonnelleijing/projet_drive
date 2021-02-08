@@ -34,6 +34,7 @@ public class Family implements Serializable{
     private Rayon rayon; 
     private Family parentFamily; 
     private Set<Family> childFamilies = new HashSet(); 
+    private Set<Product> childProducts= new HashSet(); 
     public Family() {
     }
  
@@ -68,6 +69,15 @@ public class Family implements Serializable{
     @JoinColumn(name="ParentCategoryId")
     public Family getParentFamily() {
         return parentFamily;
+    }
+
+    @OneToMany(mappedBy="family",fetch = FetchType.LAZY)
+    public Set<Product> getChildProducts() {
+        return childProducts;
+    }
+
+    public void setChildProducts(Set<Product> childProducts) {
+        this.childProducts = childProducts;
     }
 
     public void setParentFamily(Family parentFamily) {

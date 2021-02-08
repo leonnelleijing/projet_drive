@@ -6,7 +6,9 @@
 package com.samrtsolutions.drive.repository;
 
 import com.samrtsolutions.drive.model.Family;
+import com.samrtsolutions.drive.model.Product;
 import java.util.ArrayList;
+import java.util.Set;
 
 /**
  *
@@ -14,5 +16,5 @@ import java.util.ArrayList;
  */
 public interface FamilyDao extends BaseDao<Family>{
        public ArrayList<Family> getAllParentFamilies(); 
-       
+       public Set<Product> getChildProductsByFamily(Family f);
 }

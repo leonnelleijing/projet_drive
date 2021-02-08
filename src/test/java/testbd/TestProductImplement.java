@@ -69,4 +69,5 @@ public class TestProductImplement {
         Product p=pi.get(2);
         pi.addLabel(p, l);
     }
+
 }

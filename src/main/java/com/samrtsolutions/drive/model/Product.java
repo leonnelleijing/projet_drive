@@ -15,7 +15,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -45,6 +47,7 @@ public class Product implements Serializable{
     private String image; 
     private String nuttritionScore;
     private Set<Label> labels = new HashSet<>();
+    private Family family;
     public Product() {
     }
     
@@ -90,39 +93,45 @@ public class Product implements Serializable{
     public String getImage() {
         return image;
     }
-
-    public void setImage(String image) {
-        this.image = image;
+    
+    @ManyToMany(mappedBy = "products", cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+    public Set<Label> getLabels() {
+        return labels;
     }
-
+    
     public String getNuttritionScore() {
         return nuttritionScore;
+    }
+
+    @ManyToOne()
+    @JoinColumn(name="ParentFamilyId")
+    public Family getFamily() {
+        return family;
+    }
+
+    public void setFamily(Family family) {
+        this.family = family;
+    }
+    
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public void setNuttritionScore(String nuttritionScore) {
         this.nuttritionScore = nuttritionScore;
     }
 
-    @ManyToMany(mappedBy = "products", cascade=CascadeType.ALL, fetch = FetchType.EAGER)
-    public Set<Label> getLabels() {
-        return labels;
-    }
-
     public void setLabels(Set<Label> labels) {
         this.labels = labels;
     }
 
-
-    
     public void setProductCode(int productCode) {
         this.productCode = productCode;
     }
 
-
     public void setProductName(String productName) {
         this.productName = productName;
     }
-
 
 
     public String getProductKiloPrice() {
