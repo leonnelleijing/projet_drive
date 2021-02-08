@@ -93,9 +93,14 @@ public class Product implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="ProductCode")
+    
     public int getProductCode() {
         return productCode;
-    }   
+    }
+
+    public Product(String productName) {
+        this.productName = productName;
+    }
     
     @Column(name="ProductName")
     public String getProductName() {
