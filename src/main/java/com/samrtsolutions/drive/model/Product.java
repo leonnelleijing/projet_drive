@@ -69,7 +69,7 @@ public class Product implements Serializable{
  
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="ProductCode")
     public int getProductCode() {
         return productCode;

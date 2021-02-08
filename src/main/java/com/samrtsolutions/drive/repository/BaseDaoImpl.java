@@ -52,8 +52,8 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
     public Session getSession(){
         return s;
     }
+    
     public Transaction getTransaction(){
         return t;
     }
-
 }
