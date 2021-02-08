@@ -55,13 +55,15 @@ public class TestProductImplement {
     }
     
     @Test
+    @Ignore
     public void testGetProductImage(){
        String url =  pi.get(1).getImage();
        System.out.print(url);
     }
     
     
-    @Test   
+    @Test 
+    @Ignore
     public void addLabelToProduct(){
         Label l =labelImpl.get(3);
         Product p=pi.get(2);

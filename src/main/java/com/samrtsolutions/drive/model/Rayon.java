@@ -11,6 +11,7 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -44,7 +45,7 @@ public class Rayon implements Serializable{
         return libelleRayon;
     }
     
-    @OneToMany(mappedBy ="rayon", cascade=CascadeType.ALL)
+    @OneToMany(mappedBy ="rayon", cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     public Set<Family> getFamilies() {
         return families;
     }

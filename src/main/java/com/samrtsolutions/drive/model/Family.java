@@ -52,19 +52,19 @@ public class Family implements Serializable{
         return nomFamily;
     }
 
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="NumRayon")
     public Rayon getRayon() {
         return rayon;
     }
 
-    @OneToMany(mappedBy ="parentFamily", cascade=CascadeType.ALL)
+    @OneToMany(mappedBy ="parentFamily", cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     @MapKeyColumn(name="ParentCategoryId")
     public Set<Family> getChildFamilies() {
         return childFamilies;
     }
 
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="ParentCategoryId")
     public Family getParentFamily() {
         return parentFamily;

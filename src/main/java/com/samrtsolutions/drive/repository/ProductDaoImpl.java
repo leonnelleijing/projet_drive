@@ -24,8 +24,10 @@ public class ProductDaoImpl extends BaseDaoImpl<Product> implements ProductDao {
             Session s  =factory.getCurrentSession();
             Transaction t=s.beginTransaction();
             Query q =s.createQuery("from Product");
+            List<Product> p=  (List<Product>)q.getResultList();
             t.commit();
-            return (List<Product>)q.getResultList();
+            return p;
+                  
         }
     
         //Récupérer une liste de produit
@@ -35,8 +37,9 @@ public class ProductDaoImpl extends BaseDaoImpl<Product> implements ProductDao {
             Transaction t=s.beginTransaction();
             Query q = s.createQuery("from Product where productName like :test");
             q.setParameter("test", word +'%');
+             List<Product> p= (List<Product>)q.list();
             t.commit();
-            return (List<Product>)q.list();
+            return p;
         }
 
     @Override
