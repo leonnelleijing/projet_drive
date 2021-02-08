@@ -19,35 +19,37 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 
 @Resource
     
-    private SessionFactory factory= HibernateUtil.getSessionFactory();
+    private static SessionFactory factory= HibernateUtil.getSessionFactory();
     private Class<T> clazz = GeneriscUtil.getGenericType(this.getClass());
+    private static Transaction t=null; 
+    private static Session s=null ; 
     
-    protected Session getSession() {
-        factory.getCurrentSession().beginTransaction();
-        return factory.getCurrentSession();
+    static{
+        s=factory.getCurrentSession();
+        t=s.beginTransaction();
     }
     
     public void edit(Object obj) {
-        getSession().saveOrUpdate(obj);
-        //t.commit();
+        s.saveOrUpdate(obj);
          
     }
 
     public void delete(int id) {
-        Object object = getSession().get(clazz, id);
+        Object object = s.get(clazz, id);
         if(object != null) {
-            getSession().delete(object);
-            //t.commit();
+            s.delete(object);
         }
     }
 
     public T load(int id) {
-        return (T) getSession().load(clazz, id);
+        return (T) s.load(clazz, id);
     }
 
     public T get(int id) {
-        return (T) getSession().get(clazz, id);
+        return (T) s.get(clazz, id);
     }
 
-    
+    public Session getSession(){
+        return s;
+    }
 }

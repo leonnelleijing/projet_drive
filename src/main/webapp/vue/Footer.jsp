@@ -6,97 +6,53 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
     
-    <footer class="footer-section">
-        <div class="footer-top position-relative">
-            <div class="container">
-                <div class="row g-0">
-                    <div class="col-12">
-                        <div class="border-bottom section-py">
-                            <div class="row mb-n7">
-                                <div class="col-lg-4 col-sm-6 mb-7">
-                                    <div class="footer-widget">
-                                        <a class="footer-logo mb-8" href="index.html">
-                                            <img src="images/logo/logo.jpg" alt="footer-logo" />
-                                        </a>
-                                        <p>
-                                            We are a team of designers and developers that create high quality
-                                            Magento, Prestashop, Opencart.
-                                        </p>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    
+    <script type="text/javascript">
+        
+        $(function(){
 
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-sm-6 mb-7">
-                                    <div class="footer-widget">
-                                        <h4 class="title">Products</h4>
-                                        <ul class="footer-menu">
-                                            <li><a class="footer-link" href="#">Prices drop</a></li>
-                                            <li><a class="footer-link" href="#">New products</a></li>
-                                            <li><a class="footer-link" href="#">Best sales</a></li>
-                                            <li><a class="footer-link" href="#">Blog Post</a></li>
-                                            <li><a class="footer-link" href="#">Contact us</a></li>
-                                            <li><a class="footer-link" href="#">Sitemap</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-sm-6 mb-7">
-                                    <div class="footer-widget">
-                                        <h4 class="title">Our company</h4>
-                                        <ul class="footer-menu">
-                                            <li><a class="footer-link" href="#">Delivery</a></li>
-                                            <li><a class="footer-link" href="#">Legal Notice</a></li>
-                                            <li><a class="footer-link" href="#">About us</a></li>
-                                            <li><a class="footer-link" href="#">Secure payment</a></li>
-                                            <li><a class="footer-link" href="#">Prices drop</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 col-sm-6 mb-7">
-                                    <div class="footer-widget">
-                                        <h4 class="title">Your account</h4>
-                                        <ul class="footer-menu">
-                                            <li><a class="footer-link" href="#">Personal info</a></li>
-                                            <li><a class="footer-link" href="#">Orders</a></li>
-                                            <li><a class="footer-link" href="#">Credit slips</a></li>
-                                            <li><a class="footer-link" href="#">Addresses</a></li>
-                                            <li><a class="footer-link" href="#">My wishlists</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- coppy right satrt -->
-        <div class="copy-right-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 order-last order-md-first">
-                        <div class="copyright-info text-center text-md-start">
-                            <p>
-                                Copyright &copy; <span id="currentYear"></span>
-                                <a href="http://www.bootstrapmb.com">Hasthemes</a>, All Rights Reserved
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 text-center text-md-end mb-3 mb-md-0">
-                        <img src="images/payment.png" alt="images">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- coppy right end -->
-    </footer>
+            $(".maintip").each(function(index){
+                var tip_height=$(".tips:eq("+index+")").height();
+                $(this).mouseover(function(){
+                    var win_height=$(window).height();    //获取浏览器当前可视区域高度
+                    var obj=$(this).offset();
+                    var wobj=$(this).width();
+                    if(obj.top+tip_height<win_height){    //判断B底部是否超过浏览器底部
+                        //没超过，按默认A和B顶端偏移位置一致即可
+                        var xobj=obj.left+wobj+"px";
+                        var yobj=obj.top+"px";
+                    }
+                    else{
+                        //超过了，那么抬高B顶部位置
+                        var tip_top=win_height-tip_height;
+                        var xobj=obj.left+wobj+"px";
+                        var yobj=tip_top+"px";
+                    }
+                    //$(this).css({"width":"200px","z-index":"9999","border-right":"none","background":"#fff"});
+                    $(this).css({"z-index":"9999"});
+                    $(".tips:eq("+index+")").css({"left":xobj,"top":yobj}).show();
+                }).mouseout(function(){
+                    $(".tips").hide();
+                    //$(this).css({"width":"200px","z-index":"1","border":"1px solid #E5D1A1","background":"#FFFDD2"})
+                    $(this).css({"z-index":"1"})
+                })
+            })
 
-
-    <script src="assets/js/vendor/vendor.min.js"></script>
-    <script src="assets/js/plugins/plugins.min.js"></script>
-    <script src="assets/js/ajax-contact.js"></script>
-    <script src="assets/js/main.min.js"></script>
-
-
-</body>
-
+            $(".tips").each(function(){
+                $(this).mouseover(function(){
+                //$(this).prev(".maintip").css({"width":"200px","z-index":"9999","border-right":"none","background":"#fff"})
+                $(this).prev(".maintip").css({"z-index":"9999"})
+                $(this).show();
+            }).mouseout(function(){
+                $(this).hide();
+                //$(this).prev(".maintip").css({"width":"200px","z-index":"1","border":"1px solid #E5D1A1","background":"#FFFDD2"});
+                $(this).prev(".maintip").css({"z-index":"1"});
+                  })
+            })
+        })
+        
+        $(".btn").window.location.href = "http://localhost:8080/vue/PagePanier.jsp";
+    </script>
 </html>
-
