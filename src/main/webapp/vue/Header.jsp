@@ -76,7 +76,7 @@
 
         }
         
-        .produit1{
+        .produit{
             background-color: #fff;
             box-shadow:0px 15px 10px -15px #000;
             width: 25%;
@@ -235,5 +235,12 @@
             background-color: #f5f5f5;
             margin-top: 2%;
         }
+        
+        .my_label img{
+            margin-left: 2px;
+            width:20px;
+            height:20px;
+        }
+        
     </style>
     <body>

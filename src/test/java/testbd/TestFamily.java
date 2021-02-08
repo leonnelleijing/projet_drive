@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Set;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 
 /**
  *
@@ -24,6 +25,7 @@ public class TestFamily {
     }
     
     @Test 
+    @Ignore
     public void testAddFamily(){
         RayonDaoImpl rayon= new RayonDaoImpl();
         Rayon r = rayon.get(1);
@@ -32,6 +34,7 @@ public class TestFamily {
     }
     
     @Test 
+    @Ignore
     public void testUpdateFamily(){
          Family family=familyImpl.get(2);
          family.setParentFamily(familyImpl.get(1));

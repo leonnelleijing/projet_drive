@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Set;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 
 /**
  *
@@ -24,6 +25,7 @@ public class TestRayon {
     public static RayonDaoImpl rayon= new RayonDaoImpl();
     
     @Test 
+    @Ignore
     public void testRayonAddRayon(){
         Rayon r = new Rayon ("Fruit");
         rayon.edit(r);

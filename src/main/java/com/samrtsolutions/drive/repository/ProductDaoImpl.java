@@ -18,19 +18,21 @@ import org.hibernate.query.Query;
  * @author leonl
  */
 public class ProductDaoImpl extends BaseDaoImpl<Product> implements ProductDao {
-
     
-    //Récupérer une liste de produit
+        public  List<Product> getAllProduct(){
+             Query q = getSession().createQuery("from Product");
+             return (List<Product>)q.getResultList();
+        }
+    
+        //Récupérer une liste de produit
         public List<Product> getListProduct(String word)
         {
              
                 Query q = getSession().createQuery("from Product where productName like :test");
                 q.setParameter("test", word +'%');
-                List<Product> lp =  (List<Product>)q.list();
-
-               return lp;
-
+                return (List<Product>)q.list();
         }
+        
 
 
 }

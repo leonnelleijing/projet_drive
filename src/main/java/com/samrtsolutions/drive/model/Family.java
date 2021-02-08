@@ -96,6 +96,31 @@ public class Family implements Serializable{
         return "Family{" + "numFamily=" + numFamily + ", nomFamily=" + nomFamily + ", rayon=" + rayon + ", parentFamily=" + parentFamily + '}';
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 43 * hash + this.numFamily;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Family other = (Family) obj;
+        if (this.numFamily != other.numFamily) {
+            return false;
+        }
+        return true;
+    }
+
     
 
 }

@@ -6,11 +6,15 @@
 package com.samrtsolutions.drive.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 /**
@@ -27,7 +31,7 @@ public class Product implements Serializable{
 
     private int productCode;
     private String productName;
-    private double productKiloPrice;
+    private String productKiloPrice;
     private double productUnitPrice;
     private double productWeight;
     private String productDescription;
@@ -37,7 +41,9 @@ public class Product implements Serializable{
     private String productOrigine;
     private String productBrandProprietary;
     private String productSecondaryBrand;
-
+    private String image; 
+    private String nuttritionScore;
+    private Set<Label> labels = new HashSet<>();
     public Product() {
     }
     
@@ -51,8 +57,7 @@ public class Product implements Serializable{
         this.productName = productName;
     }
 
-
-    public Product(String productName, double productKiloPrice, double productUnitPrice, double productWeight, String productDescription, String productFormat, String productEAN, String productComposition, String productOrigine, String productBrandProprietary, String productSecondaryBrand) {
+    public Product(String productName, String productKiloPrice, double productUnitPrice, double productWeight, String productDescription, String productFormat, String productEAN, String productComposition, String productOrigine, String productBrandProprietary, String productSecondaryBrand, String image, String nuttritionScore) {
         this.productName = productName;
         this.productKiloPrice = productKiloPrice;
         this.productUnitPrice = productUnitPrice;
@@ -64,9 +69,9 @@ public class Product implements Serializable{
         this.productOrigine = productOrigine;
         this.productBrandProprietary = productBrandProprietary;
         this.productSecondaryBrand = productSecondaryBrand;
+        this.image = image;
+        this.nuttritionScore = nuttritionScore;
     }
-
- 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -79,6 +84,34 @@ public class Product implements Serializable{
     public String getProductName() {
         return productName;
     }
+
+    @Column(name="ProductImage")
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getNuttritionScore() {
+        return nuttritionScore;
+    }
+
+    public void setNuttritionScore(String nuttritionScore) {
+        this.nuttritionScore = nuttritionScore;
+    }
+
+    @ManyToMany(mappedBy = "products", cascade=CascadeType.ALL)
+    public Set<Label> getLabels() {
+        return labels;
+    }
+
+    public void setLabels(Set<Label> labels) {
+        this.labels = labels;
+    }
+
+
     
     public void setProductCode(int productCode) {
         this.productCode = productCode;
@@ -91,11 +124,11 @@ public class Product implements Serializable{
 
 
 
-    public double getProductKiloPrice() {
+    public String getProductKiloPrice() {
         return productKiloPrice;
     }
 
-    public void setProductKiloPrice(double productKiloPrice) {
+    public void setProductKiloPrice(String productKiloPrice) {
         this.productKiloPrice = productKiloPrice;
     }
 
@@ -143,11 +176,38 @@ public class Product implements Serializable{
 
     public void setProductSecondaryBrand(String productSecondaryBrand) {this.productSecondaryBrand = productSecondaryBrand;}
     
-    
-
-
     public String toString() {
         return "Product{" + "productCode=" + productCode + ", productName=" + productName + ", productDescription="+ productDescription+'}';
+    }
+    
+    public void addLabel(Label l){
+       this.labels.add(l);
+       l.getProducts().add(this);
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 23 * hash + this.productCode;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Product other = (Product) obj;
+        if (this.productCode != other.productCode) {
+            return false;
+        }
+        return true;
     }
     
     
