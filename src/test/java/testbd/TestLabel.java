@@ -30,12 +30,7 @@ public class TestLabel {
         Label l= new Label("Ecocert","../images/label/ecocert.png");
         labelImpl.edit(l);
     }
-    
-    @Test   
-    public void addLabelToProduct(){
-        Label l =labelImpl.get(3);
-        pi.get(2).addLabel(l);
-    }
+  
     
     @Test 
     public void testGetLabelsByProduct(){

@@ -11,6 +11,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -102,7 +103,7 @@ public class Product implements Serializable{
         this.nuttritionScore = nuttritionScore;
     }
 
-    @ManyToMany(mappedBy = "products", cascade=CascadeType.ALL)
+    @ManyToMany(mappedBy = "products", cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     public Set<Label> getLabels() {
         return labels;
     }

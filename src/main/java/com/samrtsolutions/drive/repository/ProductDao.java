@@ -5,6 +5,7 @@
  */
 package com.samrtsolutions.drive.repository;
 
+import com.samrtsolutions.drive.model.Label;
 import com.samrtsolutions.drive.model.Product;
 
 /**
@@ -12,5 +13,5 @@ import com.samrtsolutions.drive.model.Product;
  * @author leonl
  */
 public interface ProductDao  extends BaseDao<Product>  {
-    
+    public void addLabel(Product p, Label l);
 }

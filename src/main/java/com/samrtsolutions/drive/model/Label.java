@@ -8,6 +8,7 @@ package com.samrtsolutions.drive.model;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -50,7 +51,7 @@ public class Label {
         return imageLabel;
     }
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name="drive_labeler",
             joinColumns=@JoinColumn(name="CodeLabel"),
             inverseJoinColumns=@JoinColumn(name="CodeProduct"))

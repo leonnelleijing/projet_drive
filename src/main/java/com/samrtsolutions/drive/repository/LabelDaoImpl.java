@@ -6,11 +6,15 @@
 package com.samrtsolutions.drive.repository;
 
 import com.samrtsolutions.drive.model.Label;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 /**
  *
  * @author leonl
  */
 public class LabelDaoImpl extends BaseDaoImpl<Label> implements LabelDao{
+
+
     
 }

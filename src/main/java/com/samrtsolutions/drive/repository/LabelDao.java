@@ -12,5 +12,5 @@ import com.samrtsolutions.drive.model.Label;
  * @author leonl
  */
 public interface LabelDao  extends BaseDao<Label> {
-    
+
 }

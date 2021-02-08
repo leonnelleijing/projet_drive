@@ -5,6 +5,7 @@
  */
 package testbd;
 
+import com.samrtsolutions.drive.model.Label;
 import com.samrtsolutions.drive.model.Product;
 import com.samrtsolutions.drive.repository.ProductDaoImpl;
 import java.awt.image.BufferedImage;
@@ -17,6 +18,7 @@ import javax.imageio.ImageIO;
 import org.junit.Ignore;
 
 import org.junit.Test;
+import static testbd.TestLabel.labelImpl;
 
 /**
  *
@@ -56,5 +58,13 @@ public class TestProductImplement {
     public void testGetProductImage(){
        String url =  pi.get(1).getImage();
        System.out.print(url);
+    }
+    
+    
+    @Test   
+    public void addLabelToProduct(){
+        Label l =labelImpl.get(3);
+        Product p=pi.get(2);
+        pi.addLabel(p, l);
     }
 }
