@@ -5,6 +5,7 @@
  */
 package com.samrtsolutions.drive.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -14,7 +15,7 @@ import javax.persistence.Embeddable;
  * @author 33667
  */
 @Embeddable
-public class AffluenceId {
+public class AffluenceId implements Serializable {
     
     //Propriétés (clé primaire composite pour la table Affluence
     @Column (name = "CodeMagasin")

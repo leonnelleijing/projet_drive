@@ -44,12 +44,12 @@ public class Magasin implements Serializable{
     private String ville;
     
     // Relations
-    // Un magasin possède une liste de créneaux, et une liste de dates pour chaque créneau (Map<Dates, Créneau>)
-    @ManyToMany (mappedBy = "magasins", fetch = FetchType.EAGER)
-    private ArrayList<Creneau> listeCreneau = new ArrayList(0);
     
-    @ManyToMany (mappedBy = "magasins", fetch = FetchType.EAGER)
-    private Map<Date_Affluence, Creneau> listeDateAffluence = new HashMap(0);
+    @ManyToMany
+	@JoinTable(name = "Appartenir_CreneauMagasin",
+			   joinColumns = @JoinColumn(name = "CodeMagasin"),
+		inverseJoinColumns = @JoinColumn(name = "CodeCreneau"))
+	private Set<Creneau> listeCreneau = new HashSet(0);
     
     //Constructor
     public Magasin(){}
@@ -63,20 +63,12 @@ public class Magasin implements Serializable{
     
     //Getters & Setters
 
-    public ArrayList<Creneau> getListeCreneau() {
+    public Set<Creneau> getListeCreneau() {
         return listeCreneau;
     }
 
-    public void setListeCreneau(ArrayList<Creneau> listeCreneau) {
+    public void setListeCreneau(Set<Creneau> listeCreneau) {
         this.listeCreneau = listeCreneau;
-    }
-
-    public Map<Date_Affluence, Creneau> getListeDateAffluence() {
-        return listeDateAffluence;
-    }
-
-    public void setListeDateAffluence(Map<Date_Affluence, Creneau> listeDateAffluence) {
-        this.listeDateAffluence = listeDateAffluence;
     }
     
     

@@ -26,8 +26,8 @@ public class HibernateUtil {
              * Entité.
              */
           
-            // configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Magasin.class);
-            // configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Creneau.class);
+            configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Magasin.class);
+            configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Creneau.class);
             configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Affluence.class);
             configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Date_Affluence.class);
 

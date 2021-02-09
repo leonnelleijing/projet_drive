@@ -27,9 +27,7 @@ public class TestMagasinDaoImpl {
         for (Magasin magasin : listeMagasin){
             System.out.println("<magasin><![CDATA[" + magasin.getNom() + ", " + magasin.getCodePostal() + ", "+magasin.getVille()+ ", " + magasin.getRue() + "]]></magasin>");
         }
-    //Test OK :D
-
-        
     }
+    //Test OK :D
     
 }
