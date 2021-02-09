@@ -62,6 +62,8 @@
     <servlet>
         <servlet-name>a</servlet-name>
         <jsp-file>/vue/test.jsp</jsp-file>
+        <servlet-name>ServletAfficherMagasin</servlet-name>
+        <servlet-class>com.samrtsolutions.drive.controler.ServletAfficherMagasin</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Home</servlet-name>
@@ -126,8 +128,8 @@
         <url-pattern>/choix_Lieu_Horaire</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ServletAfficherCreneautest</servlet-name>
-        <url-pattern>/ServletAfficherCreneau</url-pattern>
+        <servlet-name>ServletAfficherMagasin</servlet-name>
+        <url-pattern>/ServletAfficherMagasin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

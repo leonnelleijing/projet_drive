@@ -6,59 +6,56 @@
 package com.samrtsolutions.drive.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-
+import javax.persistence.Temporal;
 /**
  *
  * @author 33667
  */
 @Entity
 @SuppressWarnings("PersistenceUnitPresent")
-@Table(name = "Creneau")
-public class Creneau {
+@Table(name = "Date_Affluence")
+public class Date_Affluence {
     
-    //Propriétés
+    //Propriété
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name = "CodeCreneau")
-    
-    private int code;
-    private String horaire;
+    @Column (name = "Date_Aff")
+    @Temporal(javax.persistence.TemporalType.DATE)
+    Date date;
     
     //Relations
-    //Pas besoin de relations, par exemple, on ne va pas chercher
+    //Aucune car idem que pour Créneau
     
     //Constructeurs
-    public Creneau(){}
+    
+    public Date_Affluence(){}
 
-    public Creneau(String horaire) {
-        this.horaire = horaire;
+    public Date_Affluence(Date date) {
+        this.date = date;
     }
     
     //Getters & Setters
-    
-    public int getCode() {return code;}
 
-    public String getHoraire() {return horaire;}
+    public Date getDate() {return date;}
 
-    public void setCode(int code) {this.code = code;}
-
-    public void setHoraire(String horaire) {this.horaire = horaire;}
-    
-    // HashCode & Equals
+    public void setDate(Date date) {this.date = date;}
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 97 * hash + this.code;
+        int hash = 3;
+        hash = 89 * hash + Objects.hashCode(this.date);
         return hash;
     }
 
@@ -73,12 +70,16 @@ public class Creneau {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Creneau other = (Creneau) obj;
-        if (this.code != other.code) {
+        final Date_Affluence other = (Date_Affluence) obj;
+        if (!Objects.equals(this.date, other.date)) {
             return false;
         }
         return true;
     }
+    
+    
+    
+    
     
     
     

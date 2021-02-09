@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author 33667
  */
-public class ServletAfficherCreneautest extends HttpServlet {
+public class ServletAfficherMagasin extends HttpServlet {
 
     protected void processRequest (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 		{

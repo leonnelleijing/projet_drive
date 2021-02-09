@@ -11,7 +11,7 @@ function l_magasins ()
         var mot = document.getElementById("saisieMagasin").value;
 
 	// Requête au serveur avec les paramètres éventuels.
-	xhr.open("GET","ServletAfficherCreneau?codePostal="+mot);
+	xhr.open("GET","ServletAfficherMagasin?codePostal="+mot);
 
 	// On précise ce que l'on va faire quand on aura reçu la réponse du serveur.
 	xhr.onload = function()
@@ -22,6 +22,7 @@ function l_magasins ()
 			  // Elément html que l'on va mettre à jour.                          
                           var listeMagasins = xhr.responseXML.getElementsByTagName("magasin");
                           var elt = document.getElementById("lmagasins");
+                          elt.innerHTML = "";
                           for(var i = 0; i < listeMagasins.length; i++){
                              var magasin = listeMagasins[i].firstChild.nodeValue;
                              elt.insertAdjacentHTML("beforeend", "<option>"+magasin+"</option>");
