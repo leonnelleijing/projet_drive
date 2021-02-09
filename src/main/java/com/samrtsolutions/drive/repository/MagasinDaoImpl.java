@@ -6,6 +6,7 @@
 package com.samrtsolutions.drive.repository;
 
 import com.samrtsolutions.drive.bd.HibernateUtil;
+import com.samrtsolutions.drive.model.Creneau;
 import com.samrtsolutions.drive.model.Magasin;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ import org.hibernate.query.Query;
  */
 public class MagasinDaoImpl extends BaseDaoImpl<Magasin> implements MagasinDao {
     
-    // Enregistrement de magasin
+    // Enregistrement de magasin - Test BD
     public static void addMagasin() throws FileNotFoundException {
         
         try (Session session  = HibernateUtil.getSessionFactory().getCurrentSession()){
@@ -59,5 +60,5 @@ public class MagasinDaoImpl extends BaseDaoImpl<Magasin> implements MagasinDao {
             return listeMagasins;
             
         }
-    }
+    } 
 }

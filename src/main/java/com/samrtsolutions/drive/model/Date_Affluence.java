@@ -5,6 +5,7 @@
  */
 package com.samrtsolutions.drive.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -13,6 +14,7 @@ import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,17 +28,17 @@ import javax.persistence.Temporal;
 @Entity
 @SuppressWarnings("PersistenceUnitPresent")
 @Table(name = "Date_Affluence")
-public class Date_Affluence {
+public class Date_Affluence implements Serializable {
     
     //Propriété
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name = "Date_Aff")
+    @Column (name = "Date_Affluence")
     @Temporal(javax.persistence.TemporalType.DATE)
     Date date;
     
     //Relations
-    //Aucune car idem que pour Créneau
+    
     
     //Constructeurs
     
@@ -51,7 +53,10 @@ public class Date_Affluence {
     public Date getDate() {return date;}
 
     public void setDate(Date date) {this.date = date;}
+    
+    
 
+    //HashCode & Equals
     @Override
     public int hashCode() {
         int hash = 3;
