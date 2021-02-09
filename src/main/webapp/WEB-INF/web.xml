@@ -17,8 +17,8 @@
         <jsp-file>/vue/Choix_Lieu_Horaire.jsp</jsp-file>
     </servlet>
     <servlet>
-        <servlet-name>ServletAfficherCreneautest</servlet-name>
-        <servlet-class>com.samrtsolutions.drive.controler.ServletAfficherCreneautest</servlet-class>
+        <servlet-name>ServletAfficherMagasin</servlet-name>
+        <servlet-class>com.samrtsolutions.drive.controler.ServletAfficherMagasin</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Home</servlet-name>
@@ -33,8 +33,8 @@
         <url-pattern>/choix_Lieu_Horaire</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ServletAfficherCreneautest</servlet-name>
-        <url-pattern>/ServletAfficherCreneau</url-pattern>
+        <servlet-name>ServletAfficherMagasin</servlet-name>
+        <url-pattern>/ServletAfficherMagasin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

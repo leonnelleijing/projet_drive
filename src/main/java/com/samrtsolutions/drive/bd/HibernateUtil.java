@@ -21,15 +21,15 @@ public class HibernateUtil {
             System.out.println("-------------------------Hibernate Configuration loaded");
 
             /**
-             * Ajout des classes. Pour miage.metier.Employe le fichier ressource
-             * hbm.xml attaché est miage/metier/Employe.hbm.xml.
-             */
-//			configuration.addClass(miage.metier.Employe.class);
+             * Ajout des classes.
             /**
              * Entité.
              */
           
-            configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Magasin.class);
+            // configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Magasin.class);
+            // configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Creneau.class);
+            configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Affluence.class);
+            configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Date_Affluence.class);
 
             ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
             System.out.println("Hibernate serviceRegistry created");

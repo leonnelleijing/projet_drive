@@ -6,10 +6,15 @@
 package com.samrtsolutions.drive.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -38,11 +43,13 @@ public class Magasin implements Serializable{
     private String codePostal;
     private String ville;
     
-    /*@ManyToMany
-            @JoinTable(name = "Produit",
-                    joinColumns = @JoinColumn (name = "CodeMagasin"),
-                    inverseJoinColumns = @JoinColumn(name = "CodeProduit"))
-    Set<Produit> produits = new HashSet<>(0);*/
+    // Relations
+    // Un magasin possède une liste de créneaux, et une liste de dates pour chaque créneau (Map<Dates, Créneau>)
+    @ManyToMany (mappedBy = "magasins", fetch = FetchType.EAGER)
+    private ArrayList<Creneau> listeCreneau = new ArrayList(0);
+    
+    @ManyToMany (mappedBy = "magasins", fetch = FetchType.EAGER)
+    private Map<Date_Affluence, Creneau> listeDateAffluence = new HashMap(0);
     
     //Constructor
     public Magasin(){}
@@ -56,6 +63,23 @@ public class Magasin implements Serializable{
     
     //Getters & Setters
 
+    public ArrayList<Creneau> getListeCreneau() {
+        return listeCreneau;
+    }
+
+    public void setListeCreneau(ArrayList<Creneau> listeCreneau) {
+        this.listeCreneau = listeCreneau;
+    }
+
+    public Map<Date_Affluence, Creneau> getListeDateAffluence() {
+        return listeDateAffluence;
+    }
+
+    public void setListeDateAffluence(Map<Date_Affluence, Creneau> listeDateAffluence) {
+        this.listeDateAffluence = listeDateAffluence;
+    }
+    
+    
     public int getCode() {
         return code;
     }
@@ -75,10 +99,6 @@ public class Magasin implements Serializable{
     public String getVille() {
         return ville;
     }
-
-    /*public Set<Produit> getProduits() {
-        return produits;
-    }*/
 
     public void setCode(int code) {
         this.code = code;
@@ -100,9 +120,34 @@ public class Magasin implements Serializable{
         this.ville = ville;
     }
 
-    /*public void setProduits(Set<Produit> produits) {
-        this.produits = produits;
-    }*/
+    //HasCode & Equals
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 23 * hash + this.code;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Magasin other = (Magasin) obj;
+        if (this.code != other.code) {
+            return false;
+        }
+        return true;
+    }
+    
+    
     
     
     
