@@ -5,14 +5,20 @@
  */
 package com.samrtsolutions.drive.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -23,7 +29,7 @@ import javax.persistence.Table;
 @Entity
 @SuppressWarnings("PersistenceUnitPresent")
 @Table(name = "Creneau")
-public class Creneau {
+public class Creneau implements Serializable {
     
     //Propriétés
     @Id
@@ -34,7 +40,12 @@ public class Creneau {
     private String horaire;
     
     //Relations
-    //Pas besoin de relations, par exemple, on ne va pas chercher
+    
+    @ManyToMany
+	@JoinTable(name = "Appartenir_CreneauMagasin",
+			   joinColumns = @JoinColumn(name = "CodeCreneau"),
+		inverseJoinColumns = @JoinColumn(name = "CodeMagasin"))
+                private Set<Magasin> listeMagasins = new HashSet(0);
     
     //Constructeurs
     public Creneau(){}
@@ -52,6 +63,12 @@ public class Creneau {
     public void setCode(int code) {this.code = code;}
 
     public void setHoraire(String horaire) {this.horaire = horaire;}
+
+    public Set<Magasin> getListeMagasins() {return listeMagasins;}
+
+    public void setListeMagasins(Set<Magasin> listeMagasins) {this.listeMagasins = listeMagasins;}
+    
+    
     
     // HashCode & Equals
 

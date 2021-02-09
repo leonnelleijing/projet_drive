@@ -7,6 +7,7 @@ package testbd;
 
 import com.samrtsolutions.drive.model.Magasin;
 import com.samrtsolutions.drive.repository.MagasinDaoImpl;
+import java.io.FileNotFoundException;
 import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -27,9 +28,11 @@ public class TestMagasinDaoImpl {
         for (Magasin magasin : listeMagasin){
             System.out.println("<magasin><![CDATA[" + magasin.getNom() + ", " + magasin.getCodePostal() + ", "+magasin.getVille()+ ", " + magasin.getRue() + "]]></magasin>");
         }
-    //Test OK :D
-
-        
     }
-    
+    //Test OK :D
+     @Test
+    public void testAdd () throws FileNotFoundException{
+         MagasinDaoImpl mag = new MagasinDaoImpl();
+             mag.addCreneaux();
+    }
 }

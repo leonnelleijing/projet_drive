@@ -6,6 +6,7 @@
 package com.samrtsolutions.drive.repository;
 
 import com.samrtsolutions.drive.bd.HibernateUtil;
+import com.samrtsolutions.drive.model.Creneau;
 import com.samrtsolutions.drive.model.Magasin;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ import org.hibernate.query.Query;
  */
 public class MagasinDaoImpl extends BaseDaoImpl<Magasin> implements MagasinDao {
     
-    // Enregistrement de magasin
+    // Enregistrement de magasin - Test BD
     public static void addMagasin() throws FileNotFoundException {
         
         try (Session session  = HibernateUtil.getSessionFactory().getCurrentSession()){
@@ -60,4 +61,27 @@ public class MagasinDaoImpl extends BaseDaoImpl<Magasin> implements MagasinDao {
             
         }
     }
+    
+     public void addCreneaux() throws FileNotFoundException {
+        
+        try (Session session  = HibernateUtil.getSessionFactory().getCurrentSession()){
+            
+            /*------ Ouverture d'une transaction ------ */
+            Transaction t = session.beginTransaction(); //Ouverture d'une session
+             Query query = session.createQuery("from Creneau");
+             List<Creneau> listCreneaux= query.list();
+             
+             
+             for (int i=1; i<15;i++) {
+                Query q = session.createQuery("INSERT INTO Appartenir_CreneauMagasin values (1,:i)");
+                q.setParameter("i",listCreneaux.get(i).getCode());
+                
+             }
+             t.commit();
+             } catch (Exception e) {
+            System.out.println("Erreur - " + e.getMessage());
+        }
+        
+     }
+            
 }
