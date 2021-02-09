@@ -22,27 +22,27 @@ import org.junit.Before;
  * @author leonl
  */
 public class TestConnexionBD {
-    
-    public TestConnexionBD() {
-    }
-    
-    private static Session session; 
-    private static Transaction t ;
-    
-    
-    @Before
-    public void before(){
-       session = HibernateUtil.getSessionFactory().getCurrentSession();
-       t = session.beginTransaction();
-    }
-    
-    @After
-    public void after(){
-         t.commit();
-    }
-            
-     @org.junit.Test
-    public void inition(){
-        
-    }
+//    
+//    public TestConnexionBD() {
+//    }
+//    
+//    private static Session session; 
+//    private static Transaction t ;
+//    
+//    
+//    @Before
+//    public void before(){
+//       session = HibernateUtil.getSessionFactory().getCurrentSession();
+//       t = session.beginTransaction();
+//    }
+//    
+//    @After
+//    public void after(){
+//         t.commit();
+//    }
+//            
+//     @org.junit.Test
+//    public void inition(){
+//        
+//    }
 }

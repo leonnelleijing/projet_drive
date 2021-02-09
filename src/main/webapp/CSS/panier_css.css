@@ -1,0 +1,340 @@
+       .row>div {
+            height: auto;
+            /*border: 1px #000 solid;*/
+        }
+        .logo{
+            height: 100px;
+            width: 190px;
+            text-align: left;
+            float: left;
+        }
+        #photoLogo{
+            height: 90px;
+            width: 170px;
+            float: left;
+        }
+        
+        .menu{
+            margin-top: 10px;
+            float: left;
+        }
+        
+        .part1{
+            height: auto;
+            width: auto;            
+            /*border: 1px #000 solid;*/
+
+        }
+        
+        .part3{
+            /*border: 1px #000 solid;*/
+            height: auto;
+            background-color: #f5f5f5;
+            float: left;
+        }
+        
+        .title{
+            margin-top: 3%;
+            text-align: left;
+            margin-left: 5%;
+            margin-bottom: 3%;
+        }
+        
+        .produit1{
+            background-color: #fff;
+            box-shadow:0px 15px 10px -15px #000;
+            width: 25%;
+            height: 360px;
+            margin: 3% 4% 3% 4%;
+            float: left;
+            
+        }
+        img{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            
+        }
+        
+        .namePro{
+            font-size: 18px;
+            text-align: left;
+            font-family:  inherit;
+            color: #212529;
+            margin: 8%;
+        }
+        
+        .prix{
+            font-size: 15px;
+            color: red;
+            font-weight: bold;
+            margin-left: 10%;
+            margin-top: 10%;
+            float: left;
+        }
+        
+        .poids{
+            font-size: 12px;
+            color: #06357a;
+            margin: 0% 0% 4% 5%;
+        }
+        
+        
+        .prixPoid{
+            font-size: 12px;
+            color: #06357a;
+            margin: 0% 0% 4% 5%;
+        }
+        
+        .articleSpan{
+            float: left;
+            width: 100%;
+        }
+        
+        .niveau1{
+            background-color: #ffecb5;
+            width: 100%;
+        }
+        
+        .niveau1 span{
+            font-size: 17px;
+            text-align: center;
+            font-style: italic;
+            color: red;
+            font-weight: bold;
+            margin: 13% 9% 9% 9%;
+
+        }
+        
+        /*
+        .niveau2{
+            float: left;
+        }*/
+        
+        .niveau3{
+            width: 100%;
+            height: 120px;
+            float: left;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .imagePro{
+            background-size: cover;
+            background-position: center;
+            
+            
+        }
+        
+        .infos{
+            float: left;
+            width: 100%;
+        }
+        
+        
+        .infoPromo{
+            background-color: #ffecb5;
+        }
+        
+        .infoPromo p {
+            font-size: 13px;
+            font-family: cursive;
+            color: red;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        
+        .infoPrix{
+            display: inline;
+            width: auto;
+            margin-top: 9%;
+        }
+        
+        .iconPanier{
+            margin-right: 10%;
+            margin-top: 7%;
+            margin-bottom: 5%;
+            float: right;
+        }
+        
+        .lstPro{
+            background-color: #f5f5f5;
+            float: left;
+        }
+        
+        /*.photoPro{
+            background-size: contain;
+        }*/
+        
+        .maintip{
+            position:relative;
+            z-index:1;
+            /*border:1px solid #E5D1A1;*/
+            text-align:center;
+            /*width:200px;
+            height:35px;
+            line-height:30px;*/
+            margin-left: 15px;
+
+        }
+        .tips{
+            position:absolute;
+            z-index:2;
+            width:400px;
+            height:auto;
+            /*border:1px solid #E5D1A1;*/
+            background:#fff;
+            display:none;
+        }
+        .btn{
+            margin-left: 5px;
+        }
+        
+        .btnSupprimePanier{
+            margin-right: 2%;
+            margin-top: 1.25%;
+            float: right;
+        }
+        
+         .footer {
+            border-top: 1px solid #e5e5e5;
+            color: #777;
+            padding: 19px 0;
+            background-color: #f5f5f5;
+            margin-top: 2%;
+        }
+        
+        .pointPromo{
+            margin-top: 5%;
+        }
+        
+        .Point1{
+            width: 33%;
+            float: left;
+            z-index: -1;
+        }
+        
+        .point2{
+            width: 55%;
+            margin-left: 3%;
+            float: left;
+            z-index: -1;
+        }        
+        .Point3{
+            width: 50%;
+            float: right;
+        }
+        
+        .Economise{
+            margin-top: 5%;
+        }
+        
+        .titlePrix{
+            margin-top: 3%;
+            float: right;
+            width: 100%;
+        }
+        .titlePrix>span{
+            float: right;              
+        }
+        .titlePrix>span>p{
+            float: right;
+            margin: 1%;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .titlePrix>button{
+            float: right;
+            margin: 2%;     
+        }
+        
+        .prixLabel{
+            font-family: cursive;
+            font-size: 25px;
+            color: red;
+            font-weight: bold;         
+        }
+        
+        .inter{
+            margin-top: 3%;
+            padding: 2%;
+        }
+        .inter div{
+            text-align: right;
+        }
+        
+        .oneProduit{
+            margin: 3%;
+            border: 2px #777 solid;
+        }
+        
+        .dessusPro{
+            margin-left: 2%;
+        }
+        
+        
+        
+        .produit{
+            height: auto;
+            padding: 3%;
+        }
+        
+        .check{
+            float: left;
+            margin-top: 3%;
+        }
+        
+        .photoProduit{
+            float: left;
+            margin-top: 1%;
+        }
+        
+        .InfoProduit{
+            float: left;
+            margin-top: 1%;
+        }
+        
+        
+        .InfoProduit2{
+            float: left;
+            margin-top: 1%;
+        }
+        
+        .prixUniProduit{
+            float: left;
+            margin-top: 1%;
+        }
+        
+        .prixUniProduit p{
+            font-size: 14px;
+            font-weight: bold;
+            color: red;
+        }
+        
+        .qteProduit{
+            float: left;
+            margin-top: 1%;
+        }
+        
+        .prixTtProduit{
+            float: left;
+            margin-top: 1%;
+        }
+        
+        .prixTtProduit p{
+            font-size: 14px;
+            font-weight: bold;
+            color: red;
+        }
+        
+        .suppression{
+            float: left;
+            margin-top: 1%;
+        }
+        
+        .icon{
+            position: relative;
+            left: 0;
+            bottom: 0;
+        }
