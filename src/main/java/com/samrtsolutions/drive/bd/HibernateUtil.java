@@ -26,7 +26,9 @@ public class HibernateUtil {
              * Entité.
              */
           
-           configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Product.class);
+            configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Magasin.class);
+            configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Creneau.class);
+            configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Product.class);
             configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Family.class);
             configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Rayon.class);
             configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Label.class);

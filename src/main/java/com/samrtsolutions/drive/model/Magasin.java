@@ -38,11 +38,13 @@ public class Magasin implements Serializable{
     private String codePostal;
     private String ville;
     
-    /*@ManyToMany
-            @JoinTable(name = "Produit",
-                    joinColumns = @JoinColumn (name = "CodeMagasin"),
-                    inverseJoinColumns = @JoinColumn(name = "CodeProduit"))
-    Set<Produit> produits = new HashSet<>(0);*/
+    // Relations
+    
+    @ManyToMany
+	@JoinTable(name = "Appartenir_CreneauMagasin",
+			   joinColumns = @JoinColumn(name = "CodeMagasin"),
+		inverseJoinColumns = @JoinColumn(name = "CodeCreneau"))
+	private Set<Creneau> listeCreneau = new HashSet(0);
     
     //Constructor
     public Magasin(){}
@@ -56,6 +58,15 @@ public class Magasin implements Serializable{
     
     //Getters & Setters
 
+    public Set<Creneau> getListeCreneau() {
+        return listeCreneau;
+    }
+
+    public void setListeCreneau(Set<Creneau> listeCreneau) {
+        this.listeCreneau = listeCreneau;
+    }
+    
+    
     public int getCode() {
         return code;
     }
