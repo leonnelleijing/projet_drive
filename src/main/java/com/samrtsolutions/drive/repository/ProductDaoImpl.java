@@ -10,6 +10,7 @@ import com.samrtsolutions.drive.model.Label;
 import com.samrtsolutions.drive.model.Product;
 import java.io.FileNotFoundException;
 import java.util.List;
+import java.util.Set;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -51,7 +52,21 @@ public class ProductDaoImpl extends BaseDaoImpl<Product> implements ProductDao {
        p.addLabel(l);
        t.commit();
     }
-        
-        
+
+//    @Override
+//    public Set<Product> persisterProductsWithList(Set<Product> list) {
+//     Set<Product> products= null; 
+//     Session s  =factory.getCurrentSession();
+//     Transaction t=s.beginTransaction();
+//     for(Product p: list){
+//        s.update(p);
+//        products.add(p);  
+//     }
+//      t.commit();
+//    return products;
+//   
+//    }
+ 
+    
 
 }

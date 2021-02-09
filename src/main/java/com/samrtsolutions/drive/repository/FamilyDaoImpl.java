@@ -8,6 +8,7 @@ package com.samrtsolutions.drive.repository;
 import com.samrtsolutions.drive.model.Family;
 import com.samrtsolutions.drive.model.Product;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import javax.persistence.Query;
@@ -32,10 +33,19 @@ public class FamilyDaoImpl extends BaseDaoImpl<Family> implements FamilyDao{
 
     @Override
     public Set<Product> getChildProductsByFamily(Family f) {
+
        Session s  =factory.getCurrentSession();
        Transaction t=s.beginTransaction();
        s.update(f);
-       Set<Product> list = f.getChildProducts();
+        Set<Product> list = new HashSet<Product>();
+        if(f.getParentFamily()==null){
+            for(Family fa: f.getChildFamilies()){
+                    list.addAll(fa.getChildProducts());
+            }
+        }else{
+             list=f.getChildProducts();
+        }
+       t.commit();
        return list;
               
     }

@@ -11,6 +11,7 @@ import com.samrtsolutions.drive.model.Rayon;
 import com.samrtsolutions.drive.repository.FamilyDaoImpl;
 import com.samrtsolutions.drive.repository.RayonDaoImpl;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Set;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -41,6 +42,7 @@ public class TestFamily {
          family.setParentFamily(familyImpl.get(1));
          familyImpl.edit(family);
     }
+    
     @Test
     public void testGetAllPrentFamily(){
         ArrayList<Family> parents = familyImpl.getAllParentFamilies();
@@ -48,6 +50,7 @@ public class TestFamily {
             System.out.println(f.getNomFamily());
         }
     }
+    
     @Test 
     public void getChildFamily(){
         Family family=familyImpl.get(5);
@@ -57,13 +60,26 @@ public class TestFamily {
         }
     }
     
+    @Test
+    public void testGetAllProductsByFamily(){
+        Family family=familyImpl.get(29);
+        System.out.print(family.getParentFamily()==null);
         
+    }
+    
+    
     @Test
     public void testGetChildProductsByFamily(){
+         Set<Product> list = new HashSet<Product>();
         Family family=familyImpl.get(29);
-        Set<Product> products= familyImpl.getChildProductsByFamily(family);
-        for(Product p:products){
-             System.out.println(p.getProductName());
+        System.out.println(family.getParentFamily()==null);
+        if(family.getParentFamily()==null){
+            for(Family f: family.getChildFamilies()){
+                    list.addAll(f.getChildProducts());
+            }
+        }else{
+             list=familyImpl.getChildProductsByFamily(family);
         }
+         System.out.print(list);
     }
 }

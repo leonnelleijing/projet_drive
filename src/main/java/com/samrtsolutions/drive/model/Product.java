@@ -103,7 +103,7 @@ public class Product implements Serializable{
         return nuttritionScore;
     }
 
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="ParentFamilyId")
     public Family getFamily() {
         return family;

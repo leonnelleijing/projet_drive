@@ -71,7 +71,7 @@ public class Family implements Serializable{
         return parentFamily;
     }
 
-    @OneToMany(mappedBy="family",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy="family",fetch = FetchType.EAGER)
     public Set<Product> getChildProducts() {
         return childProducts;
     }
