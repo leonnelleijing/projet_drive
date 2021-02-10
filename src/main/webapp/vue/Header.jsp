@@ -12,7 +12,6 @@
         <title>${param.title}</title> 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-        <script src="https://unpkg.com/element-ui/lib/index.js"></script>
     </head>
     
     <style>
@@ -20,6 +19,8 @@
             height: auto;
             /*border: 1px #000 solid;*/
         }
+        
+       
         .logo{
             height: 100px;
             width: 190px;
@@ -38,8 +39,18 @@
         }
         
         .part1{
-            height: 500px;
-            width: auto;            
+            height: 300px;
+            width: 100%;            
+            /*border: 1px #000 solid;*/
+            background-image: url('Img\\accueil.jfif');
+            background-repeat: no-repeat;
+            background-size:100% 100%;
+            float: left;
+        }
+        
+         .part1Bis{
+            height: 100px;
+            width: 100%;            
             /*border: 1px #000 solid;*/
             background-image: url('Img\\accueil.jfif');
             background-repeat: no-repeat;
@@ -48,11 +59,15 @@
         }
         .jumbotron h1{
             /*text-align: center;*/
-            font-size: 80px;
+            font-size: 40px;
             font-style: italic;
             color: #fff;
-            margin-top: 120px;
+            margin-top: 10px;
             
+        }
+        
+        .txtHome{
+            font-size: 10px;
         }
         .jumbotron{
            background-color:transparent; 
@@ -66,6 +81,7 @@
         .part3{
             /*border: 1px #000 solid;*/
             height: auto;
+            width: 100%;
             background-color: #f5f5f5;
             float: left;
         }
@@ -79,45 +95,63 @@
         .produit{
             background-color: #fff;
             box-shadow:0px 15px 10px -15px #000;
-            width: 25%;
-            height: 360px;
-            margin: 3% 4% 3% 4%;
+            width: 150px;
+            height: 80%;
+            /*height: 300px;*/
+            
+            margin: 1% 0% 1% 2%;
             float: left;
             
         }
         img{
-            height: 100%;
-            width: 100%;
+            height: 100px;
+            width: 80px;
+            margin-left: 40px;
             object-fit: cover;
+            
+        }
+        img.imgDescription {
+            height: 160px;
+            width: 160px;
+            margin-left: 130px;
+            margin-top: 10px;
             
         }
         
         .namePro{
-            font-size: 18px;
+            font-size: 14px;
+            font-weight:bold;
             text-align: left;
             font-family:  inherit;
-            color: #212529;
+            color: black;
             margin: 8%;
+            height: 10%;
         }
         
         .prix{
             font-size: 15px;
-            color: red;
+            color: black;
             font-weight: bold;
             margin-left: 10%;
             margin-top: 10%;
             float: left;
+            
+        }
+        
+        .prinxInfo {
+           margin: 0 0 0px;
+           margin-top: 1px;
         }
         
         .poids{
-            font-size: 12px;
+            font-size: 10px;
             color: #06357a;
             margin: 0% 0% 4% 5%;
         }
         
         
         .prixPoid{
-            font-size: 12px;
+            font-size: 10px;
             color: #06357a;
             margin: 0% 0% 4% 5%;
         }
@@ -128,15 +162,16 @@
         }
         
         .niveau1{
-            background-color: #ffecb5;
+            background-color: #F4A460;
+            
             width: 100%;
         }
         
         .niveau1 span{
-            font-size: 17px;
+            font-size: 15px;
             text-align: center;
             font-style: italic;
-            color: red;
+            color: black;
             font-weight: bold;
             margin: 13% 9% 9% 9%;
 
@@ -175,11 +210,16 @@
         .infoPromo p {
             font-size: 13px;
             font-family: cursive;
-            color: red;
+            color: black;
             font-weight: bold;
             text-align: center;
         }
         
+        .marque{
+           font-size: 10px; 
+           margin: 7px;
+           font-weight:bold
+        }
         
         .infoPrix{
             display: inline;
@@ -196,7 +236,7 @@
         
         .lstPro{
             background-color: #f5f5f5;
-            float: left;
+           /** float: left;**/
         }
         
         /*.photoPro{
@@ -241,6 +281,8 @@
             width:20px;
             height:20px;
         }
+        
+       
         
     </style>
     <body>
