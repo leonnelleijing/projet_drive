@@ -5,11 +5,10 @@
  */
 package com.samrtsolutions.drive.controler;
 
-import com.samrtsolutions.drive.model.Creneau;
+import com.samrtsolutions.drive.repository.AffluenceDaoImpl;
 import com.samrtsolutions.drive.repository.CreneauDaoImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author 33667
  */
-public class ServletAfficherCreneaux extends HttpServlet {
+public class ServletIncrementerQteCommandeCreneau extends HttpServlet {
 
     protected void processRequest (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 		{
@@ -30,27 +29,27 @@ public class ServletAfficherCreneaux extends HttpServlet {
 			{
 			/*----- Ecriture de la page XML -----*/
 			out.println("<?xml version=\"1.0\"?>");
-			out.println("<liste_creneaux>");
+			out.println("<reponses>");
 
 			/*----- Récupération des paramètres -----*/
-			int codeMag = Integer.parseInt(request.getParameter("codeMagasin"));
+			int codeCreneau = Integer.parseInt(request.getParameter("codeCreneau"));
+                        int codeMag = Integer.parseInt(request.getParameter("codeMagasin"));
+                        String dateRecuperer = request.getParameter("date");
 
                     try {
                             /*----- Lecture de liste de creneaux dans la BD -----*/
-                            CreneauDaoImpl creneauDao = new CreneauDaoImpl();
-                            Set<Creneau> listeCreneau = creneauDao.afficherCreneau(codeMag);
+                            AffluenceDaoImpl affluenceDao = new AffluenceDaoImpl();
+                            String reponse = affluenceDao.incrementerQteCommande(codeCreneau, codeMag, dateRecuperer);
 
-                            for (Creneau creneau : listeCreneau){
-                                out.println("<creneauCode><![CDATA[" + creneau.getCode() + "]]></creneauCode>");
-				out.println("<creneau><![CDATA[" + creneau.getHoraire() + "]]></creneau>");
-                            }
+                                out.println("<reponse><![CDATA[" + reponse + "]]></reponse>");
+                            
                         }
                     catch (Exception e)
 			{
-                            out.println("<creneau>Erreur - " + e.getMessage() + "</creneau>");
+                            out.println("<reponse>Erreur - " + e.getMessage() + "</reponse>");
 			}
 
-                    out.println("</liste_creneaux>");
+                    out.println("</reponses>");
 		}
     }
 
