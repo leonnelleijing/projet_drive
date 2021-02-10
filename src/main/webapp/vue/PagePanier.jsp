@@ -249,11 +249,17 @@
                     <div class="inter">
                         <div class="container-fluid">
                             <div class="row">
-                            <div class="titlePrix">
-                                <button type="submit" class="btn btn-info">Régler</button>
-                                <span><p>Articles sélectionnés: </p><p class="prixLabel">175.68 $</p></span>
-                                
-                            </div>
+                                <div class="col-md-4" style="margin-top: 0.5%;">
+                                    <form action="../servletBasket" method="GET">
+                                        <input type="text" id="idPanier" name="idPanier" size="20" maxlength="20" value="${param.idPanier}"/>
+                                        <button type="submit" name="action" value="getBasket">Envoyer</button>
+                                    </form>
+                                    
+                                    Informations de l'article</div>
+                                <div class="col-md-2" style="margin-top: 0.5%;">Prix UT</div>
+                                <div class="col-md-2" style="margin-top: 0.5%;">Quantité</div>
+                                <div class="col-md-2" style="margin-top: 0.5%;">Prix TT</div>
+                                <div class="col-md-2"><button class="btnSupprimePanier"><span class="glyphicon glyphicon-trash"> Vider tout </span></button></div>
                             </div>
                         </div>
                         <div class="lstPro">
@@ -353,9 +359,11 @@
                         
 </html>
                             <div class="oneProduit">                               
-<%                            
+<%                              
+
                                      Set<Product> lstPro = (Set<Product>) request.getAttribute("listeProd");
-                                    for (Product p : lstPro) {
+                                     if(lstPro != null){
+                                         for (Product p : lstPro) {
 
                                         out.print("<div class='produit'>");
                                             out.print("<div class='container-fluid'>");
@@ -391,7 +399,9 @@
                                                 out.print("</div>");
                                             out.print("</div>");
                                         out.print("</div>");
-                                    }                                                                              
+                                    }  
+                                     }
+                                                                                 
 %>                                
                         </div>       
                     </div>                 
