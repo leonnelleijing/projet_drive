@@ -48,6 +48,7 @@ public class Product implements Serializable{
     private String nuttritionScore;
     private Set<Label> labels = new HashSet<>();
     private Family family;
+    private Set<Basket> basket;
     public Product() {
     }
     
@@ -113,6 +114,14 @@ public class Product implements Serializable{
         this.family = family;
     }
     
+    @ManyToMany(mappedBy="lstProduct", cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+    public Set<Basket> getBasket() {
+        return basket;
+    }
+   
+    public void setBasket(Set<Basket> basket) {
+        this.basket = basket;
+    }
     public void setImage(String image) {
         this.image = image;
     }

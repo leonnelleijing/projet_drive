@@ -4,6 +4,11 @@
     Author     : 33667
 --%>
 
+<%@page import="java.util.Set"%>
+<%@page import="com.samrtsolutions.drive.model.Basket"%>
+<%@page import="com.samrtsolutions.drive.repository.BasketDaoImpl"%>
+<%@page import="com.samrtsolutions.drive.model.Product"%>
+<%@page import="com.samrtsolutions.drive.repository.ProductDaoImpl"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -11,329 +16,19 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Drive Accueil</title> 
+        <link rel="stylesheet" href="/../CSS/panier_css.css">
         <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" crossorigin="anonymous"> -->
         <!-- 引入样式Element UI -->
-        <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+        <!-- <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"> -->
         <!-- 引入组件库Element U -->
-        <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+        <!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
     </head>
-    
-    <style>
-        .row>div {
-            height: auto;
-            /*border: 1px #000 solid;*/
-        }
-        .logo{
-            height: 100px;
-            width: 190px;
-            text-align: left;
-            float: left;
-        }
-        #photoLogo{
-            height: 90px;
-            width: 170px;
-            float: left;
-        }
-        
-        .menu{
-            margin-top: 10px;
-            float: left;
-        }
-        
-        .part1{
-            height: auto;
-            width: auto;            
-            /*border: 1px #000 solid;*/
-            background-image: url('Img\\accueil.jfif');
-            background-repeat: no-repeat;
-            background-size:100% 100%;
-
-        }
-        
-        .part3{
-            /*border: 1px #000 solid;*/
-            height: auto;
-            background-color: #f5f5f5;
-            float: left;
-        }
-        
-        .title{
-            margin-top: 3%;
-            text-align: left;
-            margin-left: 5%;
-            margin-bottom: 3%;
-        }
-        
-        .produit1{
-            background-color: #fff;
-            box-shadow:0px 15px 10px -15px #000;
-            width: 25%;
-            height: 360px;
-            margin: 3% 4% 3% 4%;
-            float: left;
-            
-        }
-        img{
-            height: 100%;
-            width: 100%;
-            object-fit: cover;
-            
-        }
-        
-        .namePro{
-            font-size: 18px;
-            text-align: left;
-            font-family:  inherit;
-            color: #212529;
-            margin: 8%;
-        }
-        
-        .prix{
-            font-size: 15px;
-            color: red;
-            font-weight: bold;
-            margin-left: 10%;
-            margin-top: 10%;
-            float: left;
-        }
-        
-        .poids{
-            font-size: 12px;
-            color: #06357a;
-            margin: 0% 0% 4% 5%;
-        }
-        
-        
-        .prixPoid{
-            font-size: 12px;
-            color: #06357a;
-            margin: 0% 0% 4% 5%;
-        }
-        
-        .articleSpan{
-            float: left;
-            width: 100%;
-        }
-        
-        .niveau1{
-            background-color: #ffecb5;
-            width: 100%;
-        }
-        
-        .niveau1 span{
-            font-size: 17px;
-            text-align: center;
-            font-style: italic;
-            color: red;
-            font-weight: bold;
-            margin: 13% 9% 9% 9%;
-
-        }
-        
-        /*
-        .niveau2{
-            float: left;
-        }*/
-        
-        .niveau3{
-            width: 100%;
-            height: 120px;
-            float: left;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .imagePro{
-            background-size: cover;
-            background-position: center;
-            
-            
-        }
-        
-        .infos{
-            float: left;
-            width: 100%;
-        }
-        
-        
-        .infoPromo{
-            background-color: #ffecb5;
-        }
-        
-        .infoPromo p {
-            font-size: 13px;
-            font-family: cursive;
-            color: red;
-            font-weight: bold;
-            text-align: center;
-        }
-        
-        
-        .infoPrix{
-            display: inline;
-            width: auto;
-            margin-top: 9%;
-        }
-        
-        .iconPanier{
-            margin-right: 10%;
-            margin-top: 7%;
-            margin-bottom: 5%;
-            float: right;
-        }
-        
-        .lstPro{
-            background-color: #f5f5f5;
-            float: left;
-        }
-        
-        /*.photoPro{
-            background-size: contain;
-        }*/
-        
-        .maintip{
-            position:relative;
-            z-index:1;
-            /*border:1px solid #E5D1A1;*/
-            text-align:center;
-            /*width:200px;
-            height:35px;
-            line-height:30px;*/
-            margin-left: 15px;
-
-        }
-        .tips{
-            position:absolute;
-            z-index:2;
-            width:400px;
-            height:auto;
-            /*border:1px solid #E5D1A1;*/
-            background:#fff;
-            display:none;
-        }
-        .btn{
-            margin-left: 5px;
-        }
-        
-        
-         .footer {
-            border-top: 1px solid #e5e5e5;
-            color: #777;
-            padding: 19px 0;
-            background-color: #f5f5f5;
-            margin-top: 2%;
-        }
-        
-        .titlePrix{
-            margin-top: 3%;
-            float: right;
-            width: 100%;
-        }
-        .titlePrix>span{
-            float: right;              
-        }
-        .titlePrix>span>p{
-            float: right;
-            margin: 1%;
-            font-size: 16px;
-            font-weight: bold;
-        }
-        .titlePrix>button{
-            float: right;
-            margin: 2%;     
-        }
-        
-        .prixLabel{
-            font-family: cursive;
-            font-size: 25px;
-            color: red;
-            font-weight: bold;         
-        }
-        
-        .inter{
-            margin-top: 3%;
-            padding: 2%;
-        }
-        .inter div{
-            text-align: center;
-        }
-        
-        .oneProduit{
-            margin: 3%;
-        }
-        
-        .dessusPro{
-            margin-left: 2%;
-        }
-        
-        
-        
-        .produit{
-            height: auto;
-            border: 2px #777 solid;
-            padding: 3%;
-        }
-        
-        .check{
-            float: left;
-            margin-top: 3%;
-        }
-        
-        .photoProduit{
-            float: left;
-            margin-top: 1%;
-        }
-        
-        .InfoProduit{
-            float: left;
-            margin-top: 1%;
-        }
-        
-        
-        .InfoProduit2{
-            float: left;
-            margin-top: 1%;
-        }
-        
-        .prixUniProduit{
-            float: left;
-            margin-top: 1%;
-        }
-        
-        .prixUniProduit p{
-            font-size: 14px;
-            font-weight: bold;
-            color: red;
-        }
-        
-        .qteProduit{
-            float: left;
-            margin-top: 1%;
-        }
-        
-        .prixTtProduit{
-            float: left;
-            margin-top: 1%;
-        }
-        
-        .prixTtProduit p{
-            font-size: 14px;
-            font-weight: bold;
-            color: red;
-        }
-        
-        .suppression{
-            float: left;
-            margin-top: 1%;
-        }
-        
-    </style>
-    <body>
+    <body onload="getPanier()">
         <!-- <h1>Bienvenue!</h1> -->
         
         <div class="container-fluid">
-            
             <div class="row">
                 <div class="col-md-2">
                     <div class="logo">
@@ -560,97 +255,92 @@
                                 <li role="presentation"><a href="#">Articles en promo</a></li>
                                 <li role="presentation"><a href="#">Articles en rupture de stock</a></li>
                             </ul>
-                            <div class="titlePrix">
-                                <button type="submit" class="btn btn-info">Régler</button>
-                                <span><p>Articles sélectionnés: </p><p class="prixLabel">175.68 $</p></span>
-                                
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="titlePrix">
+                                            <button type="submit" class="btn btn-warning" style="color:#000; font-weight:Bold;">Régler</button>
+                                            <span><p>Prix total à payer: </p><p class="prixLabel">175.68 $</p></span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                            
+                            
                         </div>
    
                     </div>
                     
                     <div class="inter">
+                        
                         <div class="container-fluid">
                             <div class="row">
-                                <div class="col-md-2">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                          Sélectionne tous
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">Informations de l'article</div>
-                                <div class="col-md-2">Prix unitaire</div>
-                                <div class="col-md-1">Quantité</div>
-                                <div class="col-md-2">Prix total</div>
-                                <div class="col-md-1">Opération</div>
+                                <div class="col-md-4" style="margin-top: 0.5%;">
+                                    <input type="text" id="test" name="zone" size="20" maxlength="20" />
+                                    Informations de l'article</div>
+                                <div class="col-md-2" style="margin-top: 0.5%;">Prix UT</div>
+                                <div class="col-md-2" style="margin-top: 0.5%;">Quantité</div>
+                                <div class="col-md-2" style="margin-top: 0.5%;">Prix TT</div>
+                                <div class="col-md-2"><button class="btnSupprimePanier"><span class="glyphicon glyphicon-trash"> Vider tout </span></button></div>
                             </div>
                         </div>
                     </div>
                     
-                    
-                    
-                    
-                    
-                    
-                    
-                    
+
                     <div class="part3">
                         
                         
                         <div class="lstPro">
-                            
-                            
-                            
-                            <div class="oneProduit">
-                               <div class="dessusPro">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                          Magasin : 
-                                        </label>
-                                        <span>Carrefour</span>
-                                    </div>
-                                </div>
+
+                            <div class="oneProduit">                                                         
+                                
                                 <div class="produit">
                                     <div class="container-fluid">
                                         <div class="row">
-                                            <div class="col-md-1">
-                                                <div class="check">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                    </div>
-                                                </div>
-                                            </div>
                                             <div class="col-md-2">
-                                                <div class="photoProduit">
-                                                    <img class="imagePro" src="..\Img\lait.jfif" style="background-image:url(..\\Img\\lait.jfif);">
+                                                <div class="prixUniProduit" id="prixUniProduit">
+                                                    <!--<p>2.00 $</p>-->
+                                                </div>
+                                                <div class="prixKiloProduit" id="prixKiloProduit">
+                                                    <!--<p>2.00 $</p>-->
                                                 </div>
                                             </div>
+                                            <div class="col-md-3">
                                             <div class="col-md-2">
-                                                <div class="InfoProduit">
-                                                    <p>Boîte de lait japonaise</p>
+                                                <div class="photoProduit" id="photoProduit">
+                                                    <!--<img class="imagePro" src="..\Img\lait.jfif" style="background-image:url(..\\Img\\lait.jfif);"> -->
                                                 </div>
                                             </div>
-                                            <div class="col-md-2">
-                                                <div class="InfoProduit2">
-                                                    <p>En promo : 1 achat = 1 graduit</p>
+                                            <div class="col-md-3">
+                                                <div class="InfoProduit" id="InfoProduit">
+                                                    <!--<p>Boîte de lait japonaise</p>-->
+                                                </div>
+                                                <div class="InfoProduit2" id="InfoProduit2">
+                                                    <!--<p>En promo : 1 achat = 1 graduit</p>-->
+                                                </div>
+                                                <div class="icon">
+                                                    <!--<img src="..\Img\Bio.png" style="float:left; width: 15px; height: 15px;">-->
+                                                    <!--<img src="..\Img\promo.jpg" style="float:left; width: 15px; height: 15px;">-->
+                                                </div>
+                                                <div class="icon">
+                                                    <img src="..\Img\Bio.png" style="float:left; width: 15px; height: 15px;">
+                                                    <img src="..\Img\promo.jpg" style="float:left; width: 15px; height: 15px;">
+                                                </div>
+                                                <div class="icon">
+                                                    <img src="..\Img\Bio.png" style="float:left; width: 15px; height: 15px;">
+                                                    <img src="..\Img\promo.jpg" style="float:left; width: 15px; height: 15px;">
                                                 </div>
                                             </div>
-                                            <div class="col-md-1">
-                                                <div class="prixUniProduit">
-                                                    <p>2.00 $</p>
+                                                </div>
+                                                <div class="icon">
+                                                    <img src="..\Img\Bio.png" style="float:left; width: 15px; height: 15px;">
+                                                    <img src="..\Img\promo.jpg" style="float:left; width: 15px; height: 15px;">
                                                 </div>
                                             </div>
-                                            <div class="col-md-2">
-                                                <div class="qteProduit">
-                                                    <input type="number" value="50" min="0" max="100" step="1"/>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1">
-                                                <div class="prixTtProduit">
-                                                    <p>9.00 $</p>
+                                                <div class="qteProduit" id="qteProduit">
+                                                    <button class="btnMin1"><span class="glyphicon glyphicon-minus"></span></button>
+                                                    <input id="inputPrix1" type="number" value="50" min="0" max="100" step="1"/>
+                                                    <button class="btnMax1"><span class="glyphicon glyphicon-plus"></span></button>
                                                 </div>
                                             </div>
                                             <div class="col-md-1">
@@ -661,58 +351,42 @@
                                         </div>
                                     </div>
                                 </div> 
-                            </div>
-                            
-                            
-                                    
-                             <div class="oneProduit">
-                               <div class="dessusPro">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                          Magasin : 
-                                        </label>
-                                        <span>Carrefour</span>
-                                    </div>
-                                </div>
+                                
+                                
                                 <div class="produit">
                                     <div class="container-fluid">
                                         <div class="row">
-                                            <div class="col-md-1">
-                                                <div class="check">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                    </div>
-                                                </div>
-                                            </div>
                                             <div class="col-md-2">
                                                 <div class="photoProduit">
                                                     <img class="imagePro" src="..\Img\airCondi.jfif" style="background-image:url(..\\Img\\airCondi.jfif);">
                                                 </div>
                                             </div>
-                                            <div class="col-md-2">
+                                            <div class="col-md-3">
                                                 <div class="InfoProduit">
                                                     <p>Conditionneur d'air</p>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-2">
                                                 <div class="InfoProduit2">
                                                     <p>En promo : soldes jusqu'à 75%</p>
                                                 </div>
+                                                <div class="icon">
+                                                    <img src="..\Img\promo.jpg" style="float:left; width: 15px; height: 15px;">
+                                                </div>
                                             </div>
-                                            <div class="col-md-1">
+                                            <div class="col-md-2">
                                                 <div class="prixUniProduit">
                                                     <p>399.00 $</p>
                                                 </div>
                                             </div>
-                                            <div class="col-md-2">
+                                            <div class="col-md-3">
                                                 <div class="qteProduit">
-                                                    <input type="number" value="50" min="0" max="100" step="1"/>
+                                                    <button class="btnMin2"><span class="glyphicon glyphicon-minus"></span></button>
+                                                    <input id="inputPrix2" type="number" value="50" min="0" max="100" step="1"/>
+                                                    <button class="btnMax2"><span class="glyphicon glyphicon-plus"></span></button>
                                                 </div>
                                             </div>
                                             <div class="col-md-1">
                                                 <div class="prixTtProduit">
-                                                    <p>399.00 $</p>
+                                                    <p>399.00$</p>
                                                 </div>
                                             </div>
                                             <div class="col-md-1">
@@ -723,52 +397,37 @@
                                         </div>
                                     </div>
                                 </div> 
-                            </div>       
-                                    
-                                    
-                            <div class="oneProduit">
-                               <div class="dessusPro">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                          Magasin : 
-                                        </label>
-                                        <span>Carrefour</span>
-                                    </div>
-                                </div>
+                                
+                                
                                 <div class="produit">
                                     <div class="container-fluid">
                                         <div class="row">
-                                            <div class="col-md-1">
-                                                <div class="check">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                    </div>
-                                                </div>
-                                            </div>
                                             <div class="col-md-2">
                                                 <div class="photoProduit">
                                                     <img class="imagePro" src="..\Img\coca.jfif" style="background-image:url(..\\Img\\coca.jfif);">
                                                 </div>
                                             </div>
-                                            <div class="col-md-2">
+                                            <div class="col-md-3">
                                                 <div class="InfoProduit">
                                                     <p>Coca cola (Original)</p>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-2">
                                                 <div class="InfoProduit2">
                                                     <p>En promo : 1 achat = 1 graduit</p>
                                                 </div>
+                                                <div class="icon">
+                                                    <img src="..\Img\promo.jpg" style="float:left; width: 15px; height: 15px;">
+                                                </div>
                                             </div>
-                                            <div class="col-md-1">
+                                            <div class="col-md-2">
                                                 <div class="prixUniProduit">
                                                     <p>1.00 $</p>
                                                 </div>
                                             </div>
-                                            <div class="col-md-2">
+                                            <div class="col-md-3">
                                                 <div class="qteProduit">
-                                                    <input type="number" value="50" min="0" max="100" step="1"/>
+                                                    <button class="btnMin3"><span class="glyphicon glyphicon-minus"></span></button>
+                                                    <input id="inputPrix3" type="number" value="50" min="0" max="100" step="1"/>
+                                                    <button class="btnMax3"><span class="glyphicon glyphicon-plus"></span></button>
                                                 </div>
                                             </div>
                                             <div class="col-md-1">
@@ -784,58 +443,42 @@
                                         </div>
                                     </div>
                                 </div> 
-                            </div>         
-                                    
-                                    
-                            
-                            <div class="oneProduit">
-                               <div class="dessusPro">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                          Magasin : 
-                                        </label>
-                                        <span>Carrefour</span>
-                                    </div>
-                                </div>
+                                
                                 <div class="produit">
                                     <div class="container-fluid">
                                         <div class="row">
-                                            <div class="col-md-1">
-                                                <div class="check">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                    </div>
-                                                </div>
-                                            </div>
                                             <div class="col-md-2">
                                                 <div class="photoProduit">
                                                     <img class="imagePro" src="..\Img\macaron.jfif" style="background-image:url(..\\Img\\macaron.jfif);">
                                                 </div>
                                             </div>
-                                            <div class="col-md-2">
+                                            <div class="col-md-3">
                                                 <div class="InfoProduit">
                                                     <p>Boîte de macaron</p>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-2">
                                                 <div class="InfoProduit2">
                                                     <p>En promo : 1 achat = 1 achat 50% solde</p>
                                                 </div>
+                                               <div class="icon">
+                                                    <img src="..\Img\Bio.png" style="float:left; width: 15px; height: 15px;">
+                                                    <img src="..\Img\promo.jpg" style="float:left; width: 15px; height: 15px;">
+                                                </div> 
                                             </div>
-                                            <div class="col-md-1">
+                                            <div class="col-md-2">
                                                 <div class="prixUniProduit">
                                                     <p>12.00 $</p>
                                                 </div>
                                             </div>
-                                            <div class="col-md-2">
+                                            <div class="col-md-3">
                                                 <div class="qteProduit">
-                                                    <input type="number" value="50" min="0" max="100" step="1"/>
+                                                    <button class="btnMin4"><span class="glyphicon glyphicon-minus"></span></button>
+                                                    <input id="inputPrix4" type="number" value="50" min="0" max="100" step="1"/>
+                                                    <button class="btnMax4"><span class="glyphicon glyphicon-plus"></span></button>
                                                 </div>
                                             </div>
                                             <div class="col-md-1">
                                                 <div class="prixTtProduit">
-                                                    <p>24.00 $</p>
+                                                    <p>24.00$</p>
                                                 </div>
                                             </div>
                                             <div class="col-md-1">
@@ -846,57 +489,41 @@
                                         </div>
                                     </div>
                                 </div> 
-                            </div>
-                            
-                            
-                            <div class="oneProduit">
-                               <div class="dessusPro">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                          Magasin : 
-                                        </label>
-                                        <span>Carrefour</span>
-                                    </div>
-                                </div>
+                                
                                 <div class="produit">
                                     <div class="container-fluid">
                                         <div class="row">
-                                            <div class="col-md-1">
-                                                <div class="check">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                    </div>
-                                                </div>
-                                            </div>
                                             <div class="col-md-2">
                                                 <div class="photoProduit">
                                                     <img class="imagePro" src="..\Img\phone.jfif" style="background-image:url(..\\Img\\phone.jfif);">
                                                 </div>
                                             </div>
-                                            <div class="col-md-2">
+                                            <div class="col-md-3">
                                                 <div class="InfoProduit">
                                                     <p>HUAWEI Mate 30</p>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-2">
                                                 <div class="InfoProduit2">
                                                     <p>En promo : 1 achat = solde jusqu'à 80%</p>
                                                 </div>
+                                                <div class="icon">
+                                                    <img src="..\Img\promo.jpg" style="float:left; width: 15px; height: 15px;">
+                                                </div>
                                             </div>
-                                            <div class="col-md-1">
+                                            <div class="col-md-2">
                                                 <div class="prixUniProduit">
                                                     <p>599.00 $</p>
                                                 </div>
                                             </div>
-                                            <div class="col-md-2">
+                                            <div class="col-md-3">
                                                 <div class="qteProduit">
-                                                    <input type="number" value="50" min="0" max="100" step="1"/>
+                                                    <button class="btnMin5"><span class="glyphicon glyphicon-minus"></span></button>
+                                                    <input id="inputPrix5" type="number" value="50" min="0" max="100" step="1"/>
+                                                    <button class="btnMax5"><span class="glyphicon glyphicon-plus"></span></button>
                                                 </div>
                                             </div>
                                             <div class="col-md-1">
                                                 <div class="prixTtProduit">
-                                                    <p>599.00 $</p>
+                                                    <p>599.00$</p>
                                                 </div>
                                             </div>
                                             <div class="col-md-1">
@@ -907,36 +534,60 @@
                                         </div>
                                     </div>
                                 </div> 
+                                
                             </div>
-                            
-                            
-         
+        
                     </div>      
                         
                 </div>
+                
                     
-                <div class="titlePrix">
-                    <button type="submit" class="btn btn-info">Régler</button>
-                    <span><p>Articles sélectionnés en prix total : </p><p class="prixLabel">975.68 $</p></span>
-
-                </div>     
+                    
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="pointPromo">
+                                    <div class="Point1">
+                                        <div class="input-group input-group-sm">
+                                            <span class="input-group-addon" id="sizing-addon3">Points Fidelité :</span>
+                                            <input type="text" class="form-control" placeholder="100" valur="100" aria-describedby="sizing-addon3" disabled="true" style="z-index:-1;">
+                                         </div>
+                                    </div>
+                                    <div class="point2">
+                                        <div class="input-group input-group-sm">
+                                            <span class="input-group-addon" id="sizing-addon3">Vous voulez utiliser :</span>
+                                            <input type="text" class="form-control" placeholder="Nombre de points" aria-describedby="sizing-addon3" style="z-index:1;">
+                                         </div>
+                                    </div>
+                                </div>                             
+                            </div>
+                            <div class="col-md-6">                                
+                                <div class="Economise">
+                                   <div class="Point3">
+                                        <div class="input-group input-group">
+                                            <span class="input-group-addon" id="sizing-addon2">Vous avez économisé :</span>
+                                            <input type="text" class="form-control" placeholder="100 $" valur="100" aria-describedby="sizing-addon2" disabled="true" style="z-index:-1;">
+                                         </div>
+                                   </div> 
+                                </div>
+                                <div class="titlePrix">
+                                    <button type="submit" class="btn btn-warning" style="color:#000; font-weight:Bold;">Régler</button>
+                                    <span><p>Prix total à payer: </p><p class="prixLabel">975.68 $</p></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>    
+                     
                     
                     
             </div>
         </div>
             
-            
-            
-            
-            
-            
-            
-            
-            
+   
         </div>
         
         
-        <div class="footer ">
+        <div class="footer">
             <div class="container">
                 <div class="row footer-top">
                     <div class="col-sm-12 col-lg-12 col-lg-offset-1">
@@ -1009,83 +660,9 @@
     
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    
-    <script type="text/javascript">
-        /*$(function(){
-
-            $(".maintip").each(function(index){   //遍历A部分，注意这里绑定事件用了index参数
-                $(this).mouseover(function(){   //鼠标经过A时触发事件
-                    var obj=$(this).offset();   //获取被鼠标经过的A的偏移位置，offset()是个好东西，不懂的朋友得去了解下
-                    var xobj=obj.left+$(this).width()+"px"; //后面要让B水平偏移的距离，这里的“200”是可自定义的，当然你可以改为$(this).width()来获得跟A一样的宽度
-                    var yobj=obj.top+"px";     //后面要让B垂直偏移的距离
-                    //$(this).css({"width":"200px","z-index":"9999","border-right":"none","background":"#fff"});  //A改变样式，变为选中状态的效果
-                    $(this).css({"z-index":"9999"});  //A改变样式，变为选中状态的效果
-                    $(".tips:eq("+index+")").css({"left":xobj,"top":yobj}).show();   //对应的（这里利用了索引）B改变样式并显示出来
-                    })
-                .mouseout(function(){     //鼠标离开A时触发的事件
-                    $(".tips").hide();     //B隐藏
-                    //$(this).css({"width":"200px","z-index":"1","border":"1px solid #E5D1A1","background":"#FFFDD2"})   //A变回原始样式
-                    $(this).css({"z-index":"1"})   //A变回原始样式
-                })
-            })
-
-                 $(".tips").each(function(){  //遍历B
-                    $(this).mouseover(function(){  //鼠标经过B时触发事件
-                    //$(this).prev(".maintip").css({"width":"200px","z-index":"9999","border-right":"none","background":"#fff"})  //对应的A变为选中状态效果
-                    $(this).prev(".maintip").css({"z-index":"9999"})
-                    $(this).show();  //A不要隐藏了，解决因为上面写的鼠标离开A导致A隐藏
-                })
-                .mouseout(function(){  //鼠标离开B触发事件，其实就是让B隐藏，同时A变为原始状态
-                    $(this).hide();
-                    //$(this).prev(".maintip").css({"width":"200px","z-index":"1","border":"1px solid #E5D1A1","background":"#FFFDD2"});
-                    $(this).prev(".maintip").css({"z-index":"1"});
-                })
-            })
-        })
-        */
-        
-        $(function(){
-
-            $(".maintip").each(function(index){
-                var tip_height=$(".tips:eq("+index+")").height();
-                $(this).mouseover(function(){
-                    var win_height=$(window).height();    //获取浏览器当前可视区域高度
-                    var obj=$(this).offset();
-                    var wobj=$(this).width();
-                    if(obj.top+tip_height<win_height){    //判断B底部是否超过浏览器底部
-                        //没超过，按默认A和B顶端偏移位置一致即可
-                        var xobj=obj.left+wobj+"px";
-                        var yobj=obj.top+"px";
-                    }
-                    else{
-                        //超过了，那么抬高B顶部位置
-                        var tip_top=win_height-tip_height;
-                        var xobj=obj.left+wobj+"px";
-                        var yobj=tip_top+"px";
-                    }
-                    //$(this).css({"width":"200px","z-index":"9999","border-right":"none","background":"#fff"});
-                    $(this).css({"z-index":"9999"});
-                    $(".tips:eq("+index+")").css({"left":xobj,"top":yobj}).show();
-                }).mouseout(function(){
-                    $(".tips").hide();
-                    //$(this).css({"width":"200px","z-index":"1","border":"1px solid #E5D1A1","background":"#FFFDD2"})
-                    $(this).css({"z-index":"1"})
-                })
-            })
-
-            $(".tips").each(function(){
-                $(this).mouseover(function(){
-                //$(this).prev(".maintip").css({"width":"200px","z-index":"9999","border-right":"none","background":"#fff"})
-                $(this).prev(".maintip").css({"z-index":"9999"})
-                $(this).show();
-            }).mouseout(function(){
-                $(this).hide();
-                //$(this).prev(".maintip").css({"width":"200px","z-index":"1","border":"1px solid #E5D1A1","background":"#FFFDD2"});
-                $(this).prev(".maintip").css({"z-index":"1"});
-                  })
-            })
-        })
-        
-        $("input[type='number']").inputSpinner();
-    </script>
+    <script src="/../js/panier_js.js"></script>
 </html>
+
+                                            <div class="col-md-1">
+                                                <div class="prixTtProduit" id="prixTtProduit">
+                                                    <!--<p>9.00 $</p>-->

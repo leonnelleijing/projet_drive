@@ -5,13 +5,21 @@
  */
 package com.samrtsolutions.drive.controler;
 
+import com.samrtsolutions.drive.model.Family;
+import com.samrtsolutions.drive.model.Product;
+import com.samrtsolutions.drive.model.Rayon;
+import com.samrtsolutions.drive.repository.FamilyDaoImpl;
 import com.samrtsolutions.drive.repository.ProductDaoImpl;
+import com.samrtsolutions.drive.repository.RayonDaoImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -31,8 +39,21 @@ public class product extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
            int idProduct= Integer.valueOf(request.getParameter("id"));
            ProductDaoImpl p= new ProductDaoImpl();
+           
+          
+        RayonDaoImpl rayon= new RayonDaoImpl();
+        ArrayList<Rayon> rayons= rayon.getAllRayons();
+        HttpSession session = request.getSession();
+        session.setAttribute("rayons", rayons);
+    
            request.setAttribute("product", p.get(idProduct));
-           request.getRequestDispatcher("product").forward(request, response) ;
+           request.getRequestDispatcher("article").forward(request, response) ;
+           
+           
+           
+           
+           
+           
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -73,5 +94,13 @@ public class product extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+    
+    
+
+    
+    
+    
+    
+    
 
 }

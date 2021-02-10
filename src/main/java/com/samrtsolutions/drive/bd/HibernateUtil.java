@@ -33,6 +33,7 @@ public class HibernateUtil {
             configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Family.class);
             configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Rayon.class);
             configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Label.class);
+            configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Basket.class);
             
 
             ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
