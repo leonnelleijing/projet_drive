@@ -36,5 +36,5 @@ public class MagasinDaoImpl extends BaseDaoImpl<Magasin> implements MagasinDao {
             
             return listeMagasins;          
         }
-    } 
+    }
 }

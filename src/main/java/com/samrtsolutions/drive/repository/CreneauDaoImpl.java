@@ -14,8 +14,7 @@ import java.util.Set;
  *
  * @author leonl
  */
-public class CreneauDaoImpl extends BaseDaoImpl<Creneau> implements CreneauDao{
-
+public class CreneauDaoImpl extends BaseDaoImpl<Creneau> implements CreneauDao {
     
     public Set<Creneau> afficherCreneau(int idMag){
         

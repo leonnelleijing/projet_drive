@@ -93,6 +93,10 @@
         <servlet-name>a</servlet-name>
         <jsp-file>/vue/test.jsp</jsp-file>
     </servlet>
+    <servlet>
+        <servlet-name>ServletAfficherCreneaux</servlet-name>
+        <servlet-class>com.samrtsolutions.drive.controler.ServletAfficherCreneaux</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Home</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -188,6 +192,10 @@
     <servlet-mapping>
         <servlet-name>ServletAfficherCreneautest</servlet-name>
         <url-pattern>/ServletAfficherCreneau</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletAfficherCreneaux</servlet-name>
+        <url-pattern>/ServletAfficherCreneaux</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -18,5 +18,4 @@ import java.util.List;
 public interface MagasinDao extends BaseDao<Magasin> {
     
     public List<Magasin> afficherMagasin(String mot); //Retourne la liste des magasins dont le code postal commence par le mot entré en paramètre
-
 }
