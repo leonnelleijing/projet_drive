@@ -19,6 +19,9 @@
         <input id="saisieMagasin" type="text" placeholder="Saisissez votre code postal !" />
         <select id="lmagasins"><option>-----</option></select>
         
+        <div class = "creneaux" id = "boutonsCreneaux">
+        </div>
+        
         <script type="text/JavaScript" src="/../js/ChoixLieuHoraire.js"></script>
     </body>
 </html>

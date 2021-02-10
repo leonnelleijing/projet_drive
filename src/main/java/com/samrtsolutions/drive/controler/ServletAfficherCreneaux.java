@@ -5,11 +5,11 @@
  */
 package com.samrtsolutions.drive.controler;
 
-import com.samrtsolutions.drive.model.Magasin;
-import com.samrtsolutions.drive.repository.MagasinDaoImpl;
+import com.samrtsolutions.drive.model.Creneau;
+import com.samrtsolutions.drive.repository.CreneauDaoImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
+import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author 33667
  */
-public class ServletAfficherMagasin extends HttpServlet {
+public class ServletAfficherCreneaux extends HttpServlet {
 
     protected void processRequest (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 		{
@@ -30,27 +30,25 @@ public class ServletAfficherMagasin extends HttpServlet {
 			{
 			/*----- Ecriture de la page XML -----*/
 			out.println("<?xml version=\"1.0\"?>");
-			out.println("<liste_magasins>");
+			out.println("<liste_creneaux>");
 
 			/*----- Récupération des paramètres -----*/
-			String codePostal = request.getParameter("codePostal");
+			int codeMag = Integer.parseInt(request.getParameter("codeMagasin"));
 
                     try {
-                            /*----- Lecture de liste de magasins dans la BD -----*/
-                            MagasinDaoImpl magasinDao = new MagasinDaoImpl();
-                            List<Magasin> listeMagasin = magasinDao.afficherMagasin(codePostal);
+                            /*----- Lecture de liste de creneaux dans la BD -----*/
+                            CreneauDaoImpl creneauDao = new CreneauDaoImpl();
+                            Set<Creneau> listeCreneau = creneauDao.afficherCreneau(codeMag);
 
-                            for (Magasin magasin : listeMagasin){
-				out.println("<magasinCode>" + magasin.getCode() + "</magasinCode>");
-                                out.println("<magasin>" + magasin.getNom() + ", " + magasin.getCodePostal() + ", "+magasin.getVille()+ ", " + magasin.getRue() +"</magasin>");
+                            for (Creneau creneau : listeCreneau)
+				out.println("<creneau><![CDATA[" + creneau.getHoraire() + "]]></creneau>");
                             }
-                        }
                     catch (Exception e)
 			{
-                            out.println("<magasin>Erreur - " + e.getMessage() + "</magasin>");
+                            out.println("<creneau>Erreur - " + e.getMessage() + "</creneau>");
 			}
 
-                    out.println("</liste_magasins>");
+                    out.println("</liste_creneaux>");
 		}
     }
 

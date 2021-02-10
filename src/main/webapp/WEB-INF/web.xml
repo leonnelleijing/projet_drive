@@ -20,6 +20,10 @@
         <servlet-name>ServletAfficherMagasin</servlet-name>
         <servlet-class>com.samrtsolutions.drive.controler.ServletAfficherMagasin</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletAfficherCreneaux</servlet-name>
+        <servlet-class>com.samrtsolutions.drive.controler.ServletAfficherCreneaux</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Home</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -35,6 +39,10 @@
     <servlet-mapping>
         <servlet-name>ServletAfficherMagasin</servlet-name>
         <url-pattern>/ServletAfficherMagasin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletAfficherCreneaux</servlet-name>
+        <url-pattern>/ServletAfficherCreneaux</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
