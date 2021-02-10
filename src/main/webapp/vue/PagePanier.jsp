@@ -4,9 +4,10 @@
     Author     : 33667
 --%>
 
+<%@page import="com.samrtsolutions.drive.model.Label"%>
 <%@page import="java.util.Set"%>
 <%@page import="com.samrtsolutions.drive.model.Basket"%>
-<%@page import="com.samrtsolutions.drive.repository.BasketDaoImpl"%>
+<%@page import="com.samrtsolutions.drive.repository.BaseDaoImpl"%>
 <%@page import="com.samrtsolutions.drive.model.Product"%>
 <%@page import="com.samrtsolutions.drive.repository.ProductDaoImpl"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -19,16 +20,9 @@
         <link rel="stylesheet" href="/../CSS/panier_css.css">
         <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" crossorigin="anonymous"> -->
-        <!-- 引入样式Element UI -->
-        <!-- <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"> -->
-        <!-- 引入组件库Element U -->
-        <!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
     </head>
-    <body onload="getPanier()">
-        <!-- <h1>Bienvenue!</h1> -->
-        
-        <div class="container-fluid">
+    <body>
+        <div class="container-fluid">           
             <div class="row">
                 <div class="col-md-2">
                     <div class="logo">
@@ -191,14 +185,12 @@
                                 </ul>
                             </div>
                         </ul>
-                    </div>
-                                    
+                    </div>                                
                 </div>
                 <div class="col-md-10">
                     <div class="part1">
                         <div class="partNav">
-                            <nav class="navbar navbar-default">
-                                
+                            <nav class="navbar navbar-default">                              
                                   <!-- Brand and toggle get grouped for better mobile display -->
                                   <div class="navbar-header">
                                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -241,9 +233,7 @@
                                   </div><!-- /.navbar-collapse -->
                                 <!-- /.container-fluid -->
                               </nav>                             
-                        </div>
-                        
-                        
+                        </div>     
                     </div> 
                     <div class="part2">
                         <div class="title">
@@ -264,19 +254,19 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            
-                            
+                            </div>                      
                         </div>
-   
-                    </div>
-                    
+                    </div>    
                     <div class="inter">
                         
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-md-4" style="margin-top: 0.5%;">
-                                    <input type="text" id="test" name="zone" size="20" maxlength="20" />
+                                    <form action="../servletBasket" method="GET">
+                                        <input type="text" id="idPanier" name="idPanier" size="20" maxlength="20" value="${param.idPanier}"/>
+                                        <button type="submit" name="submit">Envoyer</button>
+                                    </form>
+                                    
                                     Informations de l'article</div>
                                 <div class="col-md-2" style="margin-top: 0.5%;">Prix UT</div>
                                 <div class="col-md-2" style="margin-top: 0.5%;">Quantité</div>
@@ -284,265 +274,53 @@
                                 <div class="col-md-2"><button class="btnSupprimePanier"><span class="glyphicon glyphicon-trash"> Vider tout </span></button></div>
                             </div>
                         </div>
-                    </div>
-                    
-
-                    <div class="part3">
-                        
-                        
+                    </div>                  
+                    <div class="part3">        
                         <div class="lstPro">
+                            <div class="oneProduit">                               
+<%                            
+                                     Set<Product> lstPro = (Set<Product>) request.getAttribute("listeProd");
+                                    for (Product p : lstPro) {
 
-                            <div class="oneProduit">                                                         
-                                
-                                <div class="produit">
-                                    <div class="container-fluid">
-                                        <div class="row">
-                                            <div class="col-md-2">
-                                                <div class="prixUniProduit" id="prixUniProduit">
-                                                    <!--<p>2.00 $</p>-->
-                                                </div>
-                                                <div class="prixKiloProduit" id="prixKiloProduit">
-                                                    <!--<p>2.00 $</p>-->
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                            <div class="col-md-2">
-                                                <div class="photoProduit" id="photoProduit">
-                                                    <!--<img class="imagePro" src="..\Img\lait.jfif" style="background-image:url(..\\Img\\lait.jfif);"> -->
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="InfoProduit" id="InfoProduit">
-                                                    <!--<p>Boîte de lait japonaise</p>-->
-                                                </div>
-                                                <div class="InfoProduit2" id="InfoProduit2">
-                                                    <!--<p>En promo : 1 achat = 1 graduit</p>-->
-                                                </div>
-                                                <div class="icon">
-                                                    <!--<img src="..\Img\Bio.png" style="float:left; width: 15px; height: 15px;">-->
-                                                    <!--<img src="..\Img\promo.jpg" style="float:left; width: 15px; height: 15px;">-->
-                                                </div>
-                                                <div class="icon">
-                                                    <img src="..\Img\Bio.png" style="float:left; width: 15px; height: 15px;">
-                                                    <img src="..\Img\promo.jpg" style="float:left; width: 15px; height: 15px;">
-                                                </div>
-                                                <div class="icon">
-                                                    <img src="..\Img\Bio.png" style="float:left; width: 15px; height: 15px;">
-                                                    <img src="..\Img\promo.jpg" style="float:left; width: 15px; height: 15px;">
-                                                </div>
-                                            </div>
-                                                </div>
-                                                <div class="icon">
-                                                    <img src="..\Img\Bio.png" style="float:left; width: 15px; height: 15px;">
-                                                    <img src="..\Img\promo.jpg" style="float:left; width: 15px; height: 15px;">
-                                                </div>
-                                            </div>
-                                                <div class="qteProduit" id="qteProduit">
-                                                    <button class="btnMin1"><span class="glyphicon glyphicon-minus"></span></button>
-                                                    <input id="inputPrix1" type="number" value="50" min="0" max="100" step="1"/>
-                                                    <button class="btnMax1"><span class="glyphicon glyphicon-plus"></span></button>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1">
-                                                <div class="suppression">
-                                                    <button type="submit" class="glyphicon glyphicon-trash"></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> 
-                                
-                                
-                                <div class="produit">
-                                    <div class="container-fluid">
-                                        <div class="row">
-                                            <div class="col-md-2">
-                                                <div class="photoProduit">
-                                                    <img class="imagePro" src="..\Img\airCondi.jfif" style="background-image:url(..\\Img\\airCondi.jfif);">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="InfoProduit">
-                                                    <p>Conditionneur d'air</p>
-                                                </div>
-                                                <div class="InfoProduit2">
-                                                    <p>En promo : soldes jusqu'à 75%</p>
-                                                </div>
-                                                <div class="icon">
-                                                    <img src="..\Img\promo.jpg" style="float:left; width: 15px; height: 15px;">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div class="prixUniProduit">
-                                                    <p>399.00 $</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="qteProduit">
-                                                    <button class="btnMin2"><span class="glyphicon glyphicon-minus"></span></button>
-                                                    <input id="inputPrix2" type="number" value="50" min="0" max="100" step="1"/>
-                                                    <button class="btnMax2"><span class="glyphicon glyphicon-plus"></span></button>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1">
-                                                <div class="prixTtProduit">
-                                                    <p>399.00$</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1">
-                                                <div class="suppression">
-                                                    <button type="submit" class="glyphicon glyphicon-trash"></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> 
-                                
-                                
-                                <div class="produit">
-                                    <div class="container-fluid">
-                                        <div class="row">
-                                            <div class="col-md-2">
-                                                <div class="photoProduit">
-                                                    <img class="imagePro" src="..\Img\coca.jfif" style="background-image:url(..\\Img\\coca.jfif);">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="InfoProduit">
-                                                    <p>Coca cola (Original)</p>
-                                                </div>
-                                                <div class="InfoProduit2">
-                                                    <p>En promo : 1 achat = 1 graduit</p>
-                                                </div>
-                                                <div class="icon">
-                                                    <img src="..\Img\promo.jpg" style="float:left; width: 15px; height: 15px;">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div class="prixUniProduit">
-                                                    <p>1.00 $</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="qteProduit">
-                                                    <button class="btnMin3"><span class="glyphicon glyphicon-minus"></span></button>
-                                                    <input id="inputPrix3" type="number" value="50" min="0" max="100" step="1"/>
-                                                    <button class="btnMax3"><span class="glyphicon glyphicon-plus"></span></button>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1">
-                                                <div class="prixTtProduit">
-                                                    <p>5.00 $</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1">
-                                                <div class="suppression">
-                                                    <button type="submit" class="glyphicon glyphicon-trash"></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> 
-                                
-                                <div class="produit">
-                                    <div class="container-fluid">
-                                        <div class="row">
-                                            <div class="col-md-2">
-                                                <div class="photoProduit">
-                                                    <img class="imagePro" src="..\Img\macaron.jfif" style="background-image:url(..\\Img\\macaron.jfif);">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="InfoProduit">
-                                                    <p>Boîte de macaron</p>
-                                                </div>
-                                                <div class="InfoProduit2">
-                                                    <p>En promo : 1 achat = 1 achat 50% solde</p>
-                                                </div>
-                                               <div class="icon">
-                                                    <img src="..\Img\Bio.png" style="float:left; width: 15px; height: 15px;">
-                                                    <img src="..\Img\promo.jpg" style="float:left; width: 15px; height: 15px;">
-                                                </div> 
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div class="prixUniProduit">
-                                                    <p>12.00 $</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="qteProduit">
-                                                    <button class="btnMin4"><span class="glyphicon glyphicon-minus"></span></button>
-                                                    <input id="inputPrix4" type="number" value="50" min="0" max="100" step="1"/>
-                                                    <button class="btnMax4"><span class="glyphicon glyphicon-plus"></span></button>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1">
-                                                <div class="prixTtProduit">
-                                                    <p>24.00$</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1">
-                                                <div class="suppression">
-                                                    <button type="submit" class="glyphicon glyphicon-trash"></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> 
-                                
-                                <div class="produit">
-                                    <div class="container-fluid">
-                                        <div class="row">
-                                            <div class="col-md-2">
-                                                <div class="photoProduit">
-                                                    <img class="imagePro" src="..\Img\phone.jfif" style="background-image:url(..\\Img\\phone.jfif);">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="InfoProduit">
-                                                    <p>HUAWEI Mate 30</p>
-                                                </div>
-                                                <div class="InfoProduit2">
-                                                    <p>En promo : 1 achat = solde jusqu'à 80%</p>
-                                                </div>
-                                                <div class="icon">
-                                                    <img src="..\Img\promo.jpg" style="float:left; width: 15px; height: 15px;">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div class="prixUniProduit">
-                                                    <p>599.00 $</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="qteProduit">
-                                                    <button class="btnMin5"><span class="glyphicon glyphicon-minus"></span></button>
-                                                    <input id="inputPrix5" type="number" value="50" min="0" max="100" step="1"/>
-                                                    <button class="btnMax5"><span class="glyphicon glyphicon-plus"></span></button>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1">
-                                                <div class="prixTtProduit">
-                                                    <p>599.00$</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-1">
-                                                <div class="suppression">
-                                                    <button type="submit" class="glyphicon glyphicon-trash"></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> 
-                                
-                            </div>
-        
-                    </div>      
-                        
-                </div>
-                
-                    
-                    
+                                        out.print("<div class='produit'>");
+                                            out.print("<div class='container-fluid'>");
+                                                out.print("<div class='row'>");
+                                                    out.print("<div class='col-md-2'>");
+                                                        out.print("<div class='photoProduit' id='photoProduit'>" + "<img class='imagePro' src='" + p.getImage() + "'></div>");
+                                                    out.print("</div>");
+
+                                                    out.print("<div class='col-md-3'>");
+                                                        out.print("<div class='InfoProduit' id='InfoProduit'><p>" + p.getProductName() + "</p></div>");
+                                                        out.print("<div class='InfoProduit2' id='InfoProduit2'><p>" + p.getProductBrandProprietary() + "</p></div>");
+                                                        for (Label lab : p.getLabels()) {
+                                                            out.print("<div class='icon'>" + "<img src='" + lab.getImageLabel() + "' style='float:left; width: 15px; height: 15px;'></div>");
+                                                        }
+                                                    out.print("</div>");
+                                                    out.print("<div class='col-md-2'>");
+                                                        out.print("<div class='prixUniProduit'><p>" + p.getProductUnitPrice() + "</p></div>");
+                                                        out.print("<div class='prixUniProduit'><p>" + p.getProductKiloPrice() + "</p></div>");
+                                                    out.print("</div>");
+                                                    out.print("<div class='col-md-3'>");
+                                                        out.print("<div class='qteProduit'>");
+                                                            out.print("<button class='btnMin'><span class='glyphicon glyphicon-minus'></span></button>");
+                                                            out.print("<input id='inputPrix' type='number' value='50' min='0' max='100' step='1'/>");
+                                                            out.print("<button class='btnMax'><span class='glyphicon glyphicon-plus'></span></button>");
+                                                        out.print("</div>");
+                                                    out.print("</div>");               
+                                                    out.print("<div class='col-md-1'>");
+                                                        out.print("<div class='prixTtProduit'><p>" + "</p></div>");
+                                                    out.print("</div>");
+                                                    out.print("<div class='col-md-1'>");
+                                                        out.print("<div class='suppression'> <button type='submit' class='glyphicon glyphicon-trash'></button></div>");
+                                                    out.print("</div>");
+                                                out.print("</div>");
+                                            out.print("</div>");
+                                        out.print("</div>");
+                                    }                                                                              
+%>                                
+                        </div>       
+                    </div>                 
+                </div> 
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-6">
@@ -576,17 +354,10 @@
                                 </div>
                             </div>
                         </div>
-                    </div>    
-                     
-                    
-                    
+                    </div>           
             </div>
         </div>
-            
-   
-        </div>
-        
-        
+        </div>     
         <div class="footer">
             <div class="container">
                 <div class="row footer-top">
@@ -618,7 +389,7 @@
                                 <h4>Connect Us</h4>
                                 <ul class="list-unstyled">
                                     <li>
-                                        <a target="_blank" title="" href="">Instagramme</a>
+                                        <a target="_blank" title="" href="">Instagramm</a>
                                     </li>
                                     <li>
                                         <a href="">FaceBook</a>
@@ -640,8 +411,7 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>
-                    
+                    </div>        
                 </div>
                 <hr>
                 <div class="row footer-bottom">
@@ -652,17 +422,9 @@
             </div>
         </div>
     </body>
-    
-    
-    
-    
+
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.slim.min.js"></script>
-    
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="/../js/panier_js.js"></script>
 </html>
-
-                                            <div class="col-md-1">
-                                                <div class="prixTtProduit" id="prixTtProduit">
-                                                    <!--<p>9.00 $</p>-->

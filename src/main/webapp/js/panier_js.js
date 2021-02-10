@@ -5,21 +5,19 @@
  */
 
 
-function getPanier()  {
-    // création de http  
+function test()  {
+    // création de http
     var xhr = new XMLHttpRequest();
+    var id = document.getElementById("test").value;
     // Requête au serveur
-    xhr.open("GET", "servletBasket?idPanier="+1+"&action=getBasket");
+    xhr.open("GET", "servletBasket?idPanier=" + id + "&action=getBasket");
     
-    // On précise ce que l'on va faire quand on aura reçu la réponse du serveur.
-   
-        console.log("ok");
-     
-             console.log(xhr.responseXML);
 
+    console.log(xhr.responseXML);
+    
+    arbres = hxr.responseXML;
     
     xhr.send();
-
 };
 
 
@@ -70,93 +68,31 @@ $(function(){
 
 
 $(function(){
-    $(".btnMin1").click(function(){	
-
-     document.getElementById("inputPrix1").value -= 1;
-    });	
-});
-
-$(function(){
-    $(".btnMax1").click(function(){
-        //var d = document.getElementById("inputPrix1").value;
-        //d = d + 1;
-        //document.getElementById("inputPrix1").setAttribute("value", d);
-        document.getElementById("inputPrix1").value ++;
-    });
-});
-
-$(function(){
-    $(".btnMin2").click(function(){	
-
-     document.getElementById("inputPrix2").value -= 1;
-    });	
-});
-
-$(function(){
-    $(".btnMax2").click(function(){
-        //var d = document.getElementById("inputPrix1").value;
-        //d = d + 1;
-        //document.getElementById("inputPrix1").setAttribute("value", d);
-        document.getElementById("inputPrix2").value ++;
-    });
-});
-
-$(function(){
-    $(".btnMin3").click(function(){	
-
-     document.getElementById("inputPrix3").value -= 1;
-    });	
-});
-
-$(function(){
-    $(".btnMax3").click(function(){
-        //var d = document.getElementById("inputPrix1").value;
-        //d = d + 1;
-        //document.getElementById("inputPrix1").setAttribute("value", d);
-        document.getElementById("inputPrix3").value ++;
-    });
-});
-
-$(function(){
-    $(".btnMin4").click(function(){	
-
-     document.getElementById("inputPrix4").value -= 1;
-    });	
-});
-
-$(function(){
-    $(".btnMax4").click(function(){
-        //var d = document.getElementById("inputPrix1").value;
-        //d = d + 1;
-        //document.getElementById("inputPrix1").setAttribute("value", d);
-        document.getElementById("inputPrix4").value ++;
-    });
-});
-
-$(function(){
-    $(".btnMin5").click(function(){	
-
-     document.getElementById("inputPrix5").value -= 1;
-    });	
-});
-
-$(function(){
-    $(".btnMax5").click(function(){
-        //var d = document.getElementById("inputPrix1").value;
-        //d = d + 1;
-        //document.getElementById("inputPrix1").setAttribute("value", d);
-        document.getElementById("inputPrix5").value ++;
-    });
-});
     
+    $(".btnMin").click(function(){	
+     var id = $(this).next().attr("id");
+     
+     document.getElementById(id).value -= 1;
+    });	
+});
+
+$(function(){
+    $(".btnMax").click(function(){
+        //var d = document.getElementById("inputPrix1").value;
+        //d = d + 1;
+        //document.getElementById("inputPrix1").setAttribute("value", d);
+        var id = $(this).prev().attr("id");
+        document.getElementById(id).value ++;
+    });
+});
 
 
 /**
  * Lancement après le chargement du DOM.
  */
-document.addEventListener("DOMContentLoaded", () =>  {
-    document.getElementById("test").addEventListener("keyup",test);
-})
+//document.addEventListener("DOMContentLoaded", () =>  {
+    //document.getElementById("test").addEventListener("keyup",test);
+//})
         
 $(function(){
 
@@ -202,88 +138,7 @@ $(function(){
 
 //$("input[type='number']").inputSpinner();
 
-
-$(function(){
-    $(".btnMin1").click(function(){	
-
-     document.getElementById("inputPrix1").value -= 1;
-    });	
-});
-
-$(function(){
-    $(".btnMax1").click(function(){
-        //var d = document.getElementById("inputPrix1").value;
-        //d = d + 1;
-        //document.getElementById("inputPrix1").setAttribute("value", d);
-        document.getElementById("inputPrix1").value ++;
-    });
-});
-
-$(function(){
-    $(".btnMin2").click(function(){	
-
-     document.getElementById("inputPrix2").value -= 1;
-    });	
-});
-
-$(function(){
-    $(".btnMax2").click(function(){
-        //var d = document.getElementById("inputPrix1").value;
-        //d = d + 1;
-        //document.getElementById("inputPrix1").setAttribute("value", d);
-        document.getElementById("inputPrix2").value ++;
-    });
-});
-
-$(function(){
-    $(".btnMin3").click(function(){	
-
-     document.getElementById("inputPrix3").value -= 1;
-    });	
-});
-
-$(function(){
-    $(".btnMax3").click(function(){
-        //var d = document.getElementById("inputPrix1").value;
-        //d = d + 1;
-        //document.getElementById("inputPrix1").setAttribute("value", d);
-        document.getElementById("inputPrix3").value ++;
-    });
-});
-
-$(function(){
-    $(".btnMin4").click(function(){	
-
-     document.getElementById("inputPrix4").value -= 1;
-    });	
-});
-
-$(function(){
-    $(".btnMax4").click(function(){
-        //var d = document.getElementById("inputPrix1").value;
-        //d = d + 1;
-        //document.getElementById("inputPrix1").setAttribute("value", d);
-        document.getElementById("inputPrix4").value ++;
-    });
-});
-
-$(function(){
-    $(".btnMin5").click(function(){	
-
-     document.getElementById("inputPrix5").value -= 1;
-    });	
-});
-
-$(function(){
-    $(".btnMax5").click(function(){
-        //var d = document.getElementById("inputPrix1").value;
-        //d = d + 1;
-        //document.getElementById("inputPrix1").setAttribute("value", d);
-        document.getElementById("inputPrix5").value ++;
-    });
-});
-        
-        
+               
         /*
         $(doucment).ready(function(){
                 alert("oui");
@@ -327,7 +182,3 @@ $(function(){
             })
         })
         */  
-
-document.addEventListener("DOMContentLoaded",() => 
-{
-});
