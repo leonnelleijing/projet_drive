@@ -10,6 +10,7 @@ import com.samrtsolutions.drive.repository.MagasinDaoImpl;
 import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 
 /**
  *
@@ -21,6 +22,7 @@ public class TestMagasinDaoImpl {
     }
     
     @Test
+    @Ignore
     public void testMethod (){
         MagasinDaoImpl mag = new MagasinDaoImpl();
         List<Magasin> listeMagasin = mag.afficherMagasin("31");

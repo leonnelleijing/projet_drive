@@ -23,7 +23,7 @@ public class AffluenceId implements Serializable {
     @Column (name = "CodeCreneau")
     private int codeCreneau;
     @Column (name = "Date_Affluence")
-    private Date dateAffluence;
+    private String dateAffluence;
     
     
 }

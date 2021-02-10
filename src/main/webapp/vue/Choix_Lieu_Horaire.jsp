@@ -9,10 +9,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="css/styleChoixMagasin.css" type="text/css" />
         <title>Finalisation commande</title>
     </head>
-    <body>
+    <body onload = "afficherCalendrier()">
         <h1>Choix de retrait</h1>
+        
+        <p> Veuillez choisir la date à laquelle vous voulez retirer votre commande </p>
+        <div class = "calendrier_class" id = "calendrier"></div>
         
         <p> Veuillez choisir votre magasin de retrait de commande</p>
         <p>Tapez votre codePostal pour choisir un magasin proche de chez vous :</p>
@@ -21,6 +25,8 @@
         
         <div class = "creneaux" id = "boutonsCreneaux">
         </div>
+        
+        <button type="button" id ="validerCommande"> Valider ma commande </button> 
         
         <script type="text/JavaScript" src="/../js/ChoixLieuHoraire.js"></script>
     </body>

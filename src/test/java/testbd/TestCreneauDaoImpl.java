@@ -11,6 +11,7 @@ import com.samrtsolutions.drive.repository.CreneauDaoImpl;
 import com.samrtsolutions.drive.repository.MagasinDaoImpl;
 import java.util.List;
 import java.util.Set;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -19,10 +20,10 @@ import org.junit.Test;
  */
 public class TestCreneauDaoImpl {
     
-    public TestCreneauDaoImpl() {
-    }
+    public TestCreneauDaoImpl() {}
     
     @Test
+    @Ignore
     public void testMethod (){
         CreneauDaoImpl creneau = new CreneauDaoImpl();
         MagasinDaoImpl magasin = new MagasinDaoImpl();
