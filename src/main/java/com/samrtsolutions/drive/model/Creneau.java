@@ -40,7 +40,7 @@ public class Creneau implements Serializable {
     private String horaire;
     
     //Relations
-    
+    // Relie Creneau à Magasin
     @ManyToMany
 	@JoinTable(name = "Appartenir_CreneauMagasin",
 			   joinColumns = @JoinColumn(name = "CodeCreneau"),
