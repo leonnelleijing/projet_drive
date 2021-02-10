@@ -264,7 +264,7 @@
                                 <div class="col-md-4" style="margin-top: 0.5%;">
                                     <form action="../servletBasket" method="GET">
                                         <input type="text" id="idPanier" name="idPanier" size="20" maxlength="20" value="${param.idPanier}"/>
-                                        <button type="submit" name="submit">Envoyer</button>
+                                        <button type="submit" name="action" value="getBasket">Envoyer</button>
                                     </form>
                                     
                                     Informations de l'article</div>
@@ -278,9 +278,11 @@
                     <div class="part3">        
                         <div class="lstPro">
                             <div class="oneProduit">                               
-<%                            
+<%                              
+
                                      Set<Product> lstPro = (Set<Product>) request.getAttribute("listeProd");
-                                    for (Product p : lstPro) {
+                                     if(lstPro != null){
+                                         for (Product p : lstPro) {
 
                                         out.print("<div class='produit'>");
                                             out.print("<div class='container-fluid'>");
@@ -316,7 +318,9 @@
                                                 out.print("</div>");
                                             out.print("</div>");
                                         out.print("</div>");
-                                    }                                                                              
+                                    }  
+                                     }
+                                                                                 
 %>                                
                         </div>       
                     </div>                 
