@@ -19,7 +19,7 @@
     <div class="logo">
         <image id="photoLogo" src="../Img/logo.png">
     </div>
- <div class="menu">
+<div class="menu">
     <ul class="nav nav-pills nav-stacked">
         <%
             ArrayList<Rayon> rayons=(ArrayList) session.getAttribute("rayons");
@@ -43,3 +43,6 @@
     </ul>
 </div>
 </div>
+
+
+

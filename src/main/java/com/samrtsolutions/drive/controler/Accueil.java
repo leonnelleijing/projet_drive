@@ -41,8 +41,17 @@ public class Accueil extends HttpServlet {
         RayonDaoImpl rayon= new RayonDaoImpl();
         ArrayList<Rayon> rayons= rayon.getAllRayons();
         HttpSession session = request.getSession();
-        session.setAttribute("products", products);
-        session.setAttribute("rayons", rayons);
+        if(session.getAttribute("rayons")==null){
+             RayonDaoImpl rayon= new RayonDaoImpl();
+             ArrayList<Rayon> rayons= rayon.getAllRayons();
+             session.setAttribute("rayons", rayons);
+        }
+        //voir si la ssession existe des rayons et des produits
+        //System.out.print(session.getAttribute("nameproducts"));
+        if(session.getAttribute("nameproducts")==null||session.getAttribute("nameproducts").equals("")){
+            session.setAttribute("products", products);
+        }
+
         String idfamily= request.getParameter("Idfamily");
         if(idfamily==null||idfamily==""){
             request.getRequestDispatcher("home").forward(request, response) ;

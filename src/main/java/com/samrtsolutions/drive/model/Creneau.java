@@ -42,8 +42,8 @@ public class Creneau implements Serializable {
     //Relations
     // Relie Creneau à Magasin
     @ManyToMany
-	@JoinTable(name = "Appartenir_CreneauMagasin",
-		joinColumns = @JoinColumn(name = "CodeCreneau"),
+	@JoinTable(name = "drive_appartenir_creneauMagasin",
+			   joinColumns = @JoinColumn(name = "CodeCreneau"),
 		inverseJoinColumns = @JoinColumn(name = "CodeMagasin"))
                 private Set<Magasin> listeMagasins = new HashSet(0);
     

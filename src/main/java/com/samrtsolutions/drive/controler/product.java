@@ -39,20 +39,8 @@ public class product extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
            int idProduct= Integer.valueOf(request.getParameter("id"));
            ProductDaoImpl p= new ProductDaoImpl();
-           
-          
-        RayonDaoImpl rayon= new RayonDaoImpl();
-        ArrayList<Rayon> rayons= rayon.getAllRayons();
-        HttpSession session = request.getSession();
-        session.setAttribute("rayons", rayons);
-    
            request.setAttribute("product", p.get(idProduct));
            request.getRequestDispatcher("article").forward(request, response) ;
-           
-           
-           
-           
-           
            
     }
 

@@ -37,7 +37,7 @@ public class Product implements Serializable{
 
     private int productCode;
     private String productName;
-    private String productKiloPrice;
+    private double productKiloPrice;
     private double productUnitPrice;
     private double productWeight;
     private String productDescription;
@@ -51,16 +51,9 @@ public class Product implements Serializable{
     private String nuttritionScore;
     private Set<Label> labels = new HashSet<>();
     private Family family;
-
-    
-
-    
-    
-    
-    private Set<Liste> lstList =new HashSet<>();
-    
-    
-    
+    private Set<LigneCommande> commandes= new HashSet<>();
+    private Set<Basket> basket= new HashSet<>(0);
+    private String productKiloPriceUnit;
     public Product() {
     }
     
@@ -131,6 +124,23 @@ public class Product implements Serializable{
         this.family = family;
     }
     
+    @ManyToMany(mappedBy="lstProduct", cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+    public Set<Basket> getBasket() {
+        return basket;
+    }
+
+    public String getProductKiloPriceUnit() {
+        return productKiloPriceUnit;
+    }
+
+    public void setProductKiloPriceUnit(String productKiloPriceUnit) {
+        this.productKiloPriceUnit = productKiloPriceUnit;
+    }
+   
+    
+    public void setBasket(Set<Basket> basket) {
+        this.basket = basket;
+    }
     public void setImage(String image) {
         this.image = image;
     }
@@ -159,6 +169,7 @@ public class Product implements Serializable{
     public void setProductKiloPrice(String productKiloPrice) {
         this.productKiloPrice = productKiloPrice;
     }
+
 
     public double getProductUnitPrice() {
         return productUnitPrice;
