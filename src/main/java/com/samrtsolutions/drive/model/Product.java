@@ -156,7 +156,11 @@ public class Product implements Serializable{
         this.family = family;
     }
     
-    
+    @ManyToMany(mappedBy="lstProduct", cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+    public Set<Basket> getBasket() {
+        return basket;
+    }
+
     public String getProductKiloPriceUnit() {
         return productKiloPriceUnit;
     }

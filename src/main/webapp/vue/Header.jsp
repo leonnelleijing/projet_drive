@@ -81,7 +81,6 @@
         .title{
             margin-top: 30px;
             text-align: center;
-
         }
         
         .produit{
@@ -160,7 +159,6 @@
             color: black;
             font-weight: bold;
             margin: 13% 9% 9% 9%;
-
         }
         
         /*
@@ -313,7 +311,6 @@
             height:35px;
             line-height:30px;*/
             margin-left: 15px;
-
         }
         .tips{
             position:absolute;
