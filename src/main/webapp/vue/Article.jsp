@@ -2,11 +2,9 @@
 <%@page import="com.samrtsolutions.drive.model.Product"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:includepage="/vue/Header.jsp">
-    <jsp:param name="title" value="Article"/>
+    <jsp:param name="title" value="Home"/>
 </jsp:include>
 
-    
-<div class="container-fluid">
 
     <div class="row">
         <%@ include file="/vue/Menu.jsp"%>

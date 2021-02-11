@@ -31,19 +31,15 @@
                         <div class="title">
                             <h2>Liste Produits en promotions</h2>
                         </div>
-                        
                         <div class="lstPro">
                             <%
                                List<Product> products= (List) session.getAttribute("products");
                                for(Product p: products){
                                     out.print( "<div class='produit'>");
-                                   
-                                    
                                         out.print( "<div class='articleSpan'>");
                                             out.print( "<div class='niveau1'><span>En Promotion</span></div>");
                                             out.print("<div class='niveau2'>");
                                             out.print("<div class='namePro'><a href='/product?id="+p.getProductCode()+"'>"+p.getProductName()+"</a></div>");
-                                            out.print("<div><p class='marque'>"+p.getProductBrandProprietary()+"</p></div>");
                                             out.print("<div class='poids'><p>"+p.getProductWeight()+" "+ p.getProductFormat()+"</p></div>");
                                             out.print("<div class='prixPoid'><p>"+p.getProductKiloPrice()+"€/"+p.getProductKiloPriceUnit()+"</p></div></div>");
                                             out.print("<div class='niveau3'><img class='imagePro' src="+ p.getImage()+"></div>");
@@ -61,7 +57,6 @@
                                                 }
                                             }
                                     out.print( "</div></div>");
-                                   
                                         
                                }
                             %>
