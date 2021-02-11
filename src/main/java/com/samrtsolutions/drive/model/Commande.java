@@ -39,6 +39,13 @@ public class Commande implements Serializable {
     public Commande() {
     }
 
+    public Commande(Client client, EtatCommande etat, Magasin magasin) {
+        this.client = client;
+        this.etat = etat;
+        this.magasin = magasin;
+    }
+
+    
     public Commande(Client client, Magasin magasin, Creneau creneauRetrait) {
         this.client = client;
         this.magasin = magasin;

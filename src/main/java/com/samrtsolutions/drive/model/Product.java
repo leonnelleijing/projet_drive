@@ -6,7 +6,9 @@
 package com.samrtsolutions.drive.model;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -18,6 +20,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapKeyJoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -52,6 +55,7 @@ public class Product implements Serializable{
     private Set<LigneCommande> commandes= new HashSet<>();
     private Set<Basket> basket= new HashSet<>(0);
     private String productKiloPriceUnit;
+    private Map<Basket, ClProdBasket> ProdBasket = new HashMap(0);
     public Product() {
     }
     
@@ -118,6 +122,16 @@ public class Product implements Serializable{
         return commandes;
     }
 
+    
+    @OneToMany(mappedBy = "product",fetch = FetchType.EAGER, cascade = CascadeType.ALL,targetEntity=ClProdBasket.class)
+    @MapKeyJoinColumn(name = "CodeBasket")  
+    public Map<Basket, ClProdBasket> getProdBasket() {
+        return ProdBasket;
+    }
+
+    public void setProdBasket(Map<Basket, ClProdBasket> ProdBasket) {
+        this.ProdBasket = ProdBasket;
+    }
     public void setCommandes(Set<LigneCommande> commandes) {
         this.commandes = commandes;
     }
@@ -126,11 +140,7 @@ public class Product implements Serializable{
         this.family = family;
     }
     
-    @ManyToMany(mappedBy="lstProduct", cascade=CascadeType.ALL, fetch = FetchType.EAGER)
-    public Set<Basket> getBasket() {
-        return basket;
-    }
-
+    
     public String getProductKiloPriceUnit() {
         return productKiloPriceUnit;
     }

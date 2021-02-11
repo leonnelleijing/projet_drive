@@ -13,12 +13,21 @@
           <div class="col-md-10">
                     <div class="part1Bis">
                         <%@ include file="/vue/MenuHorisontal.jsp"%>
-                        <div class="jumbotron">
-                            <h1>Shop!</h1>
+                       <div class="part3">
+                        <div class="title">
+                            <h2>Liste Produits ${familyName} </h2>
                         </div>
-                         
-                    </div> 
-                    <div class="part3">
+                        <div class="sort_by_price row">
+                            <div class="container form-select form-group">
+                                <select name="sort_by_price" class ="sortBtn" id="sort_by_price">
+                                    <option value="0">Default</option>
+                                    <option value="1">Prix au kilo décroissant</option>
+                                    <option value="2">Prix au kilo croissant</option>
+                                    <option value="3">Prix décroissant</option>
+                                    <option value="4">Prix croissant</option>
+                                </select>
+                            </div>
+                        </div>
          
                           <div class="lstPro">
           

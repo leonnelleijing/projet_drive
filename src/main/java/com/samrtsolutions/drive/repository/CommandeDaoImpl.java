@@ -5,7 +5,12 @@
  */
 package com.samrtsolutions.drive.repository;
 
+import com.samrtsolutions.drive.model.Basket;
+import com.samrtsolutions.drive.model.ClProdBasket;
+import com.samrtsolutions.drive.model.Client;
 import com.samrtsolutions.drive.model.Commande;
+import com.samrtsolutions.drive.model.Creneau;
+import com.samrtsolutions.drive.model.EtatCommande;
 import com.samrtsolutions.drive.model.Family;
 import com.samrtsolutions.drive.model.LigneCommande;
 import com.samrtsolutions.drive.model.Magasin;
@@ -15,6 +20,7 @@ import static com.samrtsolutions.drive.repository.BaseDaoImpl.factory;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -98,7 +104,22 @@ public class CommandeDaoImpl extends BaseDaoImpl<Commande> implements CommandeDa
         
     }
     
-    
+    @Override
+    public void TransferPanierToCommande(Basket basket,  Magasin magasin, Creneau creneau,Client client,EtatCommande etat,Date date){
+         Map<Product, ClProdBasket> donnes= basket.getProdBasket();
+         Commande c= new Commande();
+         c.setClient(client);
+         c.setMagasin(magasin);
+         c.setDateRetraite(date);
+         c.setCreneauRetrait(creneau);
+         edit(c);
+         for(Map.Entry<Product, ClProdBasket> products : donnes.entrySet()){
+                LigneCommande ligne= new LigneCommande(c,products.getKey(),products.getValue().getQuantityProd());
+                c.getLigneCommandes().add(ligne);
+        }
+        edit(c);
+
+    }
     
     
 }

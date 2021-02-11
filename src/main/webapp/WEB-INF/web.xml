@@ -35,9 +35,13 @@
         <servlet-name>Panier</servlet-name>
         <jsp-file>/vue/PagePanier.jsp</jsp-file>
     </servlet>
-   <servlet>
+    <servlet>
         <servlet-name>PreparerCommande</servlet-name>
         <servlet-class>com.samrtsolutions.drive.controler.PreparerCommande</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Valider</servlet-name>
+        <servlet-class>com.samrtsolutions.drive.controler.Valider</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Home</servlet-name>
@@ -70,10 +74,14 @@
     <servlet-mapping>
         <servlet-name>Panier</servlet-name>
         <url-pattern>/panier</url-pattern>
-      </servlet-mapping>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>PreparerCommande</servlet-name>
         <url-pattern>/preparercommande</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Valider</servlet-name>
+        <url-pattern>/valider</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

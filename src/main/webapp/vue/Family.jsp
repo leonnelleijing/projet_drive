@@ -23,6 +23,17 @@
                 <div class="title">
                    <h2>${familyName}</h2>
                 </div>
+                <div class="sort_by_price row">
+                            <div class="container form-select form-group">
+                                <select name="sort_by_price" class ="sortBtn" id="sort_by_price">
+                                    <option value="0">Default</option>
+                                    <option value="1">Prix au kilo décroissant</option>
+                                    <option value="2">Prix au kilo croissant</option>
+                                    <option value="3">Prix décroissant</option>
+                                    <option value="4">Prix croissant</option>
+                                </select>
+                            </div>
+                </div>
              
              <div class="lstPro">
                  <%
@@ -34,12 +45,12 @@
                                             out.print("<div class='niveau2'>");
                                             out.print("<div class='namePro'><a href='/product?id="+p.getProductCode()+"'>"+p.getProductName()+"</a></div>");
                                             out.print("<div class='poids'><p>"+p.getProductWeight()+" "+ p.getProductFormat()+"</p></div>");
-                                            out.print("<div class='prixPoid'><p>"+p.getProductKiloPrice()+"</p></div></div>");
+                                            out.print("<div class='prixPoid'><p class='kiloprice'><strong>"+p.getProductKiloPrice()+"</strong><span>€"+p.getProductKiloPriceUnit()+"</span></p></div></div>");
                                             out.print("<div class='niveau3'><img class='imagePro' src="+ p.getImage()+"></div>");
                                         out.print("</div>");
                                     out.print(" <div class='infos'>");
                                         out.print(" <div class='infoPromo'><p>1 acheté = 1 graduit</p></div>");
-                                        out.print("<div class='infoPrix'> <div class='prix'><p>"+p.getProductUnitPrice()+" €</p></div>");
+                                        out.print("<div class='infoPrix'> <div class='prix'><strong>"+p.getProductUnitPrice()+"</strong><span>€</span></div>");
                                         out.print("<div class='iconPanier'><img src='../Img/panier.png' style='height:30px; width: 30px'></div></div>");
                                     out.print( "</div>");
                                          if(p.getLabels()!=null){
@@ -57,3 +68,4 @@
      </div>
     
 </div>
+ <%@ include file="/vue/Footer.jsp"%>

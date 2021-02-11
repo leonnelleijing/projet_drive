@@ -1,5 +1,5 @@
 $(function() {
-    console.log("heoo")
+//    console.log("heoo")
     $("td .btn-preparer").click(function(){
         console.log($(this))
         var card= $(this).parent().parent().parent().parent().parent().parent()

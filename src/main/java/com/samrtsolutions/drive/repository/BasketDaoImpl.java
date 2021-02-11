@@ -40,8 +40,6 @@ public class BasketDaoImpl extends BaseDaoImpl<Basket> implements BasketDao{
        
             Session s  =factory.getCurrentSession();
             Transaction t=s.beginTransaction();
-            
-            // 将 product 与 basket更新到数据表中
             s.update(p);
             s.update(b);
 

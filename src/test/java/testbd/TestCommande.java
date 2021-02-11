@@ -5,12 +5,15 @@
  */
 package testbd;
 
+import com.samrtsolutions.drive.model.Basket;
 import com.samrtsolutions.drive.model.Client;
 import com.samrtsolutions.drive.model.Commande;
+import com.samrtsolutions.drive.model.Creneau;
 import com.samrtsolutions.drive.model.EtatCommande;
 import com.samrtsolutions.drive.model.LigneCommande;
 import com.samrtsolutions.drive.model.Magasin;
 import com.samrtsolutions.drive.model.Product;
+import com.samrtsolutions.drive.repository.BasketDaoImpl;
 import com.samrtsolutions.drive.repository.ClientDaoImpl;
 import com.samrtsolutions.drive.repository.CommandeDaoImpl;
 import com.samrtsolutions.drive.repository.CreneauDaoImpl;
@@ -79,6 +82,23 @@ public class TestCommande {
     public void testGetAllProductByOrder(){
         Commande commande= com.get(1);
         com.getAllProductsByOrder(commande);
+    }
+    
+    @Test
+    public void testTransforPanierToBasket() throws ParseException{
+        BasketDaoImpl p= new BasketDaoImpl();
+        Basket b =p.get(1);
+        MagasinDaoImpl magasinimp= new MagasinDaoImpl();
+        Magasin magasin= magasinimp.get(1);
+         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+         Date rightDate=simpleDateFormat.parse("2021-02-11");
+         CreneauDaoImpl creneuim= new CreneauDaoImpl();
+         Creneau creneau= creneuim.get(1);
+        ClientDaoImpl ClientDaoImpl = new ClientDaoImpl();
+       Client client = ClientDaoImpl.get(1);
+        EtatCommandeImpl etatimpl= new EtatCommandeImpl();
+            EtatCommande etat=etatimpl.get(1);
+        com.TransferPanierToCommande(b, magasin, creneau, client, etat,rightDate );
     }
     
 }
