@@ -112,7 +112,7 @@ function l_creneaux ()
                              var creneau = listeCreneaux[i].firstChild.nodeValue;
                              var creneauCode = listeCreneauxCode[i].firstChild.nodeValue;
                              var niveauAff = listeNiveauAfflux[i].firstChild.nodeValue;
-                             elt.insertAdjacentHTML("beforeend", "<input type = \"radio\" class = \"btn_creneau\" name = \"btn_creneau\" id = " + creneauCode + " value = " + creneauCode + "  >"+creneau+"  -  "+niveauAff+ "</br></input>");
+                             elt.insertAdjacentHTML("beforeend", "<input type = \"radio\" class = \"btn_creneau\" name = \"btn_creneau\" id = " + creneauCode + " value = " + creneauCode + "  >"+creneauCode+"   -  "+niveauAff+ "</br></input>");
                           }
 			}
 		};
@@ -123,36 +123,23 @@ function l_creneaux ()
 
 function validerCommande () {
     //Afficher Pop-Up
-    /**var creneauSelected = 0;
-        //Je récupère le bouton (le créneau) sélectionné
-        var selectedCreneau = document.querySelectorAll(".creneaux > input.btn_creneau");
-        for(var i = 0; i < selectedCreneau.length; i++){
-            if (selectedCreneau[i].checked) {
-                creneauSelected = selectedCreneau[i].value;
-                break;
-            };
-        }
         var selection = document.getElementById("lmagasins");
         //Je récupère l'option (le magasin) sélectionnée
-        var magasin = selection.value;
-        //Je récupère le bouton (le créneau) sélectionné
-        var selectedDate = document.querySelectorAll(".calendrier_class > input.btn_calendar");
-        out.println("Retrait commande - Le " + selectedDate + " à " + creneauSelected + "au magasin : "+magasin);*/
+        var magasin = selection.options[selection.selectedIndex].text;
     var confirmation;
-    if (confirm("Valider votre commande ?")) {
-        confirmation = "Oui, je valide";
+    if (confirm("Voulez-vous valider la commande ? (Lieu : "+magasin+")")) {
+        confirmation = "Je valide ma commande";
     } else {
         confirmation = "Revenir au choix de retrait";
     }
     
     //Si pop-up validée
-    if (confirmation === "Oui, je valide") {
+    if (confirmation === "Je valide ma commande") {
        confirmerValidation(); 
     }
 }
 
 function confirmerValidation () {
-    
     // Objet XMLHttpRequest.
 	var xhr = new XMLHttpRequest();
         var creneauSelected = 0;
@@ -168,10 +155,17 @@ function confirmerValidation () {
         //Je récupère l'option (le magasin) sélectionnée
         var codeMagasin = selection.options[selection.selectedIndex].value;
         //Je récupère le bouton (le créneau) sélectionné
+        var dateSelected = 0;
         var selectedDate = document.querySelectorAll(".calendrier_class > input.btn_calendar");
+        for(var i = 0; i < selectedDate.length; i++){
+            if (selectedDate[i].checked) {
+                dateSelected = selectedDate[i].value;
+                break;
+            }
+        }
         
 	// Requête au serveur avec les paramètres codeC, codeM, date.
-	xhr.open("GET","ServletAfficherCreneaux?codeCreneau="+creneauSelected+"&codeMagasin="+codeMagasin+"&date="+selectedDate);
+	xhr.open("GET","ServletAfficherCreneaux?codeCreneau="+creneauSelected+"&codeMagasin="+codeMagasin+"&date="+dateSelected);
 
 	// On précise ce que l'on va faire quand on aura reçu la réponse du serveur.
 	xhr.onload = function()
@@ -189,7 +183,7 @@ function confirmerValidation () {
                              var creneauCode = listeCreneauxCode[i].firstChild.nodeValue;
                              elt.insertAdjacentHTML("beforeend", "<button type = \"button\" class = \"btn_creneau\" value = " + creneauCode + " >"+creneau+"</button>");
                           }
-                        window.location.href = 'Home.jsp';
+                        //window.location.href = 'Home.jsp';
 			}
 		};
 	

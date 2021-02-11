@@ -24,7 +24,7 @@ public class TestAffluenceDaoImpl {
     @Ignore
     public void testMethod (){
         AffluenceDaoImpl affluence = new AffluenceDaoImpl(); 
-        String response = affluence.incrementerQteCommande(2, 1, "Mardi 14 Décembre 2020");
+        String response = affluence.incrementerQteCommande(2, 1, "Mardi 14 Décembre 2021");
         System.out.println(response);
     }
     

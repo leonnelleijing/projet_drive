@@ -33,14 +33,18 @@ public class AffluenceDaoImpl extends BaseDaoImpl<Affluence> implements Affluenc
             Transaction t = session.beginTransaction(); //Ouverture d'une session
             
             //Requête préparée HQL allant chercher les mots en BD
-            Query query = session.createQuery("SELECT d.codeDate FROM Date_Affluence as d WHERE d.date=:date");
+            Query query = session.createQuery("FROM Date_Affluence as d WHERE d.date=:date");
             
             query.setParameter("date", date);
-            Integer rsDate = (Integer)query.uniqueResult();
+            //Je vérifie si la ligne existe
+            Boolean exister = query.list().isEmpty();
+            //System.out.print(listeNiveauAfflux.get(0));
             String response = "";
             
-            if (rsDate == null){
+            //Si la ligne n'existe pas, ma liste est vide
+            if (!exister){
                 
+                System.out.println("Dans ma paranoïa");
                 //J'ajoute d'abord la date dans la table Date_Affluence qui sera utilisé comme clé pour le tuple de la table Affluence
                 Date_Affluence dateKey = new Date_Affluence(date);
                 //Je dois commit pour que je puisse récupérer le code de la date (id)
@@ -48,7 +52,7 @@ public class AffluenceDaoImpl extends BaseDaoImpl<Affluence> implements Affluenc
                 t.commit();
                 
                 //Le commit a fermé la session. Je dois donc en rouvrir une
-                Session session2  = HibernateUtil.getSessionFactory().getCurrentSession();
+                //Session session2  = HibernateUtil.getSessionFactory().getCurrentSession();
             
                     /*------ Ouverture d'une transaction ------ */
                     Transaction t2 = session.beginTransaction(); 
@@ -62,23 +66,27 @@ public class AffluenceDaoImpl extends BaseDaoImpl<Affluence> implements Affluenc
                 // J'ajoute aussi le code récupéré de la ligne que je viens de créer
                 Date_Affluence d = dateAfflu.get(dateKey.getCodeDate());
 
-                Affluence affluence = new Affluence (1, m , c , d);
+                Affluence affluence = new Affluence (1, m , c , dateAfflu.get(dateKey.getCodeDate()));
                 
-                session2.save(affluence);
+                session.save(affluence);
                 t2.commit();
 
                 response = "Votre commande a bien été enregistrée !";
                 return response;
                 
             } else {
+                //Je récupère la ligne
+                List<Date_Affluence> listeNiveauAfflux = (List<Date_Affluence>)query.list();
                 //Ensuite, je vais chercher la quantité de commande à la date et créneau choisi (si une date existe, ça veut dire qu'un créneau et magasin y est associé
-                Query queryQteCom = session.createQuery("SELECT aff.qteCommande FROM Affluence as aff WHERE aff.creneau.code=:codeC AND aff.magasin.code=:codeM AND aff.date_affluence.codeDate=:codeD");
+                Query queryQteCom = session.createQuery("FROM Affluence as aff WHERE aff.creneau.code=:codeC AND aff.magasin.code=:codeM AND aff.date_affluence.codeDate=:codeD");
                 
                 queryQteCom.setParameter("codeC", codeCreneau);
                 queryQteCom.setParameter("codeM", codeMag);
-                queryQteCom.setParameter("codeD", rsDate);
+                //Si la liste contient un résultat, je récupère l'unique résutlat à la place 0
+                queryQteCom.setParameter("codeD", listeNiveauAfflux.get(0).getCodeDate());
                 
-                Integer qteCom = (Integer)query.uniqueResult();
+                List<Affluence> listeAffluQteCom = (List<Affluence>)query.list();
+                int qteCom = listeAffluQteCom.get(0).getQteCommande();
                 
                 
                 if (qteCom == 10){ //Un créneau ne peut accueillir que 10 commandes en même temps
@@ -87,13 +95,14 @@ public class AffluenceDaoImpl extends BaseDaoImpl<Affluence> implements Affluenc
                     return response;
                 } else {
                     //Sinon, j'incrémente de 1 la quantité de commandes à ce créneau
-                    Query addQteCom = session.createQuery("SELECT aff.id FROM Affluence aff WHERE aff.creneau.code=:codeC AND aff.magasin.code=:codeM AND aff.date_affluence.codeDate=:codeD" );
+                    Query addQteCom = session.createQuery("FROM Affluence aff WHERE aff.creneau.code=:codeC AND aff.magasin.code=:codeM AND aff.date_affluence.codeDate=:codeD" );
                       //Affecter le paramètre voulu dans la requête
                       addQteCom.setParameter("codeC", codeCreneau);
                       addQteCom.setParameter("codeM", codeMag);
-                      addQteCom.setParameter("codeD", rsDate);
+                      addQteCom.setParameter("codeD", listeNiveauAfflux.get(0).getCodeDate());
 
-                    int resultAffId = (Integer)query.uniqueResult();
+                    //List<Affluence> listeAffluence = (List<Affluence>)query.list();
+                    //Affluence objetRecupere = listeAffluence.get(0).getClass();
                   
                     
                     response = "Votre commande a bien été enregistrée !";
