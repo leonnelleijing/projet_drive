@@ -1,4 +1,7 @@
 
+<%@page import="java.util.Map"%>
+<%@page import="java.util.Map.Entry"%>
+<%@page import="com.samrtsolutions.drive.model.ClProdBasket"%>
 <%-- 
     Document   : Accueil
     Created on : 5 févr. 2021, 15:43:46
@@ -94,7 +97,7 @@
                                                     out.print("<div class='col-md-3'>");
                                                         out.print("<div class='InfoProduit' id='InfoProduit'><p>" + products.getKey().getProductName() + "</p></div>");
                                                         out.print("<div class='InfoProduit2' id='InfoProduit2'><p>" + products.getKey().getProductBrandProprietary() + "</p></div>");
-                                                        for (Label lab :  products.getKey().getLabels()) {
+                                                        for (Label lab : products.getKey().getLabels()) {
                                                             out.print("<div class='icon'>" + "<img src='" + lab.getImageLabel() + "' style='float:left; width: 15px; height: 15px;'></div>");
                                                         }
                                                     out.print("</div>");
