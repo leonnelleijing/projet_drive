@@ -12,10 +12,11 @@
         <title>${param.title}</title> 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+
     </head>
     
     <style>
-        .row>div {
+       .row>div {
             height: auto;
             /*border: 1px #000 solid;*/
         }
@@ -41,6 +42,7 @@
         .part1{
             height: 300px;
             width: 100%;            
+
             /*border: 1px #000 solid;*/
             background-image: url('Img\\accueil.jfif');
             background-repeat: no-repeat;
@@ -51,12 +53,7 @@
          .part1Bis{
             height: 100px;
             width: 100%;            
-            /*border: 1px #000 solid;*/
-            background-image: url('Img\\accueil.jfif');
-            background-repeat: no-repeat;
-            background-size:100% 100%;
-            float: left;
-        }
+
         .jumbotron h1{
             /*text-align: center;*/
             font-size: 40px;
@@ -96,9 +93,9 @@
             background-color: #fff;
             box-shadow:0px 15px 10px -15px #000;
             width: 150px;
+
             height: 80%;
-            /*height: 300px;*/
-            
+
             margin: 1% 0% 1% 2%;
             float: left;
             
@@ -286,8 +283,9 @@
             width:20px;
             height:20px;
         }
-        
-       
-        
+
+        ul{
+          list-style-type: none;
+        }
     </style>
     <body>

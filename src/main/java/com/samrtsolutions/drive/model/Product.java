@@ -18,6 +18,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -34,7 +35,8 @@ public class Product implements Serializable{
 
     private int productCode;
     private String productName;
-    private String productKiloPrice;
+    private String productKiloPriceUnit;
+    private double productKiloPrice;
     private double productUnitPrice;
     private double productWeight;
     private String productDescription;
@@ -48,7 +50,8 @@ public class Product implements Serializable{
     private String nuttritionScore;
     private Set<Label> labels = new HashSet<>();
     private Family family;
-    private Set<Basket> basket;
+    private Set<LigneCommande> commandes= new HashSet<>();
+    private Set<Basket> basket= new HashSet<>(0);
     public Product() {
     }
     
@@ -62,7 +65,7 @@ public class Product implements Serializable{
         this.productName = productName;
     }
 
-    public Product(String productName, String productKiloPrice, double productUnitPrice, double productWeight, String productDescription, String productFormat, String productEAN, String productComposition, String productOrigine, String productBrandProprietary, String productSecondaryBrand, String image, String nuttritionScore) {
+    public Product(String productName, Double productKiloPrice, double productUnitPrice, double productWeight, String productDescription, String productFormat, String productEAN, String productComposition, String productOrigine, String productBrandProprietary, String productSecondaryBrand, String image, String nuttritionScore) {
         this.productName = productName;
         this.productKiloPrice = productKiloPrice;
         this.productUnitPrice = productUnitPrice;
@@ -109,7 +112,16 @@ public class Product implements Serializable{
     public Family getFamily() {
         return family;
     }
+    
+    @OneToMany(mappedBy="product", cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+    public Set<LigneCommande> getCommandes() {
+        return commandes;
+    }
 
+    public void setCommandes(Set<LigneCommande> commandes) {
+        this.commandes = commandes;
+    }
+    
     public void setFamily(Family family) {
         this.family = family;
     }
@@ -142,12 +154,20 @@ public class Product implements Serializable{
         this.productName = productName;
     }
 
+    public String getProductKiloPriceUnit() {
+        return productKiloPriceUnit;
+    }
 
-    public String getProductKiloPrice() {
+    public void setProductKiloPriceUnit(String productKiloPriceUnit) {
+        this.productKiloPriceUnit = productKiloPriceUnit;
+    }
+
+
+    public Double getProductKiloPrice() {
         return productKiloPrice;
     }
 
-    public void setProductKiloPrice(String productKiloPrice) {
+    public void setProductKiloPrice(Double productKiloPrice) {
         this.productKiloPrice = productKiloPrice;
     }
 

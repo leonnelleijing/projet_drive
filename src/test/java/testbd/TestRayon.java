@@ -6,6 +6,7 @@
 package testbd;
 
 import com.samrtsolutions.drive.model.Family;
+import com.samrtsolutions.drive.model.Product;
 import com.samrtsolutions.drive.model.Rayon;
 import com.samrtsolutions.drive.repository.RayonDaoImpl;
 import java.util.ArrayList;
@@ -51,4 +52,12 @@ public class TestRayon {
         }
     }
     
+    @Test
+    public void testGetAllProductByRayon(){
+        Rayon r = rayon.get(1);
+        Set<Product> products =rayon.getChildProductsByFamily(r);
+        for(Product p: products){
+            System.out.println(p.getProductName());
+        }
+    }
 }

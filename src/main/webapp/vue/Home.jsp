@@ -22,13 +22,12 @@
                         <%@ include file="/vue/MenuHorisontal.jsp"%>
                         <div class="jumbotron">
                             <h1>Bienvenue!</h1>
-                            <p class='txtHome'>Nous vous souhaitons de passer un agréable moment sur notre magasin drive.</p>
+                            <p classe="txtHome">Nous Nous espérons que vous passerez un bon moment dans notre magasin drive</p>
                             <p><a class="btn btn-primary btn-lg" href="#" role="button">Liste Course</a></p>
                         </div>
                         
                     </div> 
                     <div class="part3">
-                        
                         <div class="title">
                             <h2>Liste Produits en promotions</h2>
                         </div>
@@ -48,6 +47,7 @@
                                             out.print("<div class='poids'><p>"+p.getProductWeight()+" "+ p.getProductFormat()+"</p></div>");
                                             out.print("<div class='prixPoid'><p>"+p.getProductKiloPrice()+"</p></div></div>");
                                             //out.print("<div class='prixPoid'><p>"+p.getProductKiloPrice()+"</p></div></div>");
+                                            out.print("<div class='prixPoid'><p>"+p.getProductKiloPrice()+"/"+p.getProductKiloPriceUnit()+"</p></div></div>");
                                             out.print("<div class='niveau3'><img class='imagePro' src="+ p.getImage()+"></div>");
                                         out.print("</div>");
                                     out.print(" <div class='infos'>");
