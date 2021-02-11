@@ -22,13 +22,12 @@
                         <%@ include file="/vue/MenuHorisontal.jsp"%>
                         <div class="jumbotron">
                             <h1>Bienvenue!</h1>
-                            <p>Nous sommes l’entreprise Smart Solutions, créée le 22 Octobre 2001.Nous sommes une entreprise toulousaine composée de 100 personnes.</p>
+                            <p classe="txtHome">Nous Nous espérons que vous passerez un bon moment dans notre magasin drive</p>
                             <p><a class="btn btn-primary btn-lg" href="#" role="button">Liste Course</a></p>
                         </div>
                         
                     </div> 
                     <div class="part3">
-                        
                         <div class="title">
                             <h2>Liste Produits en promotions</h2>
                         </div>
@@ -41,8 +40,9 @@
                                             out.print( "<div class='niveau1'><span>En Promotion</span></div>");
                                             out.print("<div class='niveau2'>");
                                             out.print("<div class='namePro'><a href='/product?id="+p.getProductCode()+"'>"+p.getProductName()+"</a></div>");
+                                            out.print("<div><p class='marque'>"+p.getProductBrandProprietary()+"</p></div>");
                                             out.print("<div class='poids'><p>"+p.getProductWeight()+" "+ p.getProductFormat()+"</p></div>");
-                                            out.print("<div class='prixPoid'><p>"+p.getProductKiloPrice()+"</p></div></div>");
+                                            out.print("<div class='prixPoid'><p>"+p.getProductKiloPrice()+"/"+p.getProductKiloPriceUnit()+"</p></div></div>");
                                             out.print("<div class='niveau3'><img class='imagePro' src="+ p.getImage()+"></div>");
                                         out.print("</div>");
                                     out.print(" <div class='infos'>");

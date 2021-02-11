@@ -27,9 +27,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
         Session s  =factory.getCurrentSession();
         Transaction t=s.beginTransaction();
         s.saveOrUpdate(obj);
-        t.commit();
-        
-         
+        t.commit();  
     }
 
     public void delete(int id) {

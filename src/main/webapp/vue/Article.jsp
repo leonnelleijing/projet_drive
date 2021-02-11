@@ -4,12 +4,17 @@
     Author     : leonl
 --%>
 
+<%@page import="com.samrtsolutions.drive.model.Product"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:includepage="/vue/Header.jsp">
     <jsp:param name="title" value="Home"/>
 </jsp:include>
 
+<%
+    Product p= (Product)request.getAttribute("product");
+   out.print(p.getProductName());
 
+%>
     <nav class="breadcrumb-section">
         <div class="container wrapper">
             <div class="row">

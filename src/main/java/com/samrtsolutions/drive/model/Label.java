@@ -5,6 +5,7 @@
  */
 package com.samrtsolutions.drive.model;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Entity;
@@ -23,7 +24,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="drive_label")
-public class Label {
+public class Label implements Serializable {
     private int codeLabel;
     private String nameLable; 
     private String imageLabel;

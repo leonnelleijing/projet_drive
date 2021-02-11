@@ -5,6 +5,7 @@
  */
 package com.samrtsolutions.drive.controler;
 
+import com.samrtsolutions.drive.model.Product;
 import com.samrtsolutions.drive.repository.ProductDaoImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -32,7 +33,7 @@ public class product extends HttpServlet {
            int idProduct= Integer.valueOf(request.getParameter("id"));
            ProductDaoImpl p= new ProductDaoImpl();
            request.setAttribute("product", p.get(idProduct));
-           request.getRequestDispatcher("product").forward(request, response) ;
+           request.getRequestDispatcher("article").forward(request, response) ;
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

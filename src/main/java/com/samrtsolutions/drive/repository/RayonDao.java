@@ -5,8 +5,10 @@
  */
 package com.samrtsolutions.drive.repository;
 
+import com.samrtsolutions.drive.model.Product;
 import com.samrtsolutions.drive.model.Rayon;
 import java.util.ArrayList;
+import java.util.Set;
 
 
 /**
@@ -15,4 +17,5 @@ import java.util.ArrayList;
  */
 public interface RayonDao extends BaseDao<Rayon>{
    public ArrayList<Rayon> getAllRayons(); 
+    public Set<Product> getChildProductsByFamily(Rayon r);
 }

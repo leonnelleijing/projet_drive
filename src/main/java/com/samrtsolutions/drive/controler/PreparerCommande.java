@@ -5,26 +5,18 @@
  */
 package com.samrtsolutions.drive.controler;
 
-import com.samrtsolutions.drive.model.Family;
-import com.samrtsolutions.drive.model.Product;
-import com.samrtsolutions.drive.model.Rayon;
-import com.samrtsolutions.drive.repository.FamilyDaoImpl;
-import com.samrtsolutions.drive.repository.ProductDaoImpl;
-import com.samrtsolutions.drive.repository.RayonDaoImpl;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author leonl
  */
-public class Accueil extends HttpServlet {
+public class PreparerCommande extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,33 +28,6 @@ public class Accueil extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
-        ProductDaoImpl product=new ProductDaoImpl();
-        List<Product> products= product.getAllProduct();
-        HttpSession session = request.getSession();
-        //voir si la ssession existe des rayons et des produits
-        System.out.print(session.getAttribute("nameproducts"));
-        if(session.getAttribute("nameproducts")==null||session.getAttribute("nameproducts").equals("")){
-            session.setAttribute("products", products);
-        }
-
-        String idfamily= request.getParameter("Idfamily");
-        String idRayon= request.getParameter("idRayon");
-
-        if(idfamily!=null&&idfamily!=""){
-            FamilyDaoImpl familyImpl= new FamilyDaoImpl();
-            Family f= familyImpl.get(Integer.valueOf(idfamily));
-            request.setAttribute("familyName",f.getNomFamily());
-            request.setAttribute("productFamilies",familyImpl.getChildProductsByFamily(f));
-            request.getRequestDispatcher("family").forward(request, response) ;
-        }else if(idRayon!=null&&idRayon!=""){
-            RayonDaoImpl rayonImp= new RayonDaoImpl();
-            Rayon r=rayonImp.get(Integer.valueOf(idRayon));
-            request.setAttribute("familyName",r.getLibelleRayon());
-            request.setAttribute("productFamilies", rayonImp.getChildProductsByFamily(r));
-            request.getRequestDispatcher("family").forward(request, response) ;
-        }else{
-             request.getRequestDispatcher("home").forward(request, response) ;
-        }
         
     }
 
