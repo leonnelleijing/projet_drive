@@ -116,7 +116,7 @@
         out.print("<p class=''> Prix: "+p.getProductUnitPrice()+" €</p>");
         out.print("</div>");
         out.print("<div class='row'>");
-        out.print("<p class=''> ( "+p.getProductKiloPrice()+") </p>");
+       // out.print("<p class=''> ( "+p.getProductKiloPrice()+") </p>");
         out.print("</div>");
 	out.print("</div>");
 	out.print("</div>");

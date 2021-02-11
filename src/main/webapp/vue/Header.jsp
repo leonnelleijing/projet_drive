@@ -14,9 +14,8 @@
         <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
 
     </head>
-    
-    <style>
-       .row>div {
+ <style>
+        .row>div {
             height: auto;
             /*border: 1px #000 solid;*/
         }
@@ -42,7 +41,6 @@
         .part1{
             height: 300px;
             width: 100%;            
-
             /*border: 1px #000 solid;*/
             background-image: url('Img\\accueil.jfif');
             background-repeat: no-repeat;
@@ -53,7 +51,12 @@
          .part1Bis{
             height: 100px;
             width: 100%;            
-
+            /*border: 1px #000 solid;*/
+            background-image: url('Img\\accueil.jfif');
+            background-repeat: no-repeat;
+            background-size:100% 100%;
+            float: left;
+        }
         .jumbotron h1{
             /*text-align: center;*/
             font-size: 40px;
@@ -86,16 +89,15 @@
         .title{
             margin-top: 30px;
             text-align: center;
-
         }
         
         .produit{
             background-color: #fff;
             box-shadow:0px 15px 10px -15px #000;
             width: 150px;
-
             height: 80%;
-
+            /*height: 300px;*/
+            
             margin: 1% 0% 1% 2%;
             float: left;
             
@@ -171,7 +173,6 @@
             color: black;
             font-weight: bold;
             margin: 13% 9% 9% 9%;
-
         }
         
         /*
@@ -254,7 +255,6 @@
             height:35px;
             line-height:30px;*/
             margin-left: 15px;
-
         }
         .tips{
             position:absolute;
@@ -284,8 +284,5 @@
             height:20px;
         }
 
-        ul{
-          list-style-type: none;
-        }
     </style>
     <body>

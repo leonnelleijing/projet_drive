@@ -39,8 +39,13 @@ public class Accueil extends HttpServlet {
         ProductDaoImpl product=new ProductDaoImpl();
         List<Product> products= product.getAllProduct();
         HttpSession session = request.getSession();
+        if(session.getAttribute("rayons")==null){
+             RayonDaoImpl rayon= new RayonDaoImpl();
+             ArrayList<Rayon> rayons= rayon.getAllRayons();
+             session.setAttribute("rayons", rayons);
+        }
         //voir si la ssession existe des rayons et des produits
-        System.out.print(session.getAttribute("nameproducts"));
+        //System.out.print(session.getAttribute("nameproducts"));
         if(session.getAttribute("nameproducts")==null||session.getAttribute("nameproducts").equals("")){
             session.setAttribute("products", products);
         }

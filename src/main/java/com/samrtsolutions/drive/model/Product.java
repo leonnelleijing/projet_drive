@@ -35,7 +35,6 @@ public class Product implements Serializable{
 
     private int productCode;
     private String productName;
-    private String productKiloPriceUnit;
     private double productKiloPrice;
     private double productUnitPrice;
     private double productWeight;
@@ -52,6 +51,7 @@ public class Product implements Serializable{
     private Family family;
     private Set<LigneCommande> commandes= new HashSet<>();
     private Set<Basket> basket= new HashSet<>(0);
+    private String productKiloPriceUnit;
     public Product() {
     }
     
@@ -130,7 +130,16 @@ public class Product implements Serializable{
     public Set<Basket> getBasket() {
         return basket;
     }
+
+    public String getProductKiloPriceUnit() {
+        return productKiloPriceUnit;
+    }
+
+    public void setProductKiloPriceUnit(String productKiloPriceUnit) {
+        this.productKiloPriceUnit = productKiloPriceUnit;
+    }
    
+    
     public void setBasket(Set<Basket> basket) {
         this.basket = basket;
     }
@@ -154,22 +163,14 @@ public class Product implements Serializable{
         this.productName = productName;
     }
 
-    public String getProductKiloPriceUnit() {
-        return productKiloPriceUnit;
-    }
-
-    public void setProductKiloPriceUnit(String productKiloPriceUnit) {
-        this.productKiloPriceUnit = productKiloPriceUnit;
-    }
-
-
-    public Double getProductKiloPrice() {
+    public double getProductKiloPrice() {
         return productKiloPrice;
     }
 
-    public void setProductKiloPrice(Double productKiloPrice) {
+    public void setProductKiloPrice(double productKiloPrice) {
         this.productKiloPrice = productKiloPrice;
     }
+
 
     public double getProductUnitPrice() {
         return productUnitPrice;
