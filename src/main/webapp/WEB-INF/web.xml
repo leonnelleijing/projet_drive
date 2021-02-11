@@ -58,6 +58,40 @@
     <servlet>
         <servlet-name>ServletIncrementerQteCommandeCreneau</servlet-name>
         <servlet-class>com.samrtsolutions.drive.controler.ServletIncrementerQteCommandeCreneau</servlet-class>
+        <servlet-name>Retrait</servlet-name>
+        <jsp-file>/vue/retraitCommande.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>retraitCommande</servlet-name>
+        <servlet-class>com.samrtsolutions.drive.controler.retraitCommande</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>liste</servlet-name>
+        <servlet-class>com.samrtsolutions.drive.controler.liste</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>lstCourse</servlet-name>
+        <jsp-file>/vue/ListCourse.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>Liste</servlet-name>
+        <servlet-class>Liste</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletListAddWord</servlet-name>
+        <servlet-class>com.samrtsolutions.drive.controler.ServletListAddWord</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletListAddList</servlet-name>
+        <servlet-class>com.samrtsolutions.drive.controler.ServletListAddList</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AfficherList</servlet-name>
+        <servlet-class>com.samrtsolutions.drive.controler.AfficherList</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>a</servlet-name>
+        <jsp-file>/vue/test.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>Home</servlet-name>
@@ -114,6 +148,40 @@
     <servlet-mapping>
         <servlet-name>ServletIncrementerQteCommandeCreneau</servlet-name>
         <url-pattern>/ServletIncrementerQteCommandeCreneau</url-pattern>
+        <servlet-name>Retrait</servlet-name>
+        <url-pattern>/retrait</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>retraitCommande</servlet-name>
+        <url-pattern>/retraitCommande</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>liste</servlet-name>
+        <url-pattern>/liste</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>lstCourse</servlet-name>
+        <url-pattern>/listeCourse</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Liste</servlet-name>
+        <url-pattern>/Liste</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletListAddWord</servlet-name>
+        <url-pattern>/ServletListAddWord</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletListAddList</servlet-name>
+        <url-pattern>/ServletListAddList</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AfficherList</servlet-name>
+        <url-pattern>/AfficherList</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>a</servlet-name>
+        <url-pattern>/a</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

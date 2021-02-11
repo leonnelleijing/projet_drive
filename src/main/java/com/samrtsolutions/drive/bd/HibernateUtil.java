@@ -30,6 +30,9 @@ public class HibernateUtil {
             configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Family.class);
             configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Rayon.class);
             configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Label.class);
+            configuration.addAnnotatedClass(com.samrtsolutions.drive.model.PostIt.class);
+            configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Liste.class);
+            
             configuration.addAnnotatedClass(com.samrtsolutions.drive.model.LigneCommande.class);
             configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Client.class);
              configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Commande.class);

@@ -1,109 +1,128 @@
 <%-- 
-    Document   : List
-    Created on : 7 févr. 2021, 11:42:16
-    Author     : jess
+    Document   : retraitCommande
+    Created on : 10 févr. 2021, 11:35:14
+    Author     : maxim
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<jsp:include page="/vue/Header.jsp">
-    <jsp:param name="title" value="List"/>
+<%@page import="com.samrtsolutions.drive.model.PostIt"%>
+<%@page import="com.samrtsolutions.drive.model.Liste"%>
+<%@page import="com.samrtsolutions.drive.repository.ListDaoImpl"%>
+<%@page import="com.samrtsolutions.drive.model.Label"%>
+<%@page import="com.samrtsolutions.drive.model.Product"%>
+<%@page import="java.util.List"%>
+
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<jsp:includepage="/vue/Header.jsp">
+    <jsp:param name="title" value="liste"/>
 </jsp:include>
 
+    
+<div class="container-fluid">
 
-<!DOCTYPE html>
-<html>
-   <head>
-        <meta charset="utf8">
-        <title> Listes de course </title>
-        <!-- JQuery -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <link rel="stylesheet" href="/../css/list.css" />
-        <script type="text/javascript" src="/../js/MyList.js"></script>
-        <script type="text/javascript" src="/../js/main.js"></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-            crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    </head>
-
-    <body>
-         
-         <div class="container">
-		
-        
-            <div class="row">
-		<button id="createList" class="btn btn-danger" > Nouvelle liste </button>
-                <input id="listName" type="text" value="Choisissez un titre"/>
-            </div>
-             
-            <div class="row">
-		<p> </p>
-            </div>
-
-            <div class="row">
-                            <div class="column">
-                                    <div class="card">
-                                        
-                                        <!-- Ajouter un post-it -->
-                                           <div class="card-title">
-                                                  <div class="row ">
-                                                   
-                                                      <div class="col-10">
-                                                          <div class='traitement'>
-                                                   <!--  <h3 class="card-title">  </h3> -->
-                                                    <h3 id="listName">Liste des courses</h3>
-                                                      </div>
-                                                      </div>
-                                                      
-                                                       <div class="col-2">  
-                                                        <button id="bin" class="  btn btn-danger"> <img src="images/icon/bin.png" height="15px" width="=15px"> </button>
-                                                    </div>
-                                                  </div>
-                                            </div>
-                                            <div class="card-header">
-                                                    Je veux: <input id="itemToAdd" type="text" />
-                                                    <button id="addBtn" class="btn btn-warning"> Ajouter </button>
-                                            </div>
-
-
-                                            <div class="card-body">
-                                                    <h4>J'ai besoin de: </h4>
-                                                    <ul id="postItShoppingList" class="list-group list-group-flush">
-                                                            <!--Items will be added here --> Liste Post-it
-                                                    </ul>
-                                                    <ul id="productShoppingList" class="list-group list-group-flush">
-                                                            <!--Items will be added here --> Liste Produits
-                                                    </ul>
-                                            </div>
-                                        <!--
-                                            <div class="card-body">
-                                                    <h4>Articles supprimés:</h4>
-                                                    <ul id="removedList" class="list-group list-group-flush">
-                                                            <!--Removed items will be added here 
-                                                    </ul>
-                                            </div>
-                                            -->
-                                            <div class="card-footer">
-                                                <div class="row justify-content-center">
-                                                   
-                                                        <button id="basket" class="btn btn-warning"> <img src="images/icon/shopping-basket.png" height="30px" width="=30px"> Acheter les produits ! </button>
-                                                   
-                                                </div>
-                                            </div>
-                                    </div>
+    <div class="row">
+        <%@ include file="/vue/Menu.jsp"%>
+          <div class="col-md-10">
+                <div class="row">
+                    <div class="part1Bis">
+                        <%@ include file="/vue/MenuHorisontal.jsp"%>
+                         <div class="jumbotron2">
+                            <div class="col-md-5" >
+                                <h1> Vos listes </h1>
                             </div>
-            </div>             
-             <br/>
-             
-             <script> 
-                .traitement h3{
-                         text-align: center;
-
-                     }
-            </script>
+                            <div class="col-md-5">
+                                <input id='newListName' type='text'place='Choisissez un nom de liste' />
+                                <button id='createBtn' class='btn btn-danger'> Nouvelle liste </button>
+                            
+                            </div>
+                          </div>
+                    </div> 
+                 </div>    
+                         
+                         
+  <%
+         //List <liste> listes= (List) session.getAttribute("listes");
+            //                   for(Liste l: listes){
+         
+     
+        ListDaoImpl listList = new ListDaoImpl();
+        List<Liste> listes =  listList.getAllList();
         
-  <%@ include file="/vue/Footer.jsp"%>  
-  
- 
+        if(listes != null){
+            for(Liste l : listes){
+                //out.print("<div>Nom"+l.getListName()+"</div>") ;
+                
+                out.print("<div class='row' >"); 
+            
+                out.print("<div class='col-md-4' id='test'>");
 
+                out.print("<div class='panel panel-default'>"); 
+
+                out.print("<div class='panel-heading'>");  
+                out.print(" Je veux: <input id='itemToAdd' type='text'/>"); 
+                out.print("<button class='btn btn-danger addBtn' name='"+l.getListCode()+"'> Ajouter </button>");  
+                out.print("</div>");
+
+                out.print("<div class='panel-body'>");  
+                out.print("<h3 class='card-title'>"+l.getListName()+"</h3>");  
+                //out.print("<h3 class='card-title'>Liste des courses n°"+l.getTitleList())+"</h3>");  
+                out.print("</div>"); 
+
+                out.print("<div class='panel-body'>");  
+                out.print("<h4>J'ai besoin de: </h4>");  
+                out.print("<ul id='shoppingList' class='list-group list-group-flush'>");
+                
+                out.print("<div class='row' id='listPostIt"+l.getListCode()+"'>");
+                //out.print("<p>ok</p>");
+                out.print("</div>"); 
+                out.println("<div class='row' id='listProduits'>");
+                
+                if(l.getPostItList() != null){
+                    //out.print("HELLOOOOOOOO");
+                    for(PostIt p : l.getPostItList()){
+                    out.print("<div class='list-group-item'>"+p.getPostItDescription()+"</div>");
+                    }
+                }
+                
+                
+                out.println("</div>");
+                
+
+                out.print("</ul>");  
+                out.print("</div>");  
+
+                out.print("<div class='panel-body'>");  
+                out.print("<h4>Articles supprimés</h4>");  
+                out.print("<ul id='removedList' class='list-group list-group-flush'>");  
+                out.print("</ul>");  
+                out.print("</div>");
+
+                out.print("</div>");  
+
+                out.print("</div> "); 
+
+                out.print("</div> "); 
+                //out.print("}"); 	 
+                
+                
+                
+                
+            }  		
+        }
+
+            
+             
+                                 
+   %>               
+                        
+                     
+                 
+                        
+   <script type="text/javascript"src='../js/list.js'> </script>
+
+ 
+                        
+     </div>
+    </div>
+  <%@ include file="/vue/Footer.jsp"%>

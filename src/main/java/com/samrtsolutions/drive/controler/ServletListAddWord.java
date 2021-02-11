@@ -1,38 +1,63 @@
 
-package com.samrtsolutions.drive.action.list;
+package com.samrtsolutions.drive.controler;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.samrtsolutions.drive.repository.ListDaoImpl;
 
 /**
  *
  * @author maxim
  */
-public class ServletAddWord extends HttpServlet {
+public class ServletListAddWord extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
              /*----- Type de la réponse -----*/
+ 
+
+        /*----- Type de la réponse -----*/
             response.setContentType("application/xml;charset=UTF-8");
             response.setCharacterEncoding("UTF-8");
 
 	try (PrintWriter out = response.getWriter()){
+            
+            
+            
+             String mot = request.getParameter("itemToAdd");
+             System.out.print(mot);
+            ListDaoImpl l = new ListDaoImpl();
+            
+            int idList = Integer.parseInt(request.getParameter("idList"));
+            String rst = l.addWord(mot,l.get(idList));
             /*----- Ecriture de la page XML -----*/
             out.println("<?xml version=\"1.0\"?>");
-            out.println("<added-word>");
-
+            out.println("<added-List>");
+            
             /*----- Récupération des paramètres -----*/
-            String mot = request.getParameter("itemToAdd");
-
-            //Bd.addWordList(mot);
-            out.println("<word><![CDATA[ Ajouté!]]></word>");
-            out.println("</added-word>");
+            
+            //var word = this.previousSibling.value;
+            //var liste = this.getAttribute("name");
+            
+            
+            
+           
+           // int liste = request.getParameter(mot)this.getAttribute("name");
+           
+           
+           
+            out.println("<word><![CDATA[ "+mot+"]]></word>");
+            out.println("</added-List>");
+      
+  
 	}
-        }
+    }
+    
+    
+    
     
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -49,7 +49,7 @@
               <li class="navLi"><a href="#">Se connecter</a></li>                                     
             </ul>
                 <ul class="nav navbar-nav navbar-right">   
-              <li class="navLi"><a href="#">Mes listes de course</a></li>                                     
+              <li class="navLi"><a href="http://localhost:8080/liste">Mes listes de course</a></li>                                     
             </ul>
           </div><!-- /.navbar-collapse -->
         <!-- /.container-fluid -->

@@ -22,7 +22,7 @@
                         <div class="jumbotron">
                             <h1>Bienvenue!</h1>
                             <p class='txtHome'>Nous vous souhaitons de passer un agréable moment sur notre magasin drive.</p>
-                            <p><a class="btn btn-primary btn-lg" href="#" role="button">Liste Course</a></p>
+                            <p><a class="btn btn-primary btn-lg" href="http://localhost:8080/liste" role="button">Liste Course</a></p>
                         </div>
                         
                     </div> 

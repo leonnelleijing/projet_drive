@@ -18,6 +18,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapKeyJoinColumn;
@@ -32,6 +33,8 @@ import javax.persistence.Table;
  */
 
 @Entity
+@SuppressWarnings("PersistenceUnitPresent")
+
 @Table(name="drive_product")
 public class Product implements Serializable{
     
@@ -56,6 +59,16 @@ public class Product implements Serializable{
     private Set<Basket> basket= new HashSet<>(0);
     private String productKiloPriceUnit;
     private Map<Basket, ClProdBasket> ProdBasket = new HashMap(0);
+
+    
+
+    
+    
+    
+    private Set<Liste> lstList =new HashSet<>();
+    
+    
+    
     public Product() {
     }
     
@@ -228,6 +241,18 @@ public class Product implements Serializable{
     public String getProductSecondaryBrand() {return productSecondaryBrand;}
 
     public void setProductSecondaryBrand(String productSecondaryBrand) {this.productSecondaryBrand = productSecondaryBrand;}
+    
+    @ManyToMany()
+    @JoinTable(name="drive_composer_liste",
+                   joinColumns = @JoinColumn (name="ProductCode"),
+            inverseJoinColumns = @JoinColumn (name="idList"))
+    public Set<Liste> getLstList() {
+        return lstList;
+    }
+
+    public void setLstList(Set<Liste> lstList) {
+        this.lstList = lstList;
+    }
     
     public String toString() {
         return "Product{" + "productCode=" + productCode + ", productName=" + productName + ", productDescription="+ productDescription+'}';

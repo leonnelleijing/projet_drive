@@ -38,14 +38,10 @@
           // out.print(" <div class='container'>");
           // out.print(<div class='d-flex pt-3' style='padding-top: 5rem'>);
            out.print("<div class='row'>");
-	out.print("<div class='col-md-5'>");
-	out.print("<h3>"+p.getProductName()+"</h3>");	
+	
+	out.print("<h3 class='titreDescription'>"+p.getProductName()+"</h3>");	
         out.print(" </div>");
-        out.print(" <div class='col-4'>");
-        out.print("<input type='text' id='desiredQuantity' value='TOTAL €'> </input>");
-        //out.print("<input type='text' id='desiredQuantity' value='"+ panier.sumBasket() +"'> </input>");
-       out.print(" <span class='glyphicon glyphicon-shopping-cart'>");
-        out.print("</div>");
+        
         
         out.print("</div>");
         out.print("<div class='row'>");
@@ -54,35 +50,35 @@
         out.print("<div class='row'>");	
         out.print("<img class='imgDescription' src="+ p.getImage()+" >");
         out.print("</div>");
+        
         out.print("<div class='row'>");
-        out.print("<div class=''><p>"+p.getProductWeight()+" "+ p.getProductFormat()+"</p></div>");
-        out.print("</div>");
-        out.print("<div class='row'>");
-       // if(p.getLabels()!=null){
-       //     out.print("<div class='my_label'>");
-        //       for(Label l: p.getLabels()){
-        //           out.print("<img src='"+l.getImageLabel()+"'>");
+       //if(p.getLabels()!=null){
+       //out.print("<div class='my_label'>");
+       // for(Label l: p.getLabels()){
+       // out.print("<img src='"+l.getImageLabel()+"'>");
+       // out.print("</div>");
+       // out.print("</div>");
         //       }
         out.print("</div>");
         out.print("</div>");
         out.print("<div class='col-md-8'>");
         out.print("<div class='row'>");
-        out.print("<p class=''> "+p.getProductBrandProprietary()+" </p>");
+        out.print("<p class='description2'> "+p.getProductBrandProprietary()+" ( "+p.getProductSecondaryBrand()+" ) </p>");
         out.print("</div>");
         out.print("<div class='row'>");
-        out.print("<p class=''> Made in: "+p.getProductOrigine()+" </p>");
+        out.print("<p class='descriptionOrigine'> Made in: "+p.getProductOrigine()+" </p>");
         out.print("</div>");
         out.print("<div class='row'>");
-        out.print("<p class=''> Description: "+p.getProductDescription()+" </p>");
+        out.print("<p class='description'> Description: "+p.getProductDescription()+" </p>");
         out.print("</div>");
         out.print("<div class='row'>");
-        out.print("<p class=''> Ingrédients: "+p.getProductComposition()+" </p>");
+        out.print("<p class='description'> Ingrédients: "+p.getProductComposition()+" </p>");
         out.print("</div>");
         out.print("<div class='row'>");
-        out.print("<p class=''> Nutriscore: "+p.getNuttritionScore()+" </p>");
+        out.print("<p class='description'> Nutriscore: "+p.getNuttritionScore()+" </p>");
         out.print("</div>");
         out.print("<div class='row'>");
-        out.print("<p class=''> Prix: "+p.getProductUnitPrice()+" €</p>");
+        out.print(" <p class='Price'> "+p.getProductUnitPrice()+" € </p> <p class='description'>"+p.getProductWeight()+" "+ p.getProductFormat()+" (" +p.getProductKiloPrice()+") </p>");
         out.print("</div>");
         out.print("<div class='row'>");
         out.print("<p class=''> "+p.getProductKiloPrice()+"€/"+p.getProductKiloPriceUnit()+"</p>");
