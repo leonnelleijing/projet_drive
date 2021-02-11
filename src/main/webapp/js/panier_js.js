@@ -10,12 +10,65 @@ function test()  {
     var xhr = new XMLHttpRequest();
     var id = document.getElementById("test").value;
     // Requête au serveur
-    xhr.open("GET", "servletBasket?idPanier=" + id + "&action=getBasket");
-    
-
-    console.log(xhr.responseXML);
-    
-    arbres = hxr.responseXML;
+    xhr.open("GET", "ServletBasket?idPanier=" + id);
+    alert(id);
+    // On précise ce que l'on va faire quand on aura reçu la réponse du serveur.
+    xhr.onload = function() {
+        
+        if (xhr.status === 200) {
+            
+            // get the code product
+            
+            
+            
+            
+            // afficher la photo de produits
+            var eltPhoto = document.getElementById("photoProduit");
+            //le flot de données est de flot XML
+            var flotImg = xhr.responseXML.getElementsByTagName("image");
+            for (i = 0; i < flotImg.length; i++) {
+                var image = document.createElement("img");
+                image.setAttribute("src", flotImg[i]);
+                eltPhoto.appendChild(image);
+            }
+            
+            // afficher le nom de produit
+            var eltName = document.getElementById("InfoProduit");
+            var flotName = xhr.responseXML.getElementsByTagName("nom");
+            for (i = 0; i < flotName.length; i++) {
+                var name = document.createElement("p");
+                name.appendChild(document.createTextNode(flotName[i].firstChild.nodeValue));
+                eltName.appendChild(name);
+            }
+            
+            // afficher la marque de produits
+            var eltBrand = document.getElementById("InfoProduit2");
+            var flotBrand = xhr.responseXML.getElementsByTagName("marque");
+            for (i = 0; i < flotBrand.length; i++) {
+                var brand = document.createElement("p");
+                brand.appendChild(document.createTextNode(flotBrand[i].firstChild.nodeValue));
+                eltBrand.appendChild(brand);
+            }
+            
+            // afficher le prix unitaire de produits
+            var eltPriceUni = document.getElementById("prixUniProduit");
+            var flotPriceUni = xhr.responseXML.getElementsByTagName("priceUnit");
+            for (i = 0; i < flotPriceUni.length; i++){
+                var priceUni = document.createElement("p");
+                priceUni.appendChild(document.createTextNode(flotPriceUni[i].firstChild.nodeValue));
+                eltPriceUni.appendChild(priceUni);
+            }
+            
+            // afficher le prix kilo de produits
+            var eltPriceKilo = document.getElementById("prixKiloProduit");
+            var flotPriceKilo = xhr.responseXML.getElementsByTagName("priceWeight");
+            for (i = 0; i < flotPriceKilo.length; i++){
+                var priceKilo = document.createElement("p");
+                priceKilo.appendChild(document.createTextNode(flotPriceKilo[i].firstChild.nodeValue));
+                eltPriceKilo.appendChild(priceKilo);
+            }
+        }
+    }
     
     xhr.send();
 };
@@ -66,33 +119,24 @@ $(function(){
 
 //$("input[type='number']").inputSpinner();
 
-
-$(function(){
-    
-    $(".btnMin").click(function(){	
-     var id = $(this).next().attr("id");
-     
-     document.getElementById(id).value -= 1;
-    });	
-});
-
-$(function(){
-    $(".btnMax").click(function(){
-        //var d = document.getElementById("inputPrix1").value;
-        //d = d + 1;
-        //document.getElementById("inputPrix1").setAttribute("value", d);
-        var id = $(this).prev().attr("id");
-        document.getElementById(id).value ++;
-    });
+// 数量框按钮控制自增减
+$(document.documentElement).on("click",".on-number",function () {
+        var $val=$(this).siblings("input[type='number']"),
+            val = parseInt($val.val(),10) + parseInt($(this).data("v"));
+        $val.val(isNaN(val) ? 0 : val);
 });
 
 
 /**
  * Lancement après le chargement du DOM.
  */
-//document.addEventListener("DOMContentLoaded", () =>  {
-    //document.getElementById("test").addEventListener("keyup",test);
-//})
+document.addEventListener("DOMContentLoaded", () =>  {
+    //document.getElementById("btnMin").addEventListener("click",clickMinus);
+    //document.getElementById("btnMax").addEventListener("click",clickAdd);
+    //document.getElementById("btnMax").addEventListener("click",id('+'));
+    //document.getElementById("btnMin").addEventListener("click",id('-'));
+    //document.getElementById("inputPrix").addEventListener("keyup",onInput);
+})
         
 $(function(){
 

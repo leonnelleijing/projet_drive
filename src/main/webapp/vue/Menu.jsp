@@ -24,14 +24,14 @@
         <%
             ArrayList<Rayon> rayons=(ArrayList) session.getAttribute("rayons");
             for(Rayon r: rayons){
-                out.print( "<li class='maintip' role='presentation'><a href='#'>"+r.getLibelleRayon()+"</a></li>");
+                out.print( "<li class='maintip' role='presentation'><a href='/accueil?idRayon="+r.getNumRayon()+"'>"+r.getLibelleRayon()+"</a></li>");
                 Set<Family> families= r.getFamilies();
                 if(families!=null){
                     out.print("<div class='tips'>");
                     out.print(" <ul class='list-group'>");
                     for(Family f : families){
                         if(f.getParentFamily()==null){
-                              out.print("<li class='list-group-item'><a href='?Idfamily="+f.getNumFamily()+"'>"+f.getNomFamily()+"</a></li>");
+                              out.print("<li class='list-group-item'><a href='/accueil?Idfamily="+f.getNumFamily()+"'>"+f.getNomFamily()+"</a></li>");
                         }
                     }
                     out.print("</ul> </div>");
