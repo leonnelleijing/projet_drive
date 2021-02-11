@@ -103,7 +103,7 @@
                     $(this).css({"z-index":"1"})
                 })
             })
-
+            
             $(".tips").each(function(){
                 $(this).mouseover(function(){
                 //$(this).prev(".maintip").css({"width":"200px","z-index":"9999","border-right":"none","background":"#fff"})
@@ -120,4 +120,5 @@
         $(".btn").window.location.href = "http://localhost:8080/vue/PagePanier.jsp";
     </script>
     <script src="/js/addPanier.js"></script>
+    <script src="/js/sort.js"></script>
 </html>

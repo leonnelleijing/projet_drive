@@ -6,6 +6,8 @@
 package com.samrtsolutions.drive.controler;
 
 import com.samrtsolutions.drive.model.Basket;
+import com.samrtsolutions.drive.model.ClProdBasket;
+import com.samrtsolutions.drive.model.CliProdBasketId;
 import com.samrtsolutions.drive.model.Label;
 import com.samrtsolutions.drive.model.Product;
 import com.samrtsolutions.drive.repository.BasketDaoImpl;
@@ -14,6 +16,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -59,8 +62,8 @@ public class ServletBasket extends HttpServlet {
 //                        try (PrintWriter out = response.getWriter()) {
 
                         Basket basket = panier.get(idPanier);               
-
-                        Set<Product> lstP = basket.getLstProduct();
+                        System.out.println(idPanier);
+                        Map<Product,ClProdBasket>lstP = basket.getProdBasket();
                         
                         try {
                             request.setAttribute("listeProd", lstP);
@@ -107,12 +110,15 @@ public class ServletBasket extends HttpServlet {
             
                     int idProduit = Integer.parseInt(idProduitString);
                     
-                    System.out.println("---------------"+idProduit);
+                    //System.out.println("---------------"+idProduit);
                    ProductDaoImpl p = new ProductDaoImpl();
                    BasketDaoImpl b = new BasketDaoImpl();
                    Product produit = p.get(idProduit);
-                   Basket bt = b.get(1);
-                   BasketDaoImpl.addProductBasket(produit, bt);
+                   ClProdBasket codes = new ClProdBasket(new CliProdBasketId(produit.getProductCode(),1),1);
+                   Basket ba= b.get(1);
+                   ba.getProdBasket().put(produit, codes);
+                   b.edit(ba);
+                   
                 break;
             }
             

@@ -1,4 +1,7 @@
 
+<%@page import="java.util.Map"%>
+<%@page import="java.util.Map.Entry"%>
+<%@page import="com.samrtsolutions.drive.model.ClProdBasket"%>
 <%-- 
     Document   : Accueil
     Created on : 5 févr. 2021, 15:43:46
@@ -155,30 +158,31 @@
 </html>
                             <div class="oneProduit">                               
 <%                              
-                                     Set<Product> lstPro = (Set<Product>) request.getAttribute("listeProd");
+                                     Map<Product,ClProdBasket> lstPro = (Map<Product,ClProdBasket>) request.getAttribute("listeProd");
+                            
                                      if(lstPro != null){
-                                         for (Product p : lstPro) {
+                                         for (Map.Entry<Product,ClProdBasket> products : lstPro.entrySet()) {
                                         out.print("<div class='produit'>");
                                             out.print("<div class='container-fluid'>");
                                                 out.print("<div class='row'>");
                                                     out.print("<div class='col-md-2'>");
-                                                        out.print("<div class='photoProduit' id='photoProduit'>" + "<img class='imagePro' src='" + p.getImage() + "'></div>");
+                                                        out.print("<div class='photoProduit' id='photoProduit'>" + "<img class='imagePro' src='" + products.getKey().getImage() + "'></div>");
                                                     out.print("</div>");
                                                     out.print("<div class='col-md-3'>");
-                                                        out.print("<div class='InfoProduit' id='InfoProduit'><p>" + p.getProductName() + "</p></div>");
-                                                        out.print("<div class='InfoProduit2' id='InfoProduit2'><p>" + p.getProductBrandProprietary() + "</p></div>");
-                                                        for (Label lab : p.getLabels()) {
+                                                        out.print("<div class='InfoProduit' id='InfoProduit'><p>" + products.getKey().getProductName() + "</p></div>");
+                                                        out.print("<div class='InfoProduit2' id='InfoProduit2'><p>" + products.getKey().getProductBrandProprietary() + "</p></div>");
+                                                        for (Label lab : products.getKey().getLabels()) {
                                                             out.print("<div class='icon'>" + "<img src='" + lab.getImageLabel() + "' style='float:left; width: 15px; height: 15px;'></div>");
                                                         }
                                                     out.print("</div>");
                                                     out.print("<div class='col-md-2'>");
-                                                        out.print("<div class='prixUniProduit'><p>" + p.getProductUnitPrice() + "</p></div>");
-                                                        out.print("<div class='prixUniProduit'><p>" + p.getProductKiloPrice() + "</p></div>");
+                                                        out.print("<div class='prixUniProduit'><p>" + products.getKey().getProductUnitPrice() + "</p></div>");
+                                                        out.print("<div class='prixUniProduit'><p>" + products.getKey().getProductKiloPrice() + "</p></div>");
                                                     out.print("</div>");
                                                     out.print("<div class='col-md-3'>");
                                                         out.print("<div class='qteProduit'>");
                                                             out.print("<button class='on-number' data-v = '-1'><span class='glyphicon glyphicon-minus'></span></button>");
-                                                            out.print("<input id='inputPrix' type='number' name='inputPrix' value='${param.inputPrix}' min='0' max='100' step='1' style='width:85px;'/>");
+                                                            out.print("<input id='inputPrix' type='number' name='inputPrix' value="+products.getValue().getQuantityProd()+" min='0' max='100' step='1' style='width:85px;'/>");
                                                             out.print("<button class='on-number' data-v = '1'><span class='glyphicon glyphicon-plus'></span></button>");
                                                         out.print("</div>");
                                                     out.print("</div>");               

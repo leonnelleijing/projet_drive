@@ -72,6 +72,12 @@
     <servlet>
         <servlet-name>ServletIncrementerQteCommandeCreneau</servlet-name>
         <servlet-class>com.samrtsolutions.drive.controler.ServletIncrementerQteCommandeCreneau</servlet-class>
+        <servlet-name>PreparerCommande</servlet-name>
+        <servlet-class>com.samrtsolutions.drive.controler.PreparerCommande</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Valider</servlet-name>
+        <servlet-class>com.samrtsolutions.drive.controler.Valider</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Home</servlet-name>
@@ -102,6 +108,8 @@
         <url-pattern>/retrait</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>Panier</servlet-name>
+        <url-pattern>/panier</url-pattern>
         <servlet-name>retraitCommande</servlet-name>
         <url-pattern>/retraitCommande</url-pattern>
     </servlet-mapping>
@@ -146,6 +154,10 @@
     <servlet-mapping>
         <servlet-name>ServletIncrementerQteCommandeCreneau</servlet-name>
         <url-pattern>/ServletIncrementerQteCommandeCreneau</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Valider</servlet-name>
+        <url-pattern>/valider</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
