@@ -88,9 +88,12 @@ public class Product implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="ProductCode")
+    
     public int getProductCode() {
         return productCode;
+
     }   
+
     
     @Column(name="ProductName")
     public String getProductName() {

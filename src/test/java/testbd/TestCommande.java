@@ -90,7 +90,7 @@ public class TestCommande {
         Basket b =p.get(1);
         MagasinDaoImpl magasinimp= new MagasinDaoImpl();
         Magasin magasin= magasinimp.get(1);
-         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
          Date rightDate=simpleDateFormat.parse("2021-02-11");
          CreneauDaoImpl creneuim= new CreneauDaoImpl();
          Creneau creneau= creneuim.get(1);

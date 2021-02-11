@@ -117,8 +117,11 @@
             })
         })
         
-        $(".btn").window.location.href = "http://localhost:8080/vue/PagePanier.jsp";
+//        $(".btn").window.location.href = "http://localhost:8080/vue/PagePanier.jsp";
     </script>
     <script src="/js/addPanier.js"></script>
     <script src="/js/sort.js"></script>
+    <script src="/js/panier_js.js"></script>
+     <script src="/js/ChoixLieuHoraire.js"></script>
+    
 </html>

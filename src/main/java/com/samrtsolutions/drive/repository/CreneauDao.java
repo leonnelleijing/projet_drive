@@ -6,11 +6,16 @@
 package com.samrtsolutions.drive.repository;
 
 import com.samrtsolutions.drive.model.Creneau;
+import java.util.Set;
+
 
 /**
  *
  * @author leonl
  */
 public interface CreneauDao  extends BaseDao<Creneau>{
+   
+    public Set<Creneau> afficherCreneau(int idMag); //Afficher les créneaux en fonction du magasin choisi
+
     
 }

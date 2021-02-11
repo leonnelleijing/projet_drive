@@ -310,7 +310,16 @@
             font-size: 14px;
             font-weight: bold;
             color: red;
+            float: left;
         }
+        
+        .prixKiloProduit p{
+            font-size: 14px;
+            font-weight: bold;
+            color: red;
+            float: left;
+        }
+        
         
         .qteProduit{
             float: left;
@@ -339,6 +348,6 @@
             bottom: 0;
         }
         
-        #inputPrix{
-            width: 50px;
+        .inputPrix{
+            width: 85px;
         }

@@ -5,12 +5,37 @@
  */
 package com.samrtsolutions.drive.repository;
 
+
+import com.samrtsolutions.drive.bd.HibernateUtil;
+import com.samrtsolutions.drive.model.Creneau;
 import com.samrtsolutions.drive.model.Magasin;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 /**
  *
- * @author leonl
+ * @author 33667
  */
-public class MagasinDaoImpl extends BaseDaoImpl<Magasin> implements MagasinDao{
+public class MagasinDaoImpl extends BaseDaoImpl<Magasin> implements MagasinDao {
     
+    public List<Magasin> afficherMagasin(String mot){
+        try (Session session  = HibernateUtil.getSessionFactory().getCurrentSession()){
+            
+            /*------ Ouverture d'une transaction ------ */
+            Transaction t = session.beginTransaction(); //Ouverture d'une session
+            
+            //Requête préparée HQL allant chercher les mots en BD
+            Query query = session.createQuery("from Magasin as m where codePostal like :mot");
+            //Affecter le paramètre voulu dans la requête
+            query.setParameter("mot", mot+'%');
+            List<Magasin> listeMagasins = (List<Magasin>)query.list();
+            
+            return listeMagasins;          
+        }
+    }
+
 }

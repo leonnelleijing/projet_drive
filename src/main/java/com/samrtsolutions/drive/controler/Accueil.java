@@ -5,9 +5,11 @@
  */
 package com.samrtsolutions.drive.controler;
 
+import com.samrtsolutions.drive.model.Client;
 import com.samrtsolutions.drive.model.Family;
 import com.samrtsolutions.drive.model.Product;
 import com.samrtsolutions.drive.model.Rayon;
+import com.samrtsolutions.drive.repository.ClientDaoImpl;
 import com.samrtsolutions.drive.repository.FamilyDaoImpl;
 import com.samrtsolutions.drive.repository.ProductDaoImpl;
 import com.samrtsolutions.drive.repository.RayonDaoImpl;
@@ -36,8 +38,6 @@ public class Accueil extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
-        ProductDaoImpl product=new ProductDaoImpl();
-        List<Product> products= product.getAllProduct();
         HttpSession session = request.getSession();
         if(session.getAttribute("rayons")==null){
              RayonDaoImpl rayon= new RayonDaoImpl();
@@ -47,9 +47,16 @@ public class Accueil extends HttpServlet {
         //voir si la ssession existe des rayons et des produits
         //System.out.print(session.getAttribute("nameproducts"));
         if(session.getAttribute("nameproducts")==null||session.getAttribute("nameproducts").equals("")){
+            ProductDaoImpl product=new ProductDaoImpl();
+            List<Product> products= product.getAllProduct();
             session.setAttribute("products", products);
         }
-
+        
+        if(session.getAttribute("client")==null||session.getAttribute("client").equals("")){
+            ClientDaoImpl clientImple= new ClientDaoImpl();
+            Client c= clientImple.get(1);
+            session.setAttribute("client", c);
+        }
         String idfamily= request.getParameter("Idfamily");
         String idRayon= request.getParameter("idRayon");
 

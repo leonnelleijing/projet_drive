@@ -53,13 +53,14 @@ public class Valider extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException, ParseException {
            HttpSession session = request.getSession();
            Client client= (Client) session.getAttribute("client");
-           String idPanier= (String) session.getAttribute("idPanier");
+           Basket basket= (Basket) session.getAttribute("basket");
            String idCreneau = request.getParameter("idCreneau");
            String idMagasin = request.getParameter("idMagasin");
            String date= request.getParameter("dateRetrait");
-
-            if(idPanier==null||idPanier==""||idPanier==null)
-                request.getRequestDispatcher("home").forward(request, response) ;
+           String confirmer= request.getParameter("action");
+           if("confirmer"==confirmer)
+               request.getRequestDispatcher("choix_Lieu_Horaire").forward(request, response) ;
+          
            
             if(idCreneau==null||idCreneau==""){
                    request.setAttribute("error", "Choissiez votre crenaeu");
@@ -76,9 +77,6 @@ public class Valider extends HttpServlet {
                 request.getRequestDispatcher("panier").forward(request, response) ;
             }
            
-            BasketDaoImpl b = new BasketDaoImpl();
-            Basket basket = b.get(Integer.valueOf(idPanier));
-          
             MagasinDaoImpl magasinimp= new MagasinDaoImpl();
             Magasin magasin= magasinimp.get(Integer.valueOf(idMagasin));
             

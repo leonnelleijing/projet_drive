@@ -18,11 +18,12 @@ public class TestBasket {
     private static BasketDaoImpl pm= new BasketDaoImpl();
     public TestBasket() {
     }
-    
+    @Test
     public void testGetBasket(){
         Basket b=pm.get(1);
         System.out.println(b.getIdBasket());
         
     }
+    
     
 }

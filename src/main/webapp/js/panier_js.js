@@ -5,73 +5,67 @@
  */
 
 
-function test()  {
-    // création de http
-    var xhr = new XMLHttpRequest();
-    var id = document.getElementById("test").value;
-    // Requête au serveur
-    xhr.open("GET", "ServletBasket?idPanier=" + id);
-    alert(id);
-    // On précise ce que l'on va faire quand on aura reçu la réponse du serveur.
+function clickMinus()  {
+
+    console.log($(this).prev().val())
+    if( $(this).next().val()>0)
+        $(this).next().val($(this).next().val() -1 )
+    var quantite=  $(this).next().val()
+    var idProduct = $(this).prev().val()
+    //var prixUni = $(this).siblings("div[class='prixUniProduit']").firstChild.nodeValue;
+    //console.log($(this).parent().parent().prev())
+    var prixUni =$(this).parent().parent().prev().find(".unitPirce").text();
+   var tatalPrice =$(this).parent().parent().next().find(".prixTtProduit p")
+      tatalPrice.text(parseFloat(prixUni) * quantite+ " €")
+////    // Requête au    serveur
+  sendProductQuantity(quantite,idProduct)
+  updatePrice()
+    };
+    
+function clickMaxis()  {
+    console.log($(this).prev().prev().val())
+    $(this).prev().val(parseInt($(this).prev().val())+1)
+    var quantite=  $(this).prev().val()
+    var idProduct = $(this).prev().prev().prev().val()
+    //var prixUni = $(this).siblings("div[class='prixUniProduit']").firstChild.nodeValue;
+    //console.log($(this).parent().parent().prev())
+    var prixUni =$(this).parent().parent().prev().find(".unitPirce").text();
+     var tatalPrice =$(this).parent().parent().next().find(".prixTtProduit p")
+      tatalPrice.text(parseFloat(prixUni) * quantite+ " €")
+////    // Requête au    serveur
+  sendProductQuantity(quantite,idProduct)
+  updatePrice()
+    };
+
+function updatePrice(){
+     var numProduit = $(".singlePriceTotal").length;
+    var PriceTotal = 0;
+    for (i = 0; i < numProduit; i++) {
+        PriceTotal = PriceTotal + parseInt($(".singlePriceTotal").eq(i).text());
+
+    }
+    $(".prixLabel").text(" ");
+    $(".prixLabel").text(PriceTotal + " €");
+}
+    
+function sendProductQuantity(quantite,idProduct){
+        var xhr = new XMLHttpRequest();
+    xhr.open("GET", "servletBasket?action=changeQuantity&quantite=" + quantite + "&idProduct=" + idProduct);
+//    alert(quantite);
+//     On précise ce que l'on va faire quand on aura reçu la réponse du serveur.
     xhr.onload = function() {
         
         if (xhr.status === 200) {
             
-            // get the code product
+            alert("succes")
             
-            
-            
-            
-            // afficher la photo de produits
-            var eltPhoto = document.getElementById("photoProduit");
-            //le flot de données est de flot XML
-            var flotImg = xhr.responseXML.getElementsByTagName("image");
-            for (i = 0; i < flotImg.length; i++) {
-                var image = document.createElement("img");
-                image.setAttribute("src", flotImg[i]);
-                eltPhoto.appendChild(image);
             }
             
-            // afficher le nom de produit
-            var eltName = document.getElementById("InfoProduit");
-            var flotName = xhr.responseXML.getElementsByTagName("nom");
-            for (i = 0; i < flotName.length; i++) {
-                var name = document.createElement("p");
-                name.appendChild(document.createTextNode(flotName[i].firstChild.nodeValue));
-                eltName.appendChild(name);
-            }
             
-            // afficher la marque de produits
-            var eltBrand = document.getElementById("InfoProduit2");
-            var flotBrand = xhr.responseXML.getElementsByTagName("marque");
-            for (i = 0; i < flotBrand.length; i++) {
-                var brand = document.createElement("p");
-                brand.appendChild(document.createTextNode(flotBrand[i].firstChild.nodeValue));
-                eltBrand.appendChild(brand);
-            }
-            
-            // afficher le prix unitaire de produits
-            var eltPriceUni = document.getElementById("prixUniProduit");
-            var flotPriceUni = xhr.responseXML.getElementsByTagName("priceUnit");
-            for (i = 0; i < flotPriceUni.length; i++){
-                var priceUni = document.createElement("p");
-                priceUni.appendChild(document.createTextNode(flotPriceUni[i].firstChild.nodeValue));
-                eltPriceUni.appendChild(priceUni);
-            }
-            
-            // afficher le prix kilo de produits
-            var eltPriceKilo = document.getElementById("prixKiloProduit");
-            var flotPriceKilo = xhr.responseXML.getElementsByTagName("priceWeight");
-            for (i = 0; i < flotPriceKilo.length; i++){
-                var priceKilo = document.createElement("p");
-                priceKilo.appendChild(document.createTextNode(flotPriceKilo[i].firstChild.nodeValue));
-                eltPriceKilo.appendChild(priceKilo);
-            }
         }
-    }
-    
-    xhr.send();
-};
+        
+        xhr.send();
+}
 
 
 
@@ -130,13 +124,7 @@ $(document.documentElement).on("click",".on-number",function () {
 /**
  * Lancement après le chargement du DOM.
  */
-document.addEventListener("DOMContentLoaded", () =>  {
-    //document.getElementById("btnMin").addEventListener("click",clickMinus);
-    //document.getElementById("btnMax").addEventListener("click",clickAdd);
-    //document.getElementById("btnMax").addEventListener("click",id('+'));
-    //document.getElementById("btnMin").addEventListener("click",id('-'));
-    //document.getElementById("inputPrix").addEventListener("keyup",onInput);
-})
+
         
 $(function(){
 
@@ -178,51 +166,9 @@ $(function(){
         $(this).prev(".maintip").css({"z-index":"1"});
           })
     })
+    var totale =0 
+     $(".btnMin").click(clickMinus)
+     $(".btnMax").click(clickMaxis)
+     updatePrice()
 });
 
-//$("input[type='number']").inputSpinner();
-
-               
-        /*
-        $(doucment).ready(function(){
-                alert("oui");
-                $(".btnMin1").click(function(){	
-             console.log(document.getElementById("inputPrix1").value);
-             document.getElementById("inputPrix1").value -= 1;
-            });	
-        } )
-        
-         */   
-
-        /*$(function(){
-
-            $(".maintip").each(function(index){   //遍历A部分，注意这里绑定事件用了index参数
-                $(this).mouseover(function(){   //鼠标经过A时触发事件
-                    var obj=$(this).offset();   //获取被鼠标经过的A的偏移位置，offset()是个好东西，不懂的朋友得去了解下
-                    var xobj=obj.left+$(this).width()+"px"; //后面要让B水平偏移的距离，这里的“200”是可自定义的，当然你可以改为$(this).width()来获得跟A一样的宽度
-                    var yobj=obj.top+"px";     //后面要让B垂直偏移的距离
-                    //$(this).css({"width":"200px","z-index":"9999","border-right":"none","background":"#fff"});  //A改变样式，变为选中状态的效果
-                    $(this).css({"z-index":"9999"});  //A改变样式，变为选中状态的效果
-                    $(".tips:eq("+index+")").css({"left":xobj,"top":yobj}).show();   //对应的（这里利用了索引）B改变样式并显示出来
-                    })
-                .mouseout(function(){     //鼠标离开A时触发的事件
-                    $(".tips").hide();     //B隐藏
-                    //$(this).css({"width":"200px","z-index":"1","border":"1px solid #E5D1A1","background":"#FFFDD2"})   //A变回原始样式
-                    $(this).css({"z-index":"1"})   //A变回原始样式
-                })
-            })
-
-                 $(".tips").each(function(){  //遍历B
-                    $(this).mouseover(function(){  //鼠标经过B时触发事件
-                    //$(this).prev(".maintip").css({"width":"200px","z-index":"9999","border-right":"none","background":"#fff"})  //对应的A变为选中状态效果
-                    $(this).prev(".maintip").css({"z-index":"9999"})
-                    $(this).show();  //A不要隐藏了，解决因为上面写的鼠标离开A导致A隐藏
-                })
-                .mouseout(function(){  //鼠标离开B触发事件，其实就是让B隐藏，同时A变为原始状态
-                    $(this).hide();
-                    //$(this).prev(".maintip").css({"width":"200px","z-index":"1","border":"1px solid #E5D1A1","background":"#FFFDD2"});
-                    $(this).prev(".maintip").css({"z-index":"1"});
-                })
-            })
-        })
-        */  

@@ -11,7 +11,6 @@
 <jsp:includepage="/vue/Header.jsp">
     <jsp:param name="title" value="Accueil"/>
 </jsp:include>
-
         
         <div class="container-fluid">
             
@@ -21,7 +20,7 @@
                     <div class="part1">
                         <%@ include file="/vue/MenuHorisontal.jsp"%>
                         <div class="jumbotron">
-                            <h1>Bienvenue!</h1>
+                            <h1>Bienvenue!${Erreur}</h1>
                             <p>Nous sommes l’entreprise Smart Solutions, créée le 22 Octobre 2001.Nous sommes une entreprise toulousaine composée de 100 personnes.</p>
                             <p><a class="btn btn-primary btn-lg" href="#" role="button">Liste Course</a></p>
                         </div>

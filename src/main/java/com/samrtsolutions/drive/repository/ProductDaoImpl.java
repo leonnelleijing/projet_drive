@@ -67,6 +67,5 @@ public class ProductDaoImpl extends BaseDaoImpl<Product> implements ProductDao {
 //   
 //    }
  
-    
 
 }

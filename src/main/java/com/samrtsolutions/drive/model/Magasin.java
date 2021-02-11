@@ -37,7 +37,6 @@ public class Magasin implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column (name = "CodeMagasin")
-    
     private int code;
     private String nom;
     private String rue;
@@ -74,6 +73,7 @@ public class Magasin implements Serializable{
     public void setCommands(Set<Commande> commands) {
         this.commands = commands;
     }
+
 
     public Set<Creneau> getListeCreneau() {
         return listeCreneau;
@@ -151,12 +151,5 @@ public class Magasin implements Serializable{
         return true;
     }
     
-    
-    
-    
-    
-    
-    
-
 
 }

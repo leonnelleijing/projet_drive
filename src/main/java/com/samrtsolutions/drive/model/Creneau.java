@@ -36,7 +36,7 @@ public class Creneau implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column (name = "CodeCreneau")
-    
+
     private int code;
     private String horaire;
     @OneToMany(mappedBy="creneauRetrait")
@@ -67,6 +67,7 @@ public class Creneau implements Serializable {
     public int getCode() {
         return code;
     }
+
 
     public String getHoraire() {return horaire;}
 

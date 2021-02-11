@@ -5,12 +5,24 @@
  */
 package com.samrtsolutions.drive.repository;
 
+
 import com.samrtsolutions.drive.model.Creneau;
+import com.samrtsolutions.drive.model.Magasin;
+import java.util.Set;
 
 /**
  *
  * @author leonl
  */
 public class CreneauDaoImpl extends BaseDaoImpl<Creneau> implements CreneauDao{
+
     
+    public Set<Creneau> afficherCreneau(int idMag){
+        
+            MagasinDaoImpl magasin = new MagasinDaoImpl();
+            Magasin m = magasin.get(idMag);
+            Set<Creneau> listeCreneaux = m.getListeCreneau();
+            
+            return listeCreneaux;
+    }
 }

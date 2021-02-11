@@ -25,6 +25,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -43,65 +44,28 @@ public class ServletBasket extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
-            String action; 
-            
-            request.removeAttribute("listeProd");
-            action = request.getParameter("action");
-            
-        
+            HttpSession session = request.getSession();
+            String action = request.getParameter("action");
+            BasketDaoImpl b = new BasketDaoImpl(); 
+            ProductDaoImpl p = new ProductDaoImpl();
+            Basket ba= (Basket) session.getAttribute("basket");
             switch(action)
             {
                 case "getBasket":
                     String idPanierString = request.getParameter("idPanier");
-                    int idPanier = Integer.parseInt(idPanierString);
-                        /*----- Type de la réponse -----*/
-//                        response.setContentType("application/xml;charset=UTF-8");
-//                        response.setCharacterEncoding("UTF-8");
-                        BasketDaoImpl panier = new BasketDaoImpl();
+                    System.out.println(idPanierString);
+                    int idPanier = Integer.valueOf(idPanierString);
+                    Basket basket = b.get(idPanier);               
+                    session.setAttribute("basket", basket);                      
+                    try {
+                        RequestDispatcher rd = request.getRequestDispatcher("panier");
+                        rd.forward(request, response);
+                    } catch (Exception e) {
+                        request.setAttribute("Erreur", basket.toString());
+                        RequestDispatcher rd = request.getRequestDispatcher("accueil");
+                        rd.forward(request, response);
+                    }
 
-//                        try (PrintWriter out = response.getWriter()) {
-
-                        Basket basket = panier.get(idPanier);               
-                        System.out.println(idPanier);
-                        Map<Product,ClProdBasket>lstP = basket.getProdBasket();
-                        
-                        try {
-                            request.setAttribute("listeProd", lstP);
-                            RequestDispatcher rd = request.getRequestDispatcher("panier");
-                            rd.forward(request, response);
-                        } catch (Exception e) {
-                            request.setAttribute("Erreur", e);
-                            RequestDispatcher rd = request.getRequestDispatcher("accueil");
-                            rd.forward(request, response);
-                        }
-
-//                        /*----- Ecriture de la page XML -----*/
-//                            out.println("<?xml version=\"1.0\"?>");
-//                            out.println("<donnees>");
-//                               try {
-//                                   for(Product p:lstP)
-//                                   {
-//                                   out.println("<produit>");
-//                                   out.println("<code>"+ p.getProductCode() + "</code>");
-//                                   out.println("<image>"+ p.getImage()+ "</image>"); 
-//                                   out.println("<nom>"+ p.getProductName()+ "</nom>");                            
-//                                   out.println("<marque>"+ p.getProductBrandProprietary()+ "</marque>");
-//                                   out.println("<priceUnit>"+ p.getProductUnitPrice()+ "</priceUnit>");
-//                                   out.println("<priceWeight>"+ p.getProductKiloPrice()+ "</priceWeight>"); 
-//                                       for (Label lab : p.getLabels()) {
-//                                           out.println("<labels>");
-//                                           out.println("<labelName>"+ lab.getNameLable()+ "</labelName>");
-//                                           out.println("<labelImage>"+ lab.getImageLabel()+ "</labelImage>");
-//                                           out.println("</labels>");
-//                                       }
-//                                   out.println("</produit>");
-//                                   }
-//                               out.println("</donnees>");
-//
-//                               } catch (Exception e) {
-//                                   out.println("<p> Exception : " + e.getMessage() + "</p>");
-//                               }
-                    break;
 //                        }
                 case "addToBasket": 
                     
@@ -110,16 +74,25 @@ public class ServletBasket extends HttpServlet {
             
                     int idProduit = Integer.parseInt(idProduitString);
                     
-                    //System.out.println("---------------"+idProduit);
-                   ProductDaoImpl p = new ProductDaoImpl();
-                   BasketDaoImpl b = new BasketDaoImpl();
                    Product produit = p.get(idProduit);
                    ClProdBasket codes = new ClProdBasket(new CliProdBasketId(produit.getProductCode(),1),1);
-                   Basket ba= b.get(1);
                    ba.getProdBasket().put(produit, codes);
                    b.edit(ba);
+                   session.setAttribute("basket", ba);
                    
                 break;
+                
+                case "changeQuantity": 
+                   String quantity= request.getParameter("quantite");
+                   String idProduct= request.getParameter("idProduct");
+                   if(quantity!=null && quantity!=""&&idProduct!=null&&idProduct!=""){
+                        ClProdBasket newLigne = new ClProdBasket(new CliProdBasketId(Integer.valueOf(idProduct),1),Integer.valueOf(quantity));
+                        Product addProduit = p.get(Integer.valueOf(idProduct));
+                        ba.getProdBasket().put(addProduit, newLigne);
+                        b.edit(ba);
+                        session.setAttribute("basket", ba);
+                   }
+                   
             }
             
            

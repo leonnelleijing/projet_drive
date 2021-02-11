@@ -5,16 +5,13 @@
  */
 package com.samrtsolutions.drive.repository;
 
-import com.samrtsolutions.drive.model.Label;
-import com.samrtsolutions.drive.model.Product;
-import java.util.Set;
+import com.samrtsolutions.drive.model.Affluence;
+import java.util.Date;
 
 /**
  *
- * @author leonl
+ * @author 33667
  */
-public interface ProductDao  extends BaseDao<Product>  {
-    public void addLabel(Product p, Label l);
-    
-
+public interface AffluenceDao extends BaseDao<Affluence> {
+    public String incrementerQteCommande (int CodeMag, int CodeCreneau, String date);
 }
