@@ -12,15 +12,14 @@
         <title>${param.title}</title> 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-
+        <script src="https://unpkg.com/element-ui/lib/index.js"></script>
     </head>
- <style>
+    
+    <style>
         .row>div {
             height: auto;
             /*border: 1px #000 solid;*/
         }
-        
-       
         .logo{
             height: 100px;
             width: 190px;
@@ -39,18 +38,8 @@
         }
         
         .part1{
-            height: 300px;
-            width: 100%;            
-            /*border: 1px #000 solid;*/
-            background-image: url('Img\\accueil.jfif');
-            background-repeat: no-repeat;
-            background-size:100% 100%;
-            float: left;
-        }
-        
-         .part1Bis{
-            height: 100px;
-            width: 100%;            
+            height: 500px;
+            width: auto;            
             /*border: 1px #000 solid;*/
             background-image: url('Img\\accueil.jfif');
             background-repeat: no-repeat;
@@ -59,15 +48,11 @@
         }
         .jumbotron h1{
             /*text-align: center;*/
-            font-size: 40px;
+            font-size: 80px;
             font-style: italic;
             color: #fff;
-            margin-top: 10px;
+            margin-top: 120px;
             
-        }
-        
-        .txtHome{
-            font-size: 10px;
         }
         .jumbotron{
            background-color:transparent; 
@@ -81,7 +66,6 @@
         .part3{
             /*border: 1px #000 solid;*/
             height: auto;
-            width: 100%;
             background-color: #f5f5f5;
             float: left;
         }
@@ -89,68 +73,51 @@
         .title{
             margin-top: 30px;
             text-align: center;
+
         }
         
         .produit{
             background-color: #fff;
             box-shadow:0px 15px 10px -15px #000;
-            width: 150px;
-            height: 80%;
-            /*height: 300px;*/
-            
-            margin: 1% 0% 1% 2%;
+            width: 25%;
+            height: 360px;
+            margin: 3% 4% 3% 4%;
             float: left;
             
         }
         img{
-            height: 100px;
-            width: 80px;
-            margin-left: 40px;
+            height: 100%;
+            width: 100%;
             object-fit: cover;
-            
-        }
-        img.imgDescription {
-            height: 160px;
-            width: 160px;
-            margin-left: 130px;
-            margin-top: 10px;
             
         }
         
         .namePro{
-            font-size: 14px;
-            font-weight:bold;
+            font-size: 18px;
             text-align: left;
             font-family:  inherit;
-            color: black;
+            color: #212529;
             margin: 8%;
-            height: 10%;
         }
         
         .prix{
             font-size: 15px;
-            color: black;
+            color: red;
             font-weight: bold;
             margin-left: 10%;
             margin-top: 10%;
             float: left;
-            
-        }
-        
-        .prinxInfo {
-           margin: 0 0 0px;
-           margin-top: 1px;
         }
         
         .poids{
-            font-size: 10px;
+            font-size: 12px;
             color: #06357a;
             margin: 0% 0% 4% 5%;
         }
         
         
         .prixPoid{
-            font-size: 10px;
+            font-size: 12px;
             color: #06357a;
             margin: 0% 0% 4% 5%;
         }
@@ -161,18 +128,18 @@
         }
         
         .niveau1{
-            background-color: #F4A460;
-            
+            background-color: #ffecb5;
             width: 100%;
         }
         
         .niveau1 span{
-            font-size: 15px;
+            font-size: 17px;
             text-align: center;
             font-style: italic;
-            color: black;
+            color: red;
             font-weight: bold;
             margin: 13% 9% 9% 9%;
+
         }
         
         /*
@@ -187,7 +154,6 @@
             position: relative;
             z-index: 1;
         }
-        
         
         .imagePro{
             background-size: cover;
@@ -209,16 +175,11 @@
         .infoPromo p {
             font-size: 13px;
             font-family: cursive;
-            color: black;
+            color: red;
             font-weight: bold;
             text-align: center;
         }
         
-        .marque{
-           font-size: 10px; 
-           margin: 7px;
-           font-weight:bold
-        }
         
         .infoPrix{
             display: inline;
@@ -233,13 +194,9 @@
             float: right;
         }
         
-        .iconPanier:hover{
-            opacity: 0.3;
-        }
-        
         .lstPro{
             background-color: #f5f5f5;
-           /** float: left;**/
+            float: left;
         }
         
         /*.photoPro{
@@ -255,6 +212,7 @@
             height:35px;
             line-height:30px;*/
             margin-left: 15px;
+
         }
         .tips{
             position:absolute;
@@ -283,6 +241,6 @@
             width:20px;
             height:20px;
         }
-
+        
     </style>
     <body>

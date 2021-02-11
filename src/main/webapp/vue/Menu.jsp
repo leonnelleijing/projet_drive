@@ -17,7 +17,7 @@
 %>
  <div class="col-md-2">
     <div class="logo">
-        <image id="photoLogo" src="../Img/logo.png">
+        <a href="/"><image id="photoLogo" src="../Img/logo.png"></a>
     </div>
 <div class="menu">
     <ul class="nav nav-pills nav-stacked">

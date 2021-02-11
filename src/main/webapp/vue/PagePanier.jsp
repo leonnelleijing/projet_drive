@@ -1,3 +1,4 @@
+
 <%-- 
     Document   : Accueil
     Created on : 5 févr. 2021, 15:43:46
@@ -279,18 +280,15 @@
                         <div class="lstPro">
                             <div class="oneProduit">                               
 <%                              
-
                                      Set<Product> lstPro = (Set<Product>) request.getAttribute("listeProd");
                                      if(lstPro != null){
                                          for (Product p : lstPro) {
-
                                         out.print("<div class='produit'>");
                                             out.print("<div class='container-fluid'>");
                                                 out.print("<div class='row'>");
                                                     out.print("<div class='col-md-2'>");
                                                         out.print("<div class='photoProduit' id='photoProduit'>" + "<img class='imagePro' src='" + p.getImage() + "'></div>");
                                                     out.print("</div>");
-
                                                     out.print("<div class='col-md-3'>");
                                                         out.print("<div class='InfoProduit' id='InfoProduit'><p>" + p.getProductName() + "</p></div>");
                                                         out.print("<div class='InfoProduit2' id='InfoProduit2'><p>" + p.getProductBrandProprietary() + "</p></div>");
@@ -432,3 +430,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="/../js/panier_js.js"></script>
 </html>
+
+
