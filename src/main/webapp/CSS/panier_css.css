@@ -310,6 +310,38 @@
             font-size: 14px;
             font-weight: bold;
             color: red;
+        }
+        
+        .qteProduit{
+            float: left;
+            margin-top: 1%;
+        }
+        
+        .prixTtProduit{
+            float: left;
+            margin-top: 1%;
+        }
+        
+        .prixTtProduit p{
+            font-size: 14px;
+            font-weight: bold;
+            color: red;
+        }
+        
+        .suppression{
+            float: left;
+            margin-top: 1%;
+        }
+        
+        .icon{
+            position: relative;
+            left: 0;
+            bottom: 0;
+        }
+        
+        #inputPrix{
+            width: 50px;
+  
             float: left;
         }
         

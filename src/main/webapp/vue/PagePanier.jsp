@@ -149,28 +149,11 @@
                                     </div>
                                 </div>                             
                             </div>
-                            <div class="col-md-6">                                
-                                <div class="Economise">
-                                   <div class="Point3">
-                                        <div class="input-group input-group">
-                                            <span class="input-group-addon" id="sizing-addon2">Vous avez économisé :</span>
-                                            <input type="text" class="form-control" placeholder="100 $" valur="100" aria-describedby="sizing-addon2" disabled="true" style="z-index:-1;">
-                                         </div>
-                                   </div> 
-                                </div>
-                                <div class="titlePrix">
-                                    <a href="/choix_Lieu_Horaire" class="btn btn-warning" style="color:#000; font-weight:Bold;">Régler</a>
-                                    <span><p>Prix total à payer: </p><p class="prixLabel">975.68 $</p></span>
-                                </div>
                             </div>
                         </div>
-                    </div>           
             </div>
         </div>
         </div>     
          <%@ include file="/vue/Footer.jsp"%>
     </body>
 
-   <%@ include file="/vue/Footer.jsp"%>
-
-    

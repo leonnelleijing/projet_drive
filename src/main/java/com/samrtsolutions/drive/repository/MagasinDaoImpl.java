@@ -5,7 +5,6 @@
  */
 package com.samrtsolutions.drive.repository;
 
-
 import com.samrtsolutions.drive.bd.HibernateUtil;
 import com.samrtsolutions.drive.model.Creneau;
 import com.samrtsolutions.drive.model.Magasin;
