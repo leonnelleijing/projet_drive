@@ -338,3 +338,7 @@
             left: 0;
             bottom: 0;
         }
+        
+        #inputPrix{
+            width: 50px;
+        }
