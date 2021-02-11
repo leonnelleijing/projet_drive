@@ -48,15 +48,7 @@
             float: left;
         }
         
-         .part1Bis{
-            height: 100px;
-            width: 100%;            
-            /*border: 1px #000 solid;*/
-            background-image: url('Img\\accueil.jfif');
-            background-repeat: no-repeat;
-            background-size:100% 100%;
-            float: left;
-        }
+         
         .jumbotron h1{
             /*text-align: center;*/
             font-size: 40px;
@@ -110,13 +102,7 @@
             object-fit: cover;
             
         }
-        img.imgDescription {
-            height: 160px;
-            width: 160px;
-            margin-left: 130px;
-            margin-top: 10px;
-            
-        }
+       
         
         .namePro{
             font-size: 14px;
@@ -196,6 +182,81 @@
             
             
         }
+        /*DESCRIPTION PRODUIT*/
+        
+        .part1Bis{
+            height: 120px;
+            width: 100%;            
+            /*border: 1px #000 solid;*/
+            background-image: url('Img\\accueil.jfif');
+            background-repeat: no-repeat;
+            background-size:100% 100%;
+            float: left;
+        }
+        
+        .jumbotron2 h1{
+            /*text-align: center;*/
+            font-size: 30px;
+            font-style: italic;
+            color: #fff;
+            margin-top:0px;
+            
+        }
+        
+        .description2{
+            font-size: 14px;
+            font-weight: bold;
+            text-align: left;
+            font-family: inherit;
+            color: black;
+        }
+        .description{
+            font-size: 14px;
+            text-align: left;
+            font-family: inherit;
+            color: black;
+        }
+        img.imgDescription {
+            height: 160px;
+            width: 160px;
+            margin-left: 130px;
+            margin-top: 10px;
+            
+        }    
+        .titreDescription{
+            color: #DAA520;
+            margin-left: 25px;
+        }
+        .descriptionOrigine{
+            font-size: 14px;
+            font-style:italic;
+            text-align: left;
+            font-family: inherit;
+            color: black;
+        }
+        
+        .panierTotal{
+            float: right;
+            
+        }
+        
+        .Price{
+            font-weight: bold;
+            font-size: 20px;
+            color: #DAA520;
+        }
+        
+        .qte{
+            margin-left: 60px;
+        }
+        .btnDescription{
+            width:100px; 
+            height:30px;
+            margin-left: 5px;
+        }
+        
+        
+        /****/
         
         .infos{
             float: left;
@@ -282,7 +343,108 @@
             height:20px;
         }
         
-       
+        /*Liste*/
+        .card{
+            margin-left: 50px;
+            margin-top: 150px;
+           
+        }
+        
+        /*retrait*/
+        .titreRetrait{
+            color: #DAA520;
+            margin-left: 25px;
+            
+        }
+          .titreRetrait2{
+            color: #DAA520;
+            margin-left: 25px;
+           /* margin-top: 150px*/
+        }
+        .inputMagasin{
+            margin-left: 25px;
+            width:350px; 
+            text-align: center;
+        }
+        
+        
+        
+        
+   
+        
+        .radio-tile-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  
+  .input-container {
+    position: relative;
+    height:  7rem;
+    width:  7rem;
+    margin: 0.5rem;
+  }
+
+   
+    .radio-button {
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      margin: 0;
+   
+    }
+
+     
+    
+    .radio-tile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      border: 2px solid #079ad9;
+      border-radius: 5px;
+      padding: 1rem;
+      transition: transform 300ms ease;
+    }
+  
+    .radio-tile-label {
+      text-align: center;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #079ad9;
+    }
+
+    .radio-button:checked + .radio-tile {
+      background-color: #079ad9;
+      border: 2px solid #079ad9;
+      color: white;
+      transform: scale(1.1, 1.1);
+      
+    
+      .radio-tile-label {
+        color: white;
+        background-color: #079ad9;
+      }
+      
+      /*List*/
+      button.decalage{
+          /*text-align: center;*/
+          margin-left: 50px;
+          height: 100px;
+          width: 100px;
+      }
+    }
+  }
+
+        
+        
         
     </style>
     <body>
