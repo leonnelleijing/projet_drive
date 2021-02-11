@@ -1,22 +1,50 @@
+<%-- 
+    Document   : Article
+    Created on : 6 févr. 2021, 16:55:22
+    Author     : leonl
+--%>
 
-<%@page import="com.samrtsolutions.drive.model.Label"%>
-<%@page import="com.samrtsolutions.drive.model.Product"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:includepage="/vue/Header.jsp">
-    <jsp:param name="title" value="Article"/>
+    <jsp:param name="title" value="Home"/>
 </jsp:include>
 
-    
-<div class="container-fluid">
 
-    <div class="row">
-        <%@ include file="/vue/Menu.jsp"%>
-          <div class="col-md-10">
-                    <div class="part1Bis">
-                        <%@ include file="/vue/MenuHorisontal.jsp"%>
-                        <div class="jumbotron2">
-                            <div class="col-md-5" >
-                                <h1> Good Shop! </h1>
+    <nav class="breadcrumb-section">
+        <div class="container wrapper">
+            <div class="row">
+                <div class="col-12">
+                    <ol class="breadcrumb bg-transparent m-0 p-0 align-items-center">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">KitchenAid Artisan KSM150</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- bread-crumb2 start -->
+    <div class="single-product-wrap">
+        <div class="container wrapper">
+            <div class="row mb-n10">
+                <div class="col-lg-5 mb-10">
+                    <div class="product-detail_img vertical-slider_wrap2">
+                        <div class="swiper-container pd-vertical_slider2 lightgallery">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="single-img">
+                                        <img src="images/products/product2.jpg" alt="Product Image" />
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="single-img">
+                                        <img src="images/products/product3.jpg" alt="Product Image" />
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="single-img">
+                                        <img src="images/products/product4.jpg" alt="Product Image" />
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-md-5">
                                 <input type='panierTotal' id='desiredQuantity' value='TOTAL €' disabled='disabled'> </input>
@@ -99,8 +127,3 @@
 
  %>
     </div>
-                    </div><!-- comment -->
-</div>
-     </div>
-    </div>
-  <%@ include file="/vue/Footer.jsp"%>
