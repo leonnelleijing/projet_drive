@@ -14,7 +14,7 @@ import org.junit.Ignore;
 
 /**
  *
- * @author 33667
+ * @author Helmy
  */
 public class TestMagasinDaoImpl {
 

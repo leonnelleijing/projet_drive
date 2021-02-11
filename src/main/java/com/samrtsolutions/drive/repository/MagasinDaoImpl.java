@@ -17,7 +17,7 @@ import org.hibernate.query.Query;
 
 /**
  *
- * @author 33667
+ * @author Helmy
  */
 public class MagasinDaoImpl extends BaseDaoImpl<Magasin> implements MagasinDao {
     
@@ -28,7 +28,7 @@ public class MagasinDaoImpl extends BaseDaoImpl<Magasin> implements MagasinDao {
             Transaction t = session.beginTransaction(); //Ouverture d'une session
             
             //Requête préparée HQL allant chercher les mots en BD
-            Query query = session.createQuery("from Magasin as m where codePostal like :mot");
+            Query query = session.createQuery("FROM Magasin as m WHERE codePostal like :mot");
             //Affecter le paramètre voulu dans la requête
             query.setParameter("mot", mot+'%');
             List<Magasin> listeMagasins = (List<Magasin>)query.list();

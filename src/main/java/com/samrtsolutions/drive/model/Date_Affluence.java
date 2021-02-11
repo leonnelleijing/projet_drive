@@ -23,7 +23,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 /**
  *
- * @author 33667
+ * @author Helmy
  */
 @Entity
 @SuppressWarnings("PersistenceUnitPresent")
@@ -33,9 +33,11 @@ public class Date_Affluence implements Serializable {
     //Propriété
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column (name = "CodeDate")
+    int codeDate;
+    
     @Column (name = "Date_Affluence")
-    @Temporal(javax.persistence.TemporalType.DATE)
-    Date date;
+    String date;
     
     //Relations
     
@@ -44,15 +46,23 @@ public class Date_Affluence implements Serializable {
     
     public Date_Affluence(){}
 
-    public Date_Affluence(Date date) {
+    public Date_Affluence(String date) {
         this.date = date;
     }
     
     //Getters & Setters
 
-    public Date getDate() {return date;}
+    public int getCodeDate() {
+        return codeDate;
+    }
 
-    public void setDate(Date date) {this.date = date;}
+    public void setCodeDate(int codeDate) {
+        this.codeDate = codeDate;
+    }
+    
+    public String getDate() {return date;}
+
+    public void setDate(String date) {this.date = date;}
     
     
 

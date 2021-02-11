@@ -25,7 +25,7 @@ import javax.persistence.Table;
 
 /**
  *
- * @author 33667
+ * @author Helmy
  */
 @Entity
 @SuppressWarnings("PersistenceUnitPresent")
@@ -43,14 +43,6 @@ public class Magasin implements Serializable{
     private String codePostal;
     private String ville;
     
-    // Relations
-    //Permet de relier la table Magasin avec Creneau pour ajouter une liste de créneaux à un magasin
-    @ManyToMany
-	@JoinTable(name = "Appartenir_CreneauMagasin",
-                joinColumns = @JoinColumn(name = "CodeMagasin"),
-		inverseJoinColumns = @JoinColumn(name = "CodeCreneau"))
-	private Set<Creneau> listeCreneau = new HashSet(0);
-    
     //Constructor
     public Magasin(){}
 
@@ -61,16 +53,7 @@ public class Magasin implements Serializable{
         this.ville = ville;
     }
     
-    //Getters & Setters
-
-    public Set<Creneau> getListeCreneau() {
-        return listeCreneau;
-    }
-
-    public void setListeCreneau(Set<Creneau> listeCreneau) {
-        this.listeCreneau = listeCreneau;
-    }
-    
+    //Getters & Setters 
     
     public int getCode() {
         return code;

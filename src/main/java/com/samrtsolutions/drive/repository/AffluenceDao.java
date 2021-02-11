@@ -6,12 +6,11 @@
 package com.samrtsolutions.drive.repository;
 
 import com.samrtsolutions.drive.model.Affluence;
-import java.util.Date;
 
 /**
  *
- * @author 33667
+ * @author Helmy
  */
 public interface AffluenceDao extends BaseDao<Affluence> {
-    public String incrementerQteCommande (int CodeMag, int CodeCreneau, String date);
+    public String incrementerQteCommande (int codeMag, int codeCreneau, String date);
 }

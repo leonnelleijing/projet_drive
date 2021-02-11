@@ -5,14 +5,12 @@
  */
 package com.samrtsolutions.drive.repository;
 
-import com.samrtsolutions.drive.model.Creneau;
-import com.samrtsolutions.drive.model.Magasin;
-import java.util.ArrayList;
+import com.samrtsolutions.drive.model.Date_Affluence;
 
 /**
  *
  * @author Helmy
  */
-public interface CreneauDao extends BaseDao<Creneau> {
+public interface Date_AffluenceDao extends BaseDao<Date_Affluence> {
     
 }

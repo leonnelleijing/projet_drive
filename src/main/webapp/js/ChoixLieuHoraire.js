@@ -4,6 +4,11 @@
  * and open the template in the editor.
  */
 
+/**
+ *
+ * @author Helmy
+ */
+
 function afficherCalendrier(){
     console.log("OK");
     var elt = document.getElementById("calendrier");
@@ -100,12 +105,14 @@ function l_creneaux ()
 			  // Elément html que l'on va mettre à jour.                          
                           var listeCreneaux = xhr.responseXML.getElementsByTagName("creneau");
                           var listeCreneauxCode = xhr.responseXML.getElementsByTagName("creneauCode");
+                          var listeNiveauAfflux = xhr.responseXML.getElementsByTagName("niveauAff");
                           var elt = document.getElementById("boutonsCreneaux");
                           elt.innerHTML = "";
                           for(var i = 0; i < listeCreneaux.length; i++){
                              var creneau = listeCreneaux[i].firstChild.nodeValue;
                              var creneauCode = listeCreneauxCode[i].firstChild.nodeValue;
-                             elt.insertAdjacentHTML("beforeend", "<input type = \"radio\" class = \"btn_creneau\" id = " + creneauCode + " value = " + creneauCode + "  >"+creneau+"</input>");
+                             var niveauAff = listeNiveauAfflux[i].firstChild.nodeValue;
+                             elt.insertAdjacentHTML("beforeend", "<input type = \"radio\" class = \"btn_creneau\" name = \"btn_creneau\" id = " + creneauCode + " value = " + creneauCode + "  >"+creneau+"  -  "+niveauAff+ "</br></input>");
                           }
 			}
 		};
@@ -116,15 +123,30 @@ function l_creneaux ()
 
 function validerCommande () {
     //Afficher Pop-Up
+    /**var creneauSelected = 0;
+        //Je récupère le bouton (le créneau) sélectionné
+        var selectedCreneau = document.querySelectorAll(".creneaux > input.btn_creneau");
+        for(var i = 0; i < selectedCreneau.length; i++){
+            if (selectedCreneau[i].checked) {
+                creneauSelected = selectedCreneau[i].value;
+                break;
+            };
+        }
+        var selection = document.getElementById("lmagasins");
+        //Je récupère l'option (le magasin) sélectionnée
+        var magasin = selection.value;
+        //Je récupère le bouton (le créneau) sélectionné
+        var selectedDate = document.querySelectorAll(".calendrier_class > input.btn_calendar");
+        out.println("Retrait commande - Le " + selectedDate + " à " + creneauSelected + "au magasin : "+magasin);*/
     var confirmation;
     if (confirm("Valider votre commande ?")) {
-        confirmation = "Ok";
+        confirmation = "Oui, je valide";
     } else {
-        confirmation = "Annuler";
+        confirmation = "Revenir au choix de retrait";
     }
     
     //Si pop-up validée
-    if (confirmation === "Ok") {
+    if (confirmation === "Oui, je valide") {
        confirmerValidation(); 
     }
 }
@@ -140,13 +162,14 @@ function confirmerValidation () {
             if (selectedCreneau[i].checked) {
                 creneauSelected = selectedCreneau[i].value;
                 break;
-            };
+            }
+        }
         var selection = document.getElementById("lmagasins");
         //Je récupère l'option (le magasin) sélectionnée
         var codeMagasin = selection.options[selection.selectedIndex].value;
         //Je récupère le bouton (le créneau) sélectionné
         var selectedDate = document.querySelectorAll(".calendrier_class > input.btn_calendar");
-}
+        
 	// Requête au serveur avec les paramètres codeC, codeM, date.
 	xhr.open("GET","ServletAfficherCreneaux?codeCreneau="+creneauSelected+"&codeMagasin="+codeMagasin+"&date="+selectedDate);
 
@@ -166,6 +189,7 @@ function confirmerValidation () {
                              var creneauCode = listeCreneauxCode[i].firstChild.nodeValue;
                              elt.insertAdjacentHTML("beforeend", "<button type = \"button\" class = \"btn_creneau\" value = " + creneauCode + " >"+creneau+"</button>");
                           }
+                        window.location.href = 'Home.jsp';
 			}
 		};
 	

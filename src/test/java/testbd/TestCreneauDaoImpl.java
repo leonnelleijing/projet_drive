@@ -5,29 +5,40 @@
  */
 package testbd;
 
+import com.samrtsolutions.drive.bd.HibernateUtil;
 import com.samrtsolutions.drive.model.Creneau;
 import com.samrtsolutions.drive.model.Magasin;
+import com.samrtsolutions.drive.model.NiveauAfflux;
 import com.samrtsolutions.drive.repository.CreneauDaoImpl;
 import com.samrtsolutions.drive.repository.MagasinDaoImpl;
+import com.samrtsolutions.drive.repository.NiveauAffluxDaoImpl;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.junit.Ignore;
 import org.junit.Test;
 
 /**
  *
- * @author 33667
+ * @author Helmy
  */
 public class TestCreneauDaoImpl {
     
     public TestCreneauDaoImpl() {}
     
     @Test
-    @Ignore
     public void testMethod (){
-        CreneauDaoImpl creneau = new CreneauDaoImpl();
-        MagasinDaoImpl magasin = new MagasinDaoImpl();
+        try (Session session  = HibernateUtil.getSessionFactory().getCurrentSession()){
+        NiveauAffluxDaoImpl nivAfflux = new NiveauAffluxDaoImpl();
+        ArrayList<NiveauAfflux> listeCreneaux = nivAfflux.afficherCreneau(1);
+        for (NiveauAfflux niv : listeCreneaux){
+            System.out.println("\n"+niv.getCreneau().getHoraire());
+        }
         
+        
+        }
     }
     
 }

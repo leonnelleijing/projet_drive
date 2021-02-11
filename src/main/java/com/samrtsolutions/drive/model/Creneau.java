@@ -24,7 +24,7 @@ import javax.persistence.Table;
 
 /**
  *
- * @author 33667
+ * @author Helmy
  */
 @Entity
 @SuppressWarnings("PersistenceUnitPresent")
@@ -40,12 +40,6 @@ public class Creneau implements Serializable {
     private String horaire;
     
     //Relations
-    // Relie Creneau à Magasin
-    @ManyToMany
-	@JoinTable(name = "Appartenir_CreneauMagasin",
-		joinColumns = @JoinColumn(name = "CodeCreneau"),
-		inverseJoinColumns = @JoinColumn(name = "CodeMagasin"))
-                private Set<Magasin> listeMagasins = new HashSet(0);
     
     //Constructeurs
     public Creneau(){}
@@ -62,13 +56,7 @@ public class Creneau implements Serializable {
 
     public void setCode(int code) {this.code = code;}
 
-    public void setHoraire(String horaire) {this.horaire = horaire;}
-
-    public Set<Magasin> getListeMagasins() {return listeMagasins;}
-
-    public void setListeMagasins(Set<Magasin> listeMagasins) {this.listeMagasins = listeMagasins;}
-    
-    
+    public void setHoraire(String horaire) {this.horaire = horaire;}   
     
     // HashCode & Equals
 
