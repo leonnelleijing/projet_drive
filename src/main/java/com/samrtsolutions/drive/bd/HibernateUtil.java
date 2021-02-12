@@ -26,8 +26,6 @@ public class HibernateUtil {
              * Entité.
              */
           
-            configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Magasin.class);
-            configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Creneau.class);
             configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Product.class);
             configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Family.class);
             configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Rayon.class);
@@ -36,30 +34,16 @@ public class HibernateUtil {
             configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Client.class);
              configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Commande.class);
              configuration.addAnnotatedClass(com.samrtsolutions.drive.model.EtatCommande.class);
-             configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Magasin.class);
-             configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Creneau.class);
             configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Basket.class);
              configuration.addAnnotatedClass(com.samrtsolutions.drive.model.ClProdBasket.class);
             
             configuration.addAnnotatedClass(com.samrtsolutions.drive.model.PostIt.class);
             configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Liste.class);
             
-            configuration.addAnnotatedClass(com.samrtsolutions.drive.model.LigneCommande.class);
-            configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Client.class);
-             configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Commande.class);
-             configuration.addAnnotatedClass(com.samrtsolutions.drive.model.EtatCommande.class);
              configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Magasin.class);
              configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Creneau.class);
-            configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Basket.class);
-             configuration.addAnnotatedClass(com.samrtsolutions.drive.model.ClProdBasket.class);
-            configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Affluence.class);
             configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Date_Affluence.class);
-            configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Magasin.class);
-            configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Magasin.class);
-            // configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Magasin.class);
-            // configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Creneau.class);
-            configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Affluence.class);
-            configuration.addAnnotatedClass(com.samrtsolutions.drive.model.Date_Affluence.class);
+             configuration.addAnnotatedClass(com.samrtsolutions.drive.model.NiveauAfflux.class);
 
             ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
             System.out.println("Hibernate serviceRegistry created");

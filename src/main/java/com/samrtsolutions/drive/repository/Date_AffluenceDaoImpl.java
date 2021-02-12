@@ -5,21 +5,16 @@
  */
 package com.samrtsolutions.drive.repository;
 
-
 import com.samrtsolutions.drive.bd.HibernateUtil;
-import com.samrtsolutions.drive.model.Creneau;
-import com.samrtsolutions.drive.model.Magasin;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import com.samrtsolutions.drive.model.Date_Affluence;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.query.Query;
 
 /**
  *
  * @author Helmy
  */
-public class CreneauDaoImpl extends BaseDaoImpl<Creneau> implements CreneauDao {
+public class Date_AffluenceDaoImpl extends BaseDaoImpl<Date_Affluence> implements Date_AffluenceDao {
     
 }

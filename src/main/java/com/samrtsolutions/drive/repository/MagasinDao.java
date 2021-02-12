@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  *
- * @author 33667
+ * @author Helmy
  */
 public interface MagasinDao extends BaseDao<Magasin> {
     

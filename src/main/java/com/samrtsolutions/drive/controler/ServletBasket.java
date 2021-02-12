@@ -66,49 +66,6 @@ public class ServletBasket extends HttpServlet {
                         rd.forward(request, response);
                     }
 
-//                        try (PrintWriter out = response.getWriter()) {
-
-                        Basket basket = panier.get(idPanier);               
-                        System.out.println(idPanier);
-                        Map<Product,ClProdBasket>lstP = basket.getProdBasket();
-                        
-                        try {
-                            request.setAttribute("listeProd", lstP);
-                            RequestDispatcher rd = request.getRequestDispatcher("panier");
-                            rd.forward(request, response);
-                        } catch (Exception e) {
-                            request.setAttribute("Erreur", e);
-                            RequestDispatcher rd = request.getRequestDispatcher("accueil");
-                            rd.forward(request, response);
-                        }
-
-//                        /*----- Ecriture de la page XML -----*/
-//                            out.println("<?xml version=\"1.0\"?>");
-//                            out.println("<donnees>");
-//                               try {
-//                                   for(Product p:lstP)
-//                                   {
-//                                   out.println("<produit>");
-//                                   out.println("<code>"+ p.getProductCode() + "</code>");
-//                                   out.println("<image>"+ p.getImage()+ "</image>"); 
-//                                   out.println("<nom>"+ p.getProductName()+ "</nom>");                            
-//                                   out.println("<marque>"+ p.getProductBrandProprietary()+ "</marque>");
-//                                   out.println("<priceUnit>"+ p.getProductUnitPrice()+ "</priceUnit>");
-//                                   out.println("<priceWeight>"+ p.getProductKiloPrice()+ "</priceWeight>"); 
-//                                       for (Label lab : p.getLabels()) {
-//                                           out.println("<labels>");
-//                                           out.println("<labelName>"+ lab.getNameLable()+ "</labelName>");
-//                                           out.println("<labelImage>"+ lab.getImageLabel()+ "</labelImage>");
-//                                           out.println("</labels>");
-//                                       }
-//                                   out.println("</produit>");
-//                                   }
-//                               out.println("</donnees>");
-//
-//                               } catch (Exception e) {
-//                                   out.println("<p> Exception : " + e.getMessage() + "</p>");
-//                               }
-                    break;
 //                        }
                 case "addToBasket": 
                     
@@ -117,14 +74,11 @@ public class ServletBasket extends HttpServlet {
             
                     int idProduit = Integer.parseInt(idProduitString);
                     
-                    //System.out.println("---------------"+idProduit);
-                   ProductDaoImpl p = new ProductDaoImpl();
-                   BasketDaoImpl b = new BasketDaoImpl();
                    Product produit = p.get(idProduit);
                    ClProdBasket codes = new ClProdBasket(new CliProdBasketId(produit.getProductCode(),1),1);
-                   Basket ba= b.get(1);
                    ba.getProdBasket().put(produit, codes);
                    b.edit(ba);
+                   session.setAttribute("basket", ba);
                    
                 break;
                 
@@ -135,6 +89,15 @@ public class ServletBasket extends HttpServlet {
                         ClProdBasket newLigne = new ClProdBasket(new CliProdBasketId(Integer.valueOf(idProduct),1),Integer.valueOf(quantity));
                         Product addProduit = p.get(Integer.valueOf(idProduct));
                         ba.getProdBasket().put(addProduit, newLigne);
+                        b.edit(ba);
+                        session.setAttribute("basket", ba);
+                   }
+                
+                case "supprimerProduct":
+                   String idProductSUpprim= request.getParameter("idProduct");
+                   if(idProductSUpprim!=null&&idProductSUpprim!=""){
+                        Product supprimeProduit = p.get(Integer.valueOf(idProductSUpprim));
+                        ba.getProdBasket().remove(ba);
                         b.edit(ba);
                         session.setAttribute("basket", ba);
                    }
@@ -189,3 +152,4 @@ public class ServletBasket extends HttpServlet {
     }// </editor-fold>
 
 }
+

@@ -6,9 +6,13 @@
 package com.samrtsolutions.drive.controler;
 
 import com.samrtsolutions.drive.model.Creneau;
+import com.samrtsolutions.drive.model.NiveauAfflux;
 import com.samrtsolutions.drive.repository.CreneauDaoImpl;
+import com.samrtsolutions.drive.repository.NiveauAffluxDaoImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author 33667
+ * @author Helmy
  */
 public class ServletAfficherCreneaux extends HttpServlet {
 
@@ -37,12 +41,13 @@ public class ServletAfficherCreneaux extends HttpServlet {
 
                     try {
                             /*----- Lecture de liste de creneaux dans la BD -----*/
-                            CreneauDaoImpl creneauDao = new CreneauDaoImpl();
-                            Set<Creneau> listeCreneau = creneauDao.afficherCreneau(codeMag);
+                            NiveauAffluxDaoImpl afflux = new NiveauAffluxDaoImpl();
+                            List<NiveauAfflux> listeNiveauAfflux = afflux.afficherAfflux(codeMag);
 
-                            for (Creneau creneau : listeCreneau){
-                                out.println("<creneauCode><![CDATA[" + creneau.getCode() + "]]></creneauCode>");
-				out.println("<creneau><![CDATA[" + creneau.getHoraire() + "]]></creneau>");
+                            for (NiveauAfflux niveauAff : listeNiveauAfflux){
+                                out.println("<niveauAff><![CDATA[" + niveauAff.getNiveauAff() + "]]></niveauAff>");
+                                out.println("<creneauCode><![CDATA[" + niveauAff.getCreneau().getCode() + "]]></creneauCode>");
+				out.println("<creneau><![CDATA[" + niveauAff.getCreneau().getHoraire() + "]]></creneau>");
                             }
                         }
                     catch (Exception e)

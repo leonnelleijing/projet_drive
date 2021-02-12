@@ -20,16 +20,15 @@ import javax.persistence.Table;
  */
 @Entity
 @SuppressWarnings("PersistenceUnitPresent")
-@Table(name = "Affluence")
-public class Affluence implements Serializable {
-    
+@Table(name = "driv_niveauAfflux")
+public class NiveauAfflux implements Serializable {
     //Propriétés
     
     @EmbeddedId
-    private AffluenceId id; //Clé primaire composite
+    private NiveauAffluxId id; //Clé primaire composite
     
-    @Column (name = "Qte_Commande")
-    private int qteCommande;
+    @Column (name = "NiveauAffluence")
+    private String niveauAff;
     
     // Relations
     //Une affluence correspond à un magasin, un créneau et une date
@@ -41,39 +40,25 @@ public class Affluence implements Serializable {
     @JoinColumn (name = "CodeCreneau", insertable = false, updatable = false)
     private Creneau creneau;
     
-    @ManyToOne
-    @JoinColumn (name = "CodeDate", insertable = false, updatable = false)
-    private Date_Affluence date_affluence;
-    
     //Constructeurs
-    public Affluence (){}
+    public NiveauAfflux(){}
 
-    public Affluence (AffluenceId id, int qteCommande, Magasin magasin, Creneau creneau, Date_Affluence date_affluence) {
+    public NiveauAfflux(NiveauAffluxId id, String niveauAff, Magasin magasin, Creneau creneau) {
         this.id = id;
-        this.qteCommande = qteCommande;
+        this.niveauAff = niveauAff;
         this.magasin = magasin;
         this.creneau = creneau;
-        this.date_affluence = date_affluence;
     }
-
-    public Affluence(int qteCommande, Magasin magasin, Creneau creneau, Date_Affluence date_affluence) {
-        this.qteCommande = qteCommande;
-        this.magasin = magasin;
-        this.creneau = creneau;
-        this.date_affluence = date_affluence;
-    }
-    
-    
     
     //Getters & Setters
 
-    public AffluenceId getId() {return id;}
+    public NiveauAffluxId getId() {return id;}
 
-    public void setId(AffluenceId id) {this.id = id;}
+    public void setId(NiveauAffluxId id) {this.id = id;}
 
-    public int getQteCommande() {return qteCommande;}
+    public String getNiveauAff() {return niveauAff;}
 
-    public void setQteCommande(int qteCommande) {this.qteCommande = qteCommande;}
+    public void setNiveauAff(String niveauAff) {this.niveauAff = niveauAff;}
 
     public Magasin getMagasin() {return magasin;}
 
@@ -82,17 +67,13 @@ public class Affluence implements Serializable {
     public Creneau getCreneau() {return creneau;}
 
     public void setCreneau(Creneau creneau) {this.creneau = creneau;}
-
-    public Date_Affluence getDate_affluence() {return date_affluence;}
-
-    public void setDate_affluence(Date_Affluence date_affluence) {this.date_affluence = date_affluence;}
     
     //HashCode & Equals
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 53 * hash + Objects.hashCode(this.id);
+        int hash = 7;
+        hash = 79 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -107,13 +88,11 @@ public class Affluence implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Affluence other = (Affluence) obj;
+        final NiveauAfflux other = (NiveauAfflux) obj;
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         return true;
     }
-    
-    
     
 }

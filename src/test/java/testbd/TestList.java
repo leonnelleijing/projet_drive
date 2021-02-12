@@ -19,7 +19,6 @@ public class TestList {
     
     public TestList(){};
     @Test
-    
     @Ignore
     public void testAdd(){
         Liste l= new Liste ("Semaine");
@@ -28,6 +27,8 @@ public class TestList {
         listadd.edit(l);
     }
     
+    @Test
+    @Ignore
     public void testAddPI(){
         PostIt p = new PostIt ("Beurre");
         ListDaoImpl postItAdd = new ListDaoImpl();

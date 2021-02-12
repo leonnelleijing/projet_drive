@@ -7,6 +7,7 @@ package testbd;
 
 import com.samrtsolutions.drive.model.Label;
 import com.samrtsolutions.drive.model.Product;
+import com.samrtsolutions.drive.repository.LabelDaoImpl;
 import com.samrtsolutions.drive.repository.ProductDaoImpl;
 import java.awt.image.BufferedImage;
 
@@ -18,7 +19,6 @@ import javax.imageio.ImageIO;
 import org.junit.Ignore;
 
 import org.junit.Test;
-import static testbd.TestLabel.labelImpl;
 
 /**
  *
@@ -29,6 +29,7 @@ public class TestProductImplement {
     public TestProductImplement() {
     }
     private static ProductDaoImpl pi= new ProductDaoImpl();
+    private static LabelDaoImpl lao = new LabelDaoImpl();
     
     @Test
     @Ignore
@@ -65,7 +66,7 @@ public class TestProductImplement {
     @Test 
     @Ignore
     public void addLabelToProduct(){
-        Label l =labelImpl.get(3);
+        Label l =lao.get(3);
         Product p=pi.get(2);
         pi.addLabel(p, l);
     }

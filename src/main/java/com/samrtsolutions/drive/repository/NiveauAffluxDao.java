@@ -5,14 +5,15 @@
  */
 package com.samrtsolutions.drive.repository;
 
-import com.samrtsolutions.drive.model.Creneau;
-import com.samrtsolutions.drive.model.Magasin;
+import com.samrtsolutions.drive.model.NiveauAfflux;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author Helmy
  */
-public interface CreneauDao extends BaseDao<Creneau> {
-    
+public interface NiveauAffluxDao extends BaseDao<NiveauAfflux> {
+    public List<NiveauAfflux> afficherAfflux(int codeMag);
+    public ArrayList<NiveauAfflux> afficherCreneau(int idMag);
 }

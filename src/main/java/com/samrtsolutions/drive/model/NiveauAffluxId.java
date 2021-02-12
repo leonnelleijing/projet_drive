@@ -6,7 +6,6 @@
 package com.samrtsolutions.drive.model;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
@@ -15,15 +14,10 @@ import javax.persistence.Embeddable;
  * @author Helmy
  */
 @Embeddable
-public class AffluenceId implements Serializable {
-    
+public class NiveauAffluxId implements Serializable{
     //Propriétés (clé primaire composite pour la table Affluence
     @Column (name = "CodeMagasin")
     private int codeMagasin;
     @Column (name = "CodeCreneau")
     private int codeCreneau;
-    @Column (name = "CodeDate")
-    private int codeDate;
-    
-    
 }
