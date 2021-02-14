@@ -49,7 +49,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="titlePrix">
-                                            <button type="submit" class="btn btn-warning" style="color:#000; font-weight:Bold;">Régler</button>
+                                            <button class="btn btn-warning" style="color:#000; font-weight:Bold;"><a href="/choix_Lieu_Horaire">Régler</a></button>
                                             <span><p>Prix total à payer: </p><p class="prixLabel">175.68 $</p></span>
                                         </div>
                                     </div>
@@ -62,10 +62,7 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-md-4" style="margin-top: 0.5%;">
-                                    <form action="../servletBasket" method="GET">
-                                        <input type="text" id="idPanier" name="idPanier" size="20" maxlength="20" value="${param.idPanier}"/>
-                                        <button type="submit" name="action" value="getBasket">Envoyer</button>
-                                    </form>
+                               
                                     
                                     Informations de l'article</div>
                                 <div class="col-md-2" style="margin-top: 0.5%;">Prix UT</div>
@@ -80,13 +77,15 @@
                             <div class="oneProduit">                               
 <%                              
     
-                                     Basket basket =(Basket)session.getAttribute("basket");
-                                   
+                                     Basket basket =(Basket)session.getAttribute("panier");
+                                     Integer repete= 0;
+                                     
                                     
                                      if(basket!=null){
                                            Map<Product, ClProdBasket> ProdBasket =basket.getProdBasket();
                                      
                                        for(Map.Entry<Product, ClProdBasket> products : ProdBasket.entrySet()){
+                                           repete+=1;
                                         out.print("<div class='produit'>");
                                             out.print("<div class='container-fluid'>");
                                                 out.print("<div class='row'>");
@@ -119,7 +118,11 @@
                                                         out.print("<div class='prixTtProduit' id='prixTtProduit'><p class='singlePriceTotal'>" + products.getKey().getProductUnitPrice() + " €</p></div>");
                                                     out.print("</div>");
                                                     out.print("<div class='col-md-1'>");
-                                                        out.print("<div class='suppression'> <button class='glyphicon glyphicon-trash supprimer-product'></button></div>");
+                                                        out.print("<div class='btn-supprimer'>");
+                                                            out.print("<input class='produitId' type='hidden' name='repete' value='" + repete + "'/>");
+                                                            out.print(" <button class='glyphicon glyphicon-trash suppression'></button>"); 
+                                                            out.print("<input class='produitId' type='hidden' name='produitId' value='" + products.getKey().getProductCode() + "'/>");
+                                                        out.print("</div>");
                                                     out.print("</div>");
                                                 out.print("</div>");
                                             out.print("</div>");
@@ -149,6 +152,19 @@
                                     </div>
                                 </div>                             
                             </div>
+                            <div class="col-6">
+                                <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="titlePrix">
+                                            <button class="btn btn-warning" style="color:#000; font-weight:Bold;"><a href="/choix_Lieu_Horaire">Régler</a></button>
+                                            <span><p>Prix total à payer: </p><p class="prixLabel"></p></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>   
+                            </div>
+                            
                             </div>
                         </div>
             </div>

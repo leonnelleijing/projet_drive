@@ -6,7 +6,11 @@
 package testbd;
 
 import com.samrtsolutions.drive.model.Basket;
+import com.samrtsolutions.drive.model.ClProdBasket;
+import com.samrtsolutions.drive.model.Product;
 import com.samrtsolutions.drive.repository.BasketDaoImpl;
+import com.samrtsolutions.drive.repository.ClProdBasketDaoImpl;
+import com.samrtsolutions.drive.repository.ProductDaoImpl;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -24,6 +28,18 @@ public class TestBasket {
         System.out.println(b.getIdBasket());
         
     }
+    
+    @Test
+    public void testRemoveProduct(){
+         ProductDaoImpl pi= new ProductDaoImpl();
+        Product p = pi.get(1);
+        Basket b=pm.get(1);
+       ClProdBasket cl=b.getProdBasket().get(p);
+       ClProdBasketDaoImpl cla= new ClProdBasketDaoImpl();
+       cla.deleteObject(cl);
+       
+    }
+  
     
     
 }

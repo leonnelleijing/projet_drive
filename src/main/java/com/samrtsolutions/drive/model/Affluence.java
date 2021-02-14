@@ -20,7 +20,7 @@ import javax.persistence.Table;
  */
 @Entity
 @SuppressWarnings("PersistenceUnitPresent")
-@Table(name = "Affluence")
+@Table(name = "drive_affluence")
 public class Affluence implements Serializable {
     
     //Propriétés

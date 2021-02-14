@@ -11,6 +11,7 @@ import com.samrtsolutions.drive.model.CliProdBasketId;
 import com.samrtsolutions.drive.model.Label;
 import com.samrtsolutions.drive.model.Product;
 import com.samrtsolutions.drive.repository.BasketDaoImpl;
+import com.samrtsolutions.drive.repository.ClProdBasketDaoImpl;
 import com.samrtsolutions.drive.repository.ProductDaoImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -48,15 +49,15 @@ public class ServletBasket extends HttpServlet {
             String action = request.getParameter("action");
             BasketDaoImpl b = new BasketDaoImpl(); 
             ProductDaoImpl p = new ProductDaoImpl();
-            Basket ba= (Basket) session.getAttribute("basket");
+            Basket ba= (Basket) session.getAttribute("panier");
             switch(action)
             {
                 case "getBasket":
                     String idPanierString = request.getParameter("idPanier");
-                    System.out.println(idPanierString);
+                    //System.out.println(idPanierString);
                     int idPanier = Integer.valueOf(idPanierString);
                     Basket basket = b.get(idPanier);               
-                    session.setAttribute("basket", basket);                      
+                    session.setAttribute("panier", basket);                      
                     try {
                         RequestDispatcher rd = request.getRequestDispatcher("panier");
                         rd.forward(request, response);
@@ -65,20 +66,21 @@ public class ServletBasket extends HttpServlet {
                         RequestDispatcher rd = request.getRequestDispatcher("accueil");
                         rd.forward(request, response);
                     }
+                break;  
 
-//                        }
+//              break;       }
                 case "addToBasket": 
                     
-                    String idProduitString;
-                    idProduitString = request.getParameter("idProduit");
-            
+                    String idProduitString = request.getParameter("idProduit");
+                    String quan= request.getParameter("quantity");
+                     if(quan==null||quan=="")
+                         quan="1";
                     int idProduit = Integer.parseInt(idProduitString);
-                    
                    Product produit = p.get(idProduit);
-                   ClProdBasket codes = new ClProdBasket(new CliProdBasketId(produit.getProductCode(),1),1);
+                   ClProdBasket codes = new ClProdBasket(new CliProdBasketId(produit.getProductCode(),1),Integer.valueOf(quan));
                    ba.getProdBasket().put(produit, codes);
                    b.edit(ba);
-                   session.setAttribute("basket", ba);
+                   session.setAttribute("panier", ba);
                    
                 break;
                 
@@ -90,17 +92,23 @@ public class ServletBasket extends HttpServlet {
                         Product addProduit = p.get(Integer.valueOf(idProduct));
                         ba.getProdBasket().put(addProduit, newLigne);
                         b.edit(ba);
-                        session.setAttribute("basket", ba);
+                        session.setAttribute("panier", ba);
                    }
+                break;
                 
                 case "supprimerProduct":
                    String idProductSUpprim= request.getParameter("idProduct");
                    if(idProductSUpprim!=null&&idProductSUpprim!=""){
                         Product supprimeProduit = p.get(Integer.valueOf(idProductSUpprim));
-                        ba.getProdBasket().remove(ba);
-                        b.edit(ba);
-                        session.setAttribute("basket", ba);
+                        //supprimer session ligne
+                        ClProdBasket supprimeLigne= ba.getProdBasket().get(supprimeProduit);
+                        ClProdBasketDaoImpl cla= new ClProdBasketDaoImpl();
+                        cla.deleteObject(supprimeLigne);
+                        
+                        ba.getProdBasket().remove(supprimeProduit);
+                        session.setAttribute("panier", ba);
                    }
+                  break;
                    
             }
             

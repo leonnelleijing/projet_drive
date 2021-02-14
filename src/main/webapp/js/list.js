@@ -1,7 +1,7 @@
 
 //ajouter un produit
 function addList(){
-       alert("cc");  
+       //alert("cc");  
     // Objet XMLHttpRequest.
     var xhr = new XMLHttpRequest();
       
@@ -63,7 +63,7 @@ function addPostit(){
                 var elt = document.getElementById("listPostIt"+liste); 
                 
                 //console.log(elt);
-                elt.insertAdjacentHTML("beforeend","<div class='list-group-item'>"+word+"</div>");
+            elt.insertAdjacentHTML("beforeend","<div class='list-group-item'>"+word+"</div>");
 
 //                var d  = xhr.responseXML; // je remplace son contenu
 //                

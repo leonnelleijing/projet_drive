@@ -45,7 +45,7 @@
                                             out.print("<div class='niveau3'><img class='imagePro' src="+ p.getImage()+"></div>");
                                         out.print("</div>");
                                     out.print(" <div class='infos'>");
-                                        out.print(" <div class='infoPromo'><p>1 acheté = 1 graduit</p></div>");
+                                        out.print(" <div class='infoPromo'><p>1 acheté = 1 gratuit</p></div>");
                                         out.print("<div class='infoPrix'> <div class='prix'><p>"+p.getProductUnitPrice()+"</p></div>");
                                  
                                         out.print("<div class='iconPanier'><img src='../Img/panier.png' style='height:20px; width: 20px'  onclick='addToBasket("+p.getProductCode()+")'  ></div></div>");

@@ -5,10 +5,12 @@
  */
 package com.samrtsolutions.drive.controler;
 
+import com.samrtsolutions.drive.model.Basket;
 import com.samrtsolutions.drive.model.Client;
 import com.samrtsolutions.drive.model.Family;
 import com.samrtsolutions.drive.model.Product;
 import com.samrtsolutions.drive.model.Rayon;
+import com.samrtsolutions.drive.repository.BasketDaoImpl;
 import com.samrtsolutions.drive.repository.ClientDaoImpl;
 import com.samrtsolutions.drive.repository.FamilyDaoImpl;
 import com.samrtsolutions.drive.repository.ProductDaoImpl;
@@ -56,6 +58,12 @@ public class Accueil extends HttpServlet {
             ClientDaoImpl clientImple= new ClientDaoImpl();
             Client c= clientImple.get(1);
             session.setAttribute("client", c);
+        }
+        
+         if(session.getAttribute("panier")==null||session.getAttribute("panier").equals("")){
+            BasketDaoImpl b = new BasketDaoImpl(); 
+            Basket basket = b.get(1);
+            session.setAttribute("panier", basket);
         }
         String idfamily= request.getParameter("Idfamily");
         String idRayon= request.getParameter("idRayon");

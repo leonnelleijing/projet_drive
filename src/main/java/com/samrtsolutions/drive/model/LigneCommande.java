@@ -6,6 +6,7 @@
 package com.samrtsolutions.drive.model;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -46,14 +47,14 @@ public class LigneCommande implements Serializable{
     public int getQuantity() {
         return quantity;
     }
-    @ManyToOne(targetEntity = Commande.class,fetch = FetchType.EAGER)
+    @ManyToOne(targetEntity = Commande.class,cascade=CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinColumn(name = "numCommande")
     public Commande getCommande() {
         return commande;
     }    
    
 
-    @ManyToOne(targetEntity = Product.class,fetch = FetchType.EAGER)
+    @ManyToOne(targetEntity = Product.class,fetch = FetchType.EAGER,cascade=CascadeType.ALL)
     @JoinColumn(name = "idProduct")
     public Product getProduct() {
         return product;

@@ -16,10 +16,12 @@
     </head>
     
     <style>
-        .row>div {
+  .row>div {
             height: auto;
             /*border: 1px #000 solid;*/
         }
+        
+       
         .logo{
             height: 100px;
             width: 190px;
@@ -38,21 +40,27 @@
         }
         
         .part1{
-            height: 500px;
-            width: auto;            
+            height: 300px;
+            width: 100%;            
             /*border: 1px #000 solid;*/
             background-image: url('Img\\accueil.jfif');
             background-repeat: no-repeat;
             background-size:100% 100%;
             float: left;
         }
+        
+         
         .jumbotron h1{
             /*text-align: center;*/
-            font-size: 80px;
+            font-size: 40px;
             font-style: italic;
             color: #fff;
-            margin-top: 120px;
+            margin-top: 10px;
             
+        }
+        
+        .txtHome{
+            font-size: 10px;
         }
         .jumbotron{
            background-color:transparent; 
@@ -66,6 +74,7 @@
         .part3{
             /*border: 1px #000 solid;*/
             height: auto;
+            width: 100%;
             background-color: #f5f5f5;
             float: left;
         }
@@ -73,51 +82,62 @@
         .title{
             margin-top: 30px;
             text-align: center;
-
         }
         
         .produit{
             background-color: #fff;
             box-shadow:0px 15px 10px -15px #000;
-            width: 25%;
-            height: 360px;
-            margin: 3% 4% 3% 4%;
+            width: 150px;
+            height: 370px;
+            /*height: 300px;*/
+            
+            margin: 1% 0% 1% 2%;
             float: left;
             
         }
         img{
-            height: 100%;
-            width: 100%;
+            height: 100px;
+            width: 80px;
+            margin-left: 40px;
             object-fit: cover;
             
         }
+       
         
         .namePro{
-            font-size: 18px;
+            font-size: 14px;
+            font-weight:bold;
             text-align: left;
             font-family:  inherit;
-            color: #212529;
+            color: black;
             margin: 8%;
+            height: 10%;
         }
         
         .prix{
             font-size: 15px;
-            color: red;
+            color: black;
             font-weight: bold;
             margin-left: 10%;
             margin-top: 10%;
             float: left;
+            
+        }
+        
+        .prinxInfo {
+           margin: 0 0 0px;
+           margin-top: 1px;
         }
         
         .poids{
-            font-size: 12px;
+            font-size: 10px;
             color: #06357a;
             margin: 0% 0% 4% 5%;
         }
         
         
         .prixPoid{
-            font-size: 12px;
+            font-size: 10px;
             color: #06357a;
             margin: 0% 0% 4% 5%;
         }
@@ -128,18 +148,18 @@
         }
         
         .niveau1{
-            background-color: #ffecb5;
+            background-color: #F4A460;
+            
             width: 100%;
         }
         
         .niveau1 span{
-            font-size: 17px;
+            font-size: 15px;
             text-align: center;
             font-style: italic;
-            color: red;
+            color: black;
             font-weight: bold;
             margin: 13% 9% 9% 9%;
-
         }
         
         /*
@@ -219,6 +239,10 @@
             
         }
         
+        .iconPanier:hover{
+            opacity: 0.3;
+        }
+        
         .Price{
             font-weight: bold;
             font-size: 20px;
@@ -250,11 +274,16 @@
         .infoPromo p {
             font-size: 13px;
             font-family: cursive;
-            color: red;
+            color: black;
             font-weight: bold;
             text-align: center;
         }
         
+        .marque{
+           font-size: 10px; 
+           margin: 7px;
+           font-weight:bold
+        }
         
         .infoPrix{
             display: inline;
@@ -271,7 +300,7 @@
         
         .lstPro{
             background-color: #f5f5f5;
-            float: left;
+           /** float: left;**/
         }
         
         /*.photoPro{
@@ -287,7 +316,6 @@
             height:35px;
             line-height:30px;*/
             margin-left: 15px;
-
         }
         .tips{
             position:absolute;
@@ -316,6 +344,102 @@
             width:20px;
             height:20px;
         }
+        
+        /*Liste*/
+        .card{
+            margin-left: 50px;
+            margin-top: 150px;
+           
+        }
+        
+        /*retrait*/
+        .titreRetrait{
+            color: #DAA520;
+            margin-left: 25px;
+            
+        }
+          .titreRetrait2{
+            color: #DAA520;
+            margin-left: 25px;
+           /* margin-top: 150px*/
+        }
+        .inputMagasin{
+            margin-left: 25px;
+            width:350px; 
+            text-align: center;
+        }
+        
+        
+        
+        
+   
+        
+        .radio-tile-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+  .input-container {
+    position: relative;
+    height:  7rem;
+    width:  7rem;
+    margin: 0.5rem;
+  }
+   
+    .radio-button {
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      margin: 0;
+   
+    }
+     
+    
+    .radio-tile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      border: 2px solid #079ad9;
+      border-radius: 5px;
+      padding: 1rem;
+      transition: transform 300ms ease;
+    }
+  
+    .radio-tile-label {
+      text-align: center;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #079ad9;
+    }
+    .radio-button:checked + .radio-tile {
+      background-color: #079ad9;
+      border: 2px solid #079ad9;
+      color: white;
+      transform: scale(1.1, 1.1);
+      
+    
+      .radio-tile-label {
+        color: white;
+        background-color: #079ad9;
+      }
+      
+      /*List*/
+      button.decalage{
+          /*text-align: center;*/
+          margin-left: 50px;
+          height: 100px;
+          width: 100px;
+      }
+    }
+  }
         
     </style>
     <body>

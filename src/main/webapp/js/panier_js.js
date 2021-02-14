@@ -49,25 +49,54 @@ function updatePrice(){
 }
     
 function sendProductQuantity(quantite,idProduct){
-        var xhr = new XMLHttpRequest();
+    var xhr = new XMLHttpRequest();
     xhr.open("GET", "servletBasket?action=changeQuantity&quantite=" + quantite + "&idProduct=" + idProduct);
 //    alert(quantite);
 //     On précise ce que l'on va faire quand on aura reçu la réponse du serveur.
     xhr.onload = function() {
         
         if (xhr.status === 200) {
-            
-            alert("succes")
-            
+//            alert("succes")          
             }
-            
-            
+ 
         }
         
         xhr.send();
 }
 
+function addToBasketSingleProduct(){
+    var idProduct = $(this).parent().prev().val();
+    var quantity = $(this).parent().prev().prev().val();
+    console.log(quantity)
+    var xhr = new XMLHttpRequest();
+    // Requête au serveur
+    xhr.open("GET", "servletBasket?idProduit="+idProduct+"&action=addToBasket&quantity="+quantity);
+    xhr.onload = function()
+    {
+          if(xhr.status === 200){
+            console.log("Ajouter au panier");
+          }
 
+    };
+    xhr.send();
+    
+}
+
+function supprimeproduct(){
+    var idProduct = $(this).next().val();
+    var xhr = new XMLHttpRequest();
+    var numberProduct =$(this).prev().val();
+    xhr.open("GET", "servletBasket?idProduct=" + idProduct+'&action=supprimerProduct');
+    xhr.onload = function () {
+        
+        if (xhr.readyState == 4 && xhr.status == 200) {
+           // alert(numberProduct)
+            //console.log($(".produit").eq(parseInt(numberProduct)))
+             $(".produit").eq(parseInt(numberProduct)-1).remove();
+        }
+    }
+    xhr.send();
+}
 
 $(function(){
 
@@ -170,5 +199,7 @@ $(function(){
      $(".btnMin").click(clickMinus)
      $(".btnMax").click(clickMaxis)
      updatePrice()
+     $('#add-signle-product').click(addToBasketSingleProduct)
+     $('.suppression').click(supprimeproduct)
 });
 

@@ -55,5 +55,12 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
         t.commit();
         return o;
     }
+    
+    public void deleteObject(Object obj) {
+        Session s  =factory.getCurrentSession();
+        Transaction t=s.beginTransaction();
+        s.delete(obj);
+        t.commit(); 
+    }
 
 }

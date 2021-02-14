@@ -105,7 +105,7 @@ function l_creneaux ()
                           for(var i = 0; i < listeCreneaux.length; i++){
                              var creneau = listeCreneaux[i].firstChild.nodeValue;
                              var creneauCode = listeCreneauxCode[i].firstChild.nodeValue;
-                             elt.insertAdjacentHTML("beforeend", "<input type = \"radio\" class = \"btn_creneau\" id = " + creneauCode + " value = " + creneauCode + "  >"+creneau+"</input>");
+                             elt.insertAdjacentHTML("beforeend", "<input type = \"radio\" name = \"btn_creneau\" id = " + creneauCode + " value = " + creneauCode + "  >"+creneau+"</input>");
                           }
 			}
 		};
@@ -122,55 +122,35 @@ function validerCommande () {
     } else {
         confirmation = "Annuler";
     }
-    
+    console.log(confirmation)
     //Si pop-up validée
-    if (confirmation === "Ok") {
+    if (confirmation == "Ok") {
        confirmerValidation(); 
     }
 }
 
+
 function confirmerValidation () {
-    
-    // Objet XMLHttpRequest.
-	var xhr = new XMLHttpRequest();
         var creneauSelected = 0;
         //Je récupère le bouton (le créneau) sélectionné
-        var selectedCreneau = document.querySelectorAll(".creneaux > input.btn_creneau");
-        for(var i = 0; i < selectedCreneau.length; i++){
-            if (selectedCreneau[i].checked) {
-                creneauSelected = selectedCreneau[i].value;
-                break;
-            };
-        var selection = document.getElementById("lmagasins");
-        //Je récupère l'option (le magasin) sélectionnée
-        var codeMagasin = selection.options[selection.selectedIndex].value;
-        //Je récupère le bouton (le créneau) sélectionné
-        var selectedDate = document.querySelectorAll(".calendrier_class > input.btn_calendar");
-}
+        var selectedCreneau = document.querySelectorAll('input[name="btn_creneau"]:checked');
+       var codeMagasin = document.getElementById('lmagasins').value
+        var selectedDate = document.querySelector( 'input[name="btn_calendar"]:checked').nextSibling.data
+        console.log(selectedDate)
+        console.log(codeMagasin)
+        console.log(selectedCreneau[0].value)
+        // Objet XMLHttpRequest.
+	var xhr = new XMLHttpRequest();
 	// Requête au serveur avec les paramètres codeC, codeM, date.
-	xhr.open("GET","ServletAfficherCreneaux?codeCreneau="+creneauSelected+"&codeMagasin="+codeMagasin+"&date="+selectedDate);
+	xhr.open("GET","valider?idCreneau="+creneauSelected+"&idMagasin="+codeMagasin+"&dateRetrait="+selectedDate);
 
 	// On précise ce que l'on va faire quand on aura reçu la réponse du serveur.
-	xhr.onload = function()
-		{
-		// Si la requête http s'est bien passée.
-		if (xhr.status === 200)
-			{
-			  // Elément html que l'on va mettre à jour.                          
-                          var listeCreneaux = xhr.responseXML.getElementsByTagName("creneau");
-                          var listeCreneauxCode = xhr.responseXML.getElementsByTagName("creneauCode");
-                          var elt = document.getElementById("boutonsCreneaux");
-                          elt.innerHTML = "";
-                          for(var i = 0; i < listeCreneaux.length; i++){
-                             var creneau = listeCreneaux[i].firstChild.nodeValue;
-                             var creneauCode = listeCreneauxCode[i].firstChild.nodeValue;
-                             elt.insertAdjacentHTML("beforeend", "<button type = \"button\" class = \"btn_creneau\" value = " + creneauCode + " >"+creneau+"</button>");
-                          }
-			}
-		};
+
 	
-	// Envoie de la requête.
-	xhr.send();
+	
+                // Envoie de la requête.
+                xhr.send();
+        
 }
         
 document.addEventListener("DOMContentLoaded", () => {
@@ -178,6 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("saisieMagasin").addEventListener("input",l_magasins);
         document.getElementById("lmagasins").addEventListener("change",l_creneaux);
         document.getElementById("validerCommande").addEventListener("click",validerCommande);
+       
 });
 
-
+ document.addEventListener('DOMContentLoaded', afficherCalendrier, false);
