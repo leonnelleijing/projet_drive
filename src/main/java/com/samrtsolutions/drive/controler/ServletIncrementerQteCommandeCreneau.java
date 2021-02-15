@@ -22,6 +22,7 @@ public class ServletIncrementerQteCommandeCreneau extends HttpServlet {
 
     protected void processRequest (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 		{
+			{
 		/*----- Type de la réponse -----*/
 		response.setContentType("application/xml;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
@@ -50,6 +51,7 @@ public class ServletIncrementerQteCommandeCreneau extends HttpServlet {
 			}
 
                     out.println("</reponses>");
+		}
 		}
     }
 

@@ -14,5 +14,4 @@ import com.samrtsolutions.drive.model.Date_Affluence;
  */
 public interface AffluenceDao extends BaseDao<Affluence> {
     public String incrementerQteCommande (int codeMag, int codeCreneau, String date);
-    public void addRowCommande (int codeMag, int codeCreneau, Date_Affluence date_affluence);
 }
